@@ -6,7 +6,7 @@
 /*   By: dclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 12:18:48 by dclark            #+#    #+#             */
-/*   Updated: 2021/02/17 14:48:06 by dclark           ###   ########.fr       */
+/*   Updated: 2021/02/17 15:32:21 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,43 +88,47 @@ void	mlx_my_put_pxl(t_img *img, int x, int y, int color)
 int	dispatch(int keycode, void *param)
 {
 	t_win	*win;
-	static int px = (WIDTH/2);
-	static int py = (HEIGHT/2);
+	static float px = (WIDTH/2);
+	static float py = (HEIGHT/2);
 	static float pa = 0.0;
 	static float pdx = 0.0;
 	static float pdy = 0.0;
 
 	win = param;
+	pdx = cosf(pa) * 2.0;
+	pdy = sinf(pa) * 2.0;
+	printf("pdx = %f\n", pdx);
+	printf("pdy = %f\n", pdy);
 	if (keycode == ESC)
 		close();
 	if (keycode == UP)
 	{
-		px += (int)pdx;
-		py += (int)pdy;	
+		px += pdx;
+		py += pdy;	
 	}
 	if (keycode == DOWN)
 	{
-		px -= (int)pdx;
-		py -= (int)pdy;
+		px -= pdx;
+		py -= pdy;
 	}
 	if (keycode == LEFT)
 	{
 		pa -= 0.1;
 		if (pa < 0)
 			pa += (2.0 * PI);
-		pdx = cosf(pa);
-		pdy = sinf(pa);
+		pdx = cosf(pa) * 2.0;
+		pdy = sinf(pa) * 2.0;
 	}
 	if (keycode == RIGHT)
 	{
 		pa += 0.1;
 		if (pa > (2.0 * PI))
 			pa -= (2.0 * PI);
-		pdx = cosf(pa);
-		pdy = sinf(pa);
+		pdx = cosf(pa) * 2.0;
+		pdy = sinf(pa) * 2.0;
 	}
 	erase_frame_content(win);
-	mlx_my_put_pxl(win->img, px, py, create_trgb(0, 255, 255, 255));
+	mlx_my_put_pxl(win->img, (int)px, (int)py, create_trgb(0, 255, 255, 255));
 	mlx_put_image_to_window(win->mlx_ptr, win->win_ptr, win->img->img, 0, 0);
 	return (1);
 }
