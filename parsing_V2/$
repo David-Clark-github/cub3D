@@ -1,0 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   include.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/19 10:53:28 by dclark            #+#    #+#             */
+/*   Updated: 2021/02/22 11:30:38 by dclark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "mlx.h"
+#include "libft.h"
+
+
+/*
+** 1 = OK
+** 0 = KO
+** the objectif is to simply check the file .cub
+** the result of checking each element is store in this struct
+*/
+
+typedef struct	s_check_cub {
+	int	resolution;
+	int	north;
+	int	south;
+	int	west;
+	int	east;
+	int	sprit;
+	int	floor;
+	int	ceiling;
+	int	map;
+}				t_check_cub;
+
+char	*file_line(int fd);
+void	init_check_cub(t_check_cub *check_cub);

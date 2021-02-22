@@ -6,7 +6,7 @@
 /*   By: dclark <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 12:18:48 by dclark            #+#    #+#             */
-/*   Updated: 2021/02/17 14:03:33 by dclark           ###   ########.fr       */
+/*   Updated: 2021/02/19 10:26:22 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ int	dispatch(int keycode, void *param)
 	static int py = (HEIGHT/2);
 
 	win = param;
+	printf("%d\n", keycode);
 	if (keycode == ESC)
 		close();
 	if (keycode == UP)
