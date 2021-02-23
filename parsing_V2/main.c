@@ -39,9 +39,10 @@ int main(int ac, char **av)
 	line_fd = file_line(fd);
 	split_line = ft_split(line_fd, '\n');
 	init_check_cub(&check_cub);
+	printf("%s\n", split_line[6]); //floor line
 	check_cub.resolution = check_resolution(split_line[0]);
 	check_cub.floor = check_floor(split_line[6]);
-	printf("%s\n", split_line[0]);
+	printf("\n\n");
 	print_check_cub(check_cub);
 //	printf_split_line(split_line);
 }
