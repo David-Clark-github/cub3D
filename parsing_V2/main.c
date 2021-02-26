@@ -29,20 +29,24 @@ void	print_check_cub(t_check_cub cc)
 int main(int ac, char **av)
 {
 	t_check_cub	check_cub;
-	char	*line_fd;
-	char	**split_line;
-	char	*buffer = malloc(sizeof(char) * 20);
-	int		fd;
-	int		i = 0;
+	t_map		map;
+	char		*line_fd;
+	char		**split_line;
+	char		*buffer = malloc(sizeof(char) * 20);
+	int			fd;
+	int			i = 0;
 
+	map.map_st = 8;
 	fd = open(av[1],  O_RDONLY);
 	line_fd = file_line(fd);
 	split_line = ft_split(line_fd, '\n');
 	init_check_cub(&check_cub);
-	printf("%s\n", split_line[6]); //floor line
 	check_cub.resolution = check_resolution(split_line[0]);
-	check_cub.floor = check_floor(split_line[6]);
-	printf("\n\n");
-	print_check_cub(check_cub);
-//	printf_split_line(split_line);
+	check_cub.north = check_path(split_line[1])
+	check_cub.floor = check_floor_ceiling(split_line[6]);
+	check_cub.ceiling = check_floor_ceiling(split_line[7]);
+	//print_check_cub(check_cub);
+	map_max(&map, split_line);
+	create_map(&map, split_line);
+	printf_split_line(map.map);
 }

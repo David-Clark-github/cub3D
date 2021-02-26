@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 14:22:37 by dclark            #+#    #+#             */
-/*   Updated: 2021/02/23 14:11:45 by dclark           ###   ########.fr       */
+/*   Updated: 2021/02/25 10:33:35 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,8 @@ static int	format(char *line)
 
 	i = 1;
 	count = 3;
-	printf("Hey!\n");
 	while (count-- > 0)
 	{
-		printf("%s\n", &line[i]);
 		while (line[i] == ' ' || line[i] == '\t')
 			i++;
 		if (ft_atoi(&line[i]) < 0 || ft_atoi(&line[i]) > 255)
@@ -104,11 +102,13 @@ static int	format(char *line)
 			i++;
 		if (line[i] == ',' && count > 0)
 			i++;
-		else if (count == 1 && line[i] != ',')
+		else if (count == 0 && line[i] != ',')
 			i += 0;
 		else
 			return (-1);
 	}
+	if (line[i] != '\0')
+		return (-1);
 	return (1);
 }
 
@@ -116,28 +116,10 @@ static int	format(char *line)
 ** int i start at 1 because we know that the fisrt caracter is the letter 'F'
 */
 
-int	check_floor(char *line)
+int	check_floor_ceiling(char *line)
 {
-	int	i;
-	int	num_count;
-	int	comma_count;
-	int	ma_mi_rgb;
-	int	check_num_n;
-
-	num_count = count_number(line);
-	comma_count = count_comma(line);
-	check_num_n = check_num_neg(line);
-	ma_mi_rgb = max_min_rgb(line);
-	printf("num_count = %d\n", num_count);
-	printf("comma_count = %d\n", comma_count);
-	printf("check_num_n = %d\n", check_num_n);
-	printf("ma_mi_rgb = %d\n", ma_mi_rgb);
-	if (num_count == 3 && comma_count == 2)
-	{
-		printf("il rentre :)\n");
+	if (count_number(line) == 3 && count_comma(line) == 2 && check_num_neg(line) == 1)
 		if (format(line) == 1)
 			return (1);
-		printf("il sort :/\n");
-	}
 	return (-1);
 }
