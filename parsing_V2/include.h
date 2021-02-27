@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 10:53:28 by dclark            #+#    #+#             */
-/*   Updated: 2021/02/26 15:14:09 by dclark           ###   ########.fr       */
+/*   Updated: 2021/02/27 12:02:18 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 ** the result of checking each element is store in this structure
 */
 
+/*
+***************** Check Error *****************
+*/
+
 typedef struct	s_check_cub {
 	int	resolution;
 	int	north;
@@ -37,6 +41,36 @@ typedef struct	s_check_cub {
 	int	ceiling;
 	int	map;
 }				t_check_cub;
+
+void	init_check_cub(t_check_cub *check_cub);
+int		check_resolution(char *line);
+int		check_floor_ceiling(char *line);
+int		check_path(char *line, t_win *win, t_img *img);
+
+/*
+** file line return a single line from a file
+** 
+** Then I create a square map with space when empty
+** 00..
+** 0100
+** 0110
+** 0000
+** The dot are spaces
+*/
+
+char	*file_line(int fd);
+void	map_max(t_map *map, char **s_line);
+void	create_map(t_map *map, char **s_line);
+
+
+/*
+** check the .cub file before doing the parsing
+*/
+
+int	check_cub(t_check_cub *cub);
+/*
+***************** Parsing *****************
+*/
 
 /*
 ** t_image contain all the necessary to create an image
@@ -62,7 +96,13 @@ typedef struct	s_win {
 }				t_win;
 
 /*
-** t_map have the hig
+** Struct for the map
+** x_max and y_max are the width and height of the map
+** map_st is the line where the map begin in the split_line value (look at the main)
+** player_pos represent the postion of the player x = pos[0], y = pos[1]
+** player_dir is the direction that the player is looking
+** 	1:NO	2:ES	3:SO	4:WE
+** map is the map created by create_map with 0 at the last line to finish it
 */
 
 typedef struct	s_map {
@@ -70,26 +110,6 @@ typedef struct	s_map {
 	int		y_max;
 	int		map_st;
 	int		player_pos[2];
-	int		plyer_dir;
+	int		player_dir;
 	char	**map;
 }				t_map;
-
-/*
-** Set all elements of s_check_cub to 0
-*/
-
-void	init_check_cub(t_check_cub *check_cub);
-
-
-char	*file_line(int fd);
-
-/*
-** check the .cub file before doing the parsing
-*/
-
-int		check_resolution(char *line);
-int		check_floor_ceiling(char *line);
-int		check_path(char *line);
-void	map_max(t_map *map, char **s_line);
-void	map_creation(t_map *map, char **s_line);
-void	create_map(t_map *map, char **s_line);

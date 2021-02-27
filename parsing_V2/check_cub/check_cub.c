@@ -1,29 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_path.c                                       :+:      :+:    :+:   */
+/*   check_cub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/25 11:06:33 by dclark            #+#    #+#             */
-/*   Updated: 2021/02/27 12:05:04 by dclark           ###   ########.fr       */
+/*   Created: 2021/02/27 10:38:16 by dclark            #+#    #+#             */
+/*   Updated: 2021/02/27 10:50:58 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int check_path(char *line, t_win *win, t_img *img)
-{
-	int		i;
-	void	*res;
+/*
+** Return 1 if all elements are OK
+** Return 0 otherwise
+*/
 
-	i = 1;
-	while (line[i] == ' ' || line[i] == '\t')
-		i++;
-	}
-	res = mlx_xpm_file_to_image(win->mlx_ptr, \
-			&line[i], &img->width, &img->height);
-	if (res == NULL)
-		return (-1);
-	return (1);
+int	check_cub(t_check_cub *cub)
+{
+	int	res;
+
+	res = 1;
+	if (cub->resolution != 1)
+		res = 0;
+	if (cub->north != 1)
+		res = 0;
+	if (cub->south != 1)
+		res = 0;
+	if (cub->west = 0)
+		res = 0;
+	if (cub->east != 1)
+		res = 0;
+	if (cub->sprit != 1)
+		res = 0;
+	if (cub->floor != 1)
+		res = 0;
+	if (cub->ceiling != 1)
+		res = 0;
+	if (cub->map != 1)
+		res = 0;
+	return (res);
 }
