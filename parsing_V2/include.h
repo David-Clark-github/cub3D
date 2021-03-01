@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/19 10:53:28 by dclark            #+#    #+#             */
-/*   Updated: 2021/02/27 12:02:18 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/01 13:07:47 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,24 @@ typedef struct	s_check_cub {
 	int	ceiling;
 	int	map;
 }				t_check_cub;
+
+/*
+** The line of each elements of the file cub
+*/
+
+typedef struct 	s_pars_l {
+	int	res_l;
+	int	no_l;
+	int	so_l;
+	int	we_l;
+	int	ea_l;
+	int	sprit_l;
+	int	ceil_l;
+	int	floor_l;
+	int	map_l;
+}				t_pars_l;
+
+void	pars_line_cub(char **line, t_pars_l *pars);
 
 void	init_check_cub(t_check_cub *check_cub);
 int		check_resolution(char *line);

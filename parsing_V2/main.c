@@ -30,6 +30,7 @@ int main(int ac, char **av)
 {
 	t_check_cub	check_cub;
 	t_map		map;
+	t_pars_l	pars_l;
 	char		*line_fd;
 	char		**split_line;
 	char		*buffer = malloc(sizeof(char) * 20);
@@ -41,7 +42,8 @@ int main(int ac, char **av)
 	line_fd = file_line(fd);
 	split_line = ft_split(line_fd, '\n');
 	init_check_cub(&check_cub);
-	check_cub.resolution = check_resolution(split_line[0]);
+	pars_line_cub(split_line, &pars_l);
+	check_cub.resolution = check_resolution(split_line[pars_l.res_l]);
 	check_cub.north = check_path(split_line[1])
 	check_cub.floor = check_floor_ceiling(split_line[6]);
 	check_cub.ceiling = check_floor_ceiling(split_line[7]);
