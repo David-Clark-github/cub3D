@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_split_line.c                                 :+:      :+:    :+:   */
+/*   ceil_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 15:31:15 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/01 15:33:01 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/02 11:09:45 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/03 11:56:14 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	print_split_l(char **split_line)
+void	ceil_line(char **sp_line, t_elem_l *elem_l)
 {
 	int	i;
+	int	flag;
 
-	i = 0;
-	while (split_line[i])
+	i = -1;
+	flag = 0;
+	while (sp_line[++i])
 	{
-		printf("%s\n", split_line[i]);
-		i++;
+		if (ft_strlen(sp_line[i]) < 2)
+			elem_l->ceil = -1;
+		else if (sp_line[i][0] == 'C' &&\
+				(sp_line[i][1] == ' ' || sp_line[i][1] == '\t'))
+		{
+			elem_l->ceil = i;
+			flag++;
+		}
 	}
+	if (flag > 1)
+		elem_l->ceil = -1;
 }
