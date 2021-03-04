@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   floor_check_error.c                                :+:      :+:    :+:   */
+/*   ceiling_check_error.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 10:28:21 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/04 12:08:56 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/04 12:40:46 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/04 12:41:45 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,27 +94,15 @@ static int	format(char *str)
 	return (1);
 }
 
-int			floor_check_err(char *line)
+int			ceiling_check_err(char *line)
 {
 	if (format(line) == -1)
-	{
-		printf("yo format\n");
 		return (-1);
-	}
 	if (comma_c(line) != 2)
-	{
-		printf("yo comma\n");
 		return (-1);
-	}
 	if (num_c(line) != 3)
-	{
-		printf("yo num\n");
 		return (-1);
-	}
 	if (boundaries(line) == -1)
-	{
-		printf("yo boud\n");
 		return (-1);
-	}
 	return (1);
 }
