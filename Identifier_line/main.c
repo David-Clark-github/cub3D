@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 10:17:40 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/03 15:38:58 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/04 12:08:25 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ int main(int ac, char **av)
 	init_elem_check(&elem_c);
 //	print_elem_check(&elem_c);
 	elem_c.res = res_check_err(split_line[elem_l.res]);
+	elem_c.floor = floor_check_err(split_line[elem_l.floor]);
 	printf("check_res = %d\n", elem_c.res);
+	printf("check_floor = %d\n", elem_c.floor);
 }

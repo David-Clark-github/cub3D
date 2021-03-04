@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 14:50:24 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/03 15:39:00 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/04 10:29:06 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ int		check_error(char **line_s, t_elem_l *elem_l);
 void	print_elem_check(t_elem_c *elem_check);
 void	init_elem_check(t_elem_c *elem_check);
 int		res_check_err(char *line_res);
+int		floor_check_err(char *line_res);
 
 #endif
