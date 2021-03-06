@@ -1,45 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   one_player_map.c                                   :+:      :+:    :+:   */
+/*   map_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 15:40:39 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/06 11:49:26 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/02 11:16:18 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/02 12:14:16 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-static void	init(int *a, int *b, int *c)
+static int		char_set_coco(char c)
 {
-	*a = 0;
-	*b = 0;
-	*c = 0;
+	int i;
+
+	if (c == ' ')
+		return (1);
+	if (c == '\t')
+		return (1);
+	if (c == '0')
+		return (1);
+	if (c == '1')
+		return (1);
+	return (0);
 }
 
-int	one_player_map(char **map)
+void	map_line(char **sp_line, t_elem_l *elem_l)
 {
-	int	y;
-	int	x;
-	int	res;
+	int	i;
+	int	flag;
 
-	init(&x, &y, &res);
-	while (map[y])
+	i = -1;
+	flag = 0;
+	while (sp_line[++i] && flag == 0)
 	{
-		while (map[y][x])
+		if (ft_strlen(sp_line[i]) < 1)
+			elem_l->map = -1;
+		else if (char_set_coco(sp_line[i][0]) == 1)
 		{
-			if (map[y][x] == 'N' || map[y][x] == 'S')
-				res++;
-			if (map[y][x] == 'W' || map[y][x] == 'E')
-				res++;
-			x++;
+			elem_l->map = i;
+			flag = 1;
 		}
-		x = 0;
-		y++;
 	}
-	if (res != 1)
-		return (-1);
-	return (1);
 }

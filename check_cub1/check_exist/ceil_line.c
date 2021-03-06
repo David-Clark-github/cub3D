@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_elem_check.c                                  :+:      :+:    :+:   */
+/*   ceil_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/02 13:41:42 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/04 14:20:18 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/02 11:09:45 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/03 11:56:14 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	init_elem_check_1(t_elem_c *elem_check, t_elem_l *el_l, char **line_s)
+void	ceil_line(char **sp_line, t_elem_l *elem_l)
 {
-	t_map_err	map_err;
+	int	i;
+	int	flag;
 
-	elem_check->res = res_check_err(line_s[el_l->res]);
-	elem_check->floor = floor_check_err(line_s[el_l->floor]);
-	elem_check->ceil = ceiling_check_err(line_s[el_l->ceil]);
-	elem_check->map = map_check_err(&map_err, line_s, el_l->map);
+	i = -1;
+	flag = 0;
+	while (sp_line[++i])
+	{
+		if (ft_strlen(sp_line[i]) < 2)
+			elem_l->ceil = -1;
+		else if (sp_line[i][0] == 'C' &&\
+				(sp_line[i][1] == ' ' || sp_line[i][1] == '\t'))
+		{
+			elem_l->ceil = i;
+			flag++;
+		}
+	}
+	if (flag > 1)
+		elem_l->ceil = -1;
 }

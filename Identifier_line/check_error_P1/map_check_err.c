@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:37:39 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/04 15:33:31 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/06 12:12:58 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@ int	map_check_err(t_map_err *map_err, char **line_s, int map_st)
 	map_max(map_err, line_s, map_st);
 	create_map(map_err, line_s, map_st);
 	print_split_l(map_err->map);
+	if (check_map(map_err) == -1)
+		printf("rololo, erreur map");
 	return (1);
 }

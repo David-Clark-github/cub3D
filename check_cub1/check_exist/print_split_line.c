@@ -1,45 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   one_player_map.c                                   :+:      :+:    :+:   */
+/*   print_split_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 15:40:39 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/06 11:49:26 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/01 15:31:15 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/02 11:39:43 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-static void	init(int *a, int *b, int *c)
+void	print_split_l(char **sp_line)
 {
-	*a = 0;
-	*b = 0;
-	*c = 0;
-}
+	int	i;
 
-int	one_player_map(char **map)
-{
-	int	y;
-	int	x;
-	int	res;
-
-	init(&x, &y, &res);
-	while (map[y])
+	i = 0;
+	while (sp_line[i])
 	{
-		while (map[y][x])
-		{
-			if (map[y][x] == 'N' || map[y][x] == 'S')
-				res++;
-			if (map[y][x] == 'W' || map[y][x] == 'E')
-				res++;
-			x++;
-		}
-		x = 0;
-		y++;
+		printf("%s\n", sp_line[i]);
+		i++;
 	}
-	if (res != 1)
-		return (-1);
-	return (1);
 }

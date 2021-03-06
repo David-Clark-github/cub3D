@@ -1,45 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   one_player_map.c                                   :+:      :+:    :+:   */
+/*   south_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 15:40:39 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/06 11:49:26 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/02 11:05:59 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/03 11:38:08 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-static void	init(int *a, int *b, int *c)
+void	south_line(char **sp_line, t_elem_l *elem_l)
 {
-	*a = 0;
-	*b = 0;
-	*c = 0;
-}
+	int	i;
+	int	flag = 0;
 
-int	one_player_map(char **map)
-{
-	int	y;
-	int	x;
-	int	res;
-
-	init(&x, &y, &res);
-	while (map[y])
+	i = -1;
+	while (sp_line[++i])
 	{
-		while (map[y][x])
+		if (ft_strlen(sp_line[i]) < 2)
+			elem_l->south = -1;
+		else if (sp_line[i][0] == 'S' && sp_line[i][1] == 'O')
 		{
-			if (map[y][x] == 'N' || map[y][x] == 'S')
-				res++;
-			if (map[y][x] == 'W' || map[y][x] == 'E')
-				res++;
-			x++;
+			elem_l->south = i;
+			flag++;
 		}
-		x = 0;
-		y++;
 	}
-	if (res != 1)
-		return (-1);
-	return (1);
+	if (flag > 1)
+		elem_l->south = -1;
 }

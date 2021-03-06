@@ -1,45 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   one_player_map.c                                   :+:      :+:    :+:   */
+/*   init_elem_line.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 15:40:39 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/06 11:49:26 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/02 10:57:51 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/04 12:51:08 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-static void	init(int *a, int *b, int *c)
+void	init_elem_line(t_elem_l *elem_l)
 {
-	*a = 0;
-	*b = 0;
-	*c = 0;
-}
-
-int	one_player_map(char **map)
-{
-	int	y;
-	int	x;
-	int	res;
-
-	init(&x, &y, &res);
-	while (map[y])
-	{
-		while (map[y][x])
-		{
-			if (map[y][x] == 'N' || map[y][x] == 'S')
-				res++;
-			if (map[y][x] == 'W' || map[y][x] == 'E')
-				res++;
-			x++;
-		}
-		x = 0;
-		y++;
-	}
-	if (res != 1)
-		return (-1);
-	return (1);
+	elem_l->res = -1;
+	elem_l->north = -1;
+	elem_l->south = -1;
+	elem_l->west = -1;
+	elem_l->east = -1;
+	elem_l->sprit = -1;
+	elem_l->floor = -1;
+	elem_l->ceil = -1;
+	elem_l->map = -1;
 }

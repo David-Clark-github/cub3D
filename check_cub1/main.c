@@ -1,45 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   one_player_map.c                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 15:40:39 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/06 11:49:26 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/06 19:01:00 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/06 19:14:17 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-static void	init(int *a, int *b, int *c)
+int	main(int ac, char **av)
 {
-	*a = 0;
-	*b = 0;
-	*c = 0;
-}
+	t_elem_l	elem_l;
+	t_elem_c	elem_err;
+	int			fd;
+	int			id_line;
+	char		*line_fd;
+	char		**line_s;
 
-int	one_player_map(char **map)
-{
-	int	y;
-	int	x;
-	int	res;
-
-	init(&x, &y, &res);
-	while (map[y])
+	fd = open(av[1], O_RDONLY);
+	line_fd = file_line(fd);
+	line_s = ft_split(line_fd, '\n');
+	id_line = identify_lines(line_s, &elem_l);
+	if (id_line == -1)
 	{
-		while (map[y][x])
-		{
-			if (map[y][x] == 'N' || map[y][x] == 'S')
-				res++;
-			if (map[y][x] == 'W' || map[y][x] == 'E')
-				res++;
-			x++;
-		}
-		x = 0;
-		y++;
-	}
-	if (res != 1)
+		printf("Une ligne du fichier cub n'existe pas\n");
+		print_elem_l(&elem_l);
 		return (-1);
-	return (1);
+	}
+
 }
