@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 14:51:35 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/08 14:18:14 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/09 21:38:42 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,14 @@ char	**ftft_split(char *line, char c)
 
 	line_i = 0;
 	dst_i = 0;
-	dst = malloc(sizeof(char*) * count_word(line, '\n') + 1);
+	dst = malloc(sizeof(char*) * count_word(line, c) + 1);
 	while (dst_i < count_word(line, '\n'))
 	{
 		dst[dst_i] = copy(&line[line_i]);
 		line_i += strlenlen(&line[line_i]);
+		if (line[line_i] == '\n')
+			line_i++;
 		dst_i++;
 	}
+	return (dst);
 }

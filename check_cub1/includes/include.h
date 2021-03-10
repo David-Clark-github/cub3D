@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 14:50:24 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/07 16:17:08 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/10 21:15:57 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,15 @@
 
 # include "libft.h"
 # include "mlx.h"
+# include "get_next_line.h"
+# include "id_line.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
 
-char	*file_line(int fd);
+char	**file_line_gnl(char *av);
 void	print_split_l(char **sp_line);
-char	**ftft_split(char *line, char c);
-
-
-/*
-****************	Identifier_line_cub		****************
-*/
-
-typedef struct	s_element_line {
-	int	res;
-	int	north;
-	int	south;
-	int	west;
-	int	east;
-	int	sprit;
-	int	floor;
-	int	ceil;
-	int	map;
-}				t_elem_l;
-
-void	init_elem_line(t_elem_l *elem_l);
-int		identify_lines(char **sp_line, t_elem_l *elem_l);
-void    print_elem_l(t_elem_l *elem_l);
-void	res_line(char **sp_line, t_elem_l *elem_l);
-void	north_line(char **sp_line, t_elem_l *elem_l);
-void	south_line(char **sp_line, t_elem_l *elem_l);
-void	west_line(char **sp_line, t_elem_l *elem_l);
-void	east_line(char **sp_line, t_elem_l *elem_l);
-void	sprit_line(char **sp_line, t_elem_l *elem_l);
-void	floor_line(char **sp_line, t_elem_l *elem_l);
-void	ceil_line(char **sp_line, t_elem_l *elem_l);
-void	map_line(char **sp_line, t_elem_l *elem_l);
-int		check_exist(t_elem_l *elem_l);
+int		get_next_line(int fd, char **line);
 
 /*
 ****************	Check_error				****************
