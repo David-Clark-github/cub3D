@@ -6,13 +6,13 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 11:16:18 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/10 21:12:47 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/11 14:45:50 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "id_line.h"
 
-static int		char_set_coco(char c)
+static int	char_set_coco(char c)
 {
 	if (c == ' ')
 		return (1);
@@ -25,7 +25,7 @@ static int		char_set_coco(char c)
 	return (0);
 }
 
-void	map_line(char **sp_line, t_elem_l *elem_l)
+void		map_line(char **sp_line, t_elem_l *elem_l)
 {
 	int	i;
 	int	flag;

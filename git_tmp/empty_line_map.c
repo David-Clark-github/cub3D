@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   south_line.c                                       :+:      :+:    :+:   */
+/*   empty_line_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/02 11:05:59 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/11 14:46:52 by user42           ###   ########.fr       */
+/*   Created: 2021/03/04 15:46:43 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/08 14:04:04 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "id_line.h"
+#include "include.h"
 
-void	south_line(char **sp_line, t_elem_l *elem_l)
+int	empty_line_map(char **map)
 {
-	int	i;
-	int	flag;
+	int	y;
 
-	i = -1;
-	flag = 0;
-	while (sp_line[++i])
+	y = 0;
+	while (map[y])
 	{
-		if (ft_strlen(sp_line[i]) < 2 && flag != 1)
-			elem_l->south = -1;
-		else if (sp_line[i][0] == 'S' && sp_line[i][1] == 'O')
-		{
-			elem_l->south = i;
-			flag++;
-		}
+		if (map[y][0] == '\0')
+			return (-1);		
+		y++;
 	}
-	if (flag > 1)
-		elem_l->south = -1;
+	return (1);
 }

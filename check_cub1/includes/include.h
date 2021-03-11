@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 14:50:24 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/10 21:15:57 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/11 13:46:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,11 @@ typedef struct	s_map_error {
 }				t_map_err;
 
 int		map_check_err(t_map_err *map_err, char **line_s, int map_st);
-int		check_map(t_map_err *map);
+int		check_map(char **map);
 int		one_player_map(char **map);
 int		empty_line_map(char **map);
+int		caract_map(char **map);
+int		cara_voisin(t_map_err *map_err);
 
 typedef struct	s_window {
 	void	*mlx;

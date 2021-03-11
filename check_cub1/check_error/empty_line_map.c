@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 15:46:43 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/09 21:36:37 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/11 11:26:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	empty_line_map(char **map)
 	y = 0;
 	while (map[y])
 	{
-		if (map[y][0] == '\0')
-			return (-1);		
+		if (ft_strlen(map[y]) == 0)
+			return (-1);
 		y++;
 	}
 	return (1);

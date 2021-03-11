@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_err.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user42 <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/10 21:04:10 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/10 21:05:49 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/11 10:45:54 by user42            #+#    #+#             */
+/*   Updated: 2021/03/11 10:46:07 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECK_ERR_H
 # define CHECK_ERR_H
 
+# include "include.h"
 
+#endif
