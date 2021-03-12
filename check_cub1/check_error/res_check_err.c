@@ -6,11 +6,11 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 12:02:13 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/07 14:13:26 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/12 14:16:07 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include.h"
+#include "check_err.h"
 
 static int	num_count(char *str)
 {

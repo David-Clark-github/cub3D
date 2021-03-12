@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 10:21:02 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/10 21:08:42 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/12 13:30:28 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@ int	check_exist(t_elem_l *elem_l)
 
 	res = 1;
 	if (elem_l->res < 0)
-		res = 0;
+		res = -1;
 	if (elem_l->north < 0)
-		res = 0;
+		res = -1;
 	if (elem_l->south < 0)
-		res = 0;
+		res = -1;
 	if (elem_l->west < 0)
-		res = 0;
+		res = -1;
 	if (elem_l->east < 0)
-		res = 0;
+		res = -1;
 	if (elem_l->sprit < 0)
-		res = 0;
+		res = -1;
 	if (elem_l->floor < 0)
-		res = 0;
+		res = -1;
 	if (elem_l->ceil < 0)
-		res = 0;
+		res = -1;
 	if (elem_l->map < 0)
-		res = 0;
+		res = -1;
 	return (res);
 }

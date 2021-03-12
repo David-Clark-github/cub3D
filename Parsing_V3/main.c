@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   empty_line_map.c                                   :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
+/*   By: user42 <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 15:46:43 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/12 14:15:04 by user42           ###   ########.fr       */
+/*   Created: 2021/03/12 12:20:01 by user42            #+#    #+#             */
+/*   Updated: 2021/03/12 12:30:01 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "check_err.h"
+#include "main.h"
+#include "parsing.h"
 
-int	empty_line_map(char **map)
+int main(int ac, char **av)
 {
-	int	y;
 
-	y = 0;
-	while (map[y])
-	{
-		if (ft_strlen(map[y]) == 0)
-			return (-1);
-		y++;
-	}
-	return (1);
 }

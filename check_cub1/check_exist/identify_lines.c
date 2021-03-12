@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 11:25:24 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/10 21:09:02 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/12 13:30:39 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	identify_lines(char **line_s, t_elem_l *elem_l)
 	floor_line(line_s, elem_l);
 	ceil_line(line_s, elem_l);
 	map_line(line_s, elem_l);
-	if (check_exist(elem_l) == 0)
+	if (check_exist(elem_l) == -1)
 		return (-1);
 	return (1);
 }

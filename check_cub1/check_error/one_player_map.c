@@ -6,11 +6,11 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 15:40:39 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/06 11:49:26 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/12 14:15:43 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include.h"
+#include "check_err.h"
 
 static void	init(int *a, int *b, int *c)
 {

@@ -6,11 +6,11 @@
 /*   By: user42 <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 13:15:09 by user42            #+#    #+#             */
-/*   Updated: 2021/03/11 13:49:51 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/12 14:12:02 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include.h"
+#include "check_err.h"
 
 static int	ztnsew(char c)
 {

@@ -6,11 +6,11 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 13:37:39 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/11 14:00:44 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/12 14:15:35 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include.h"
+#include "check_err.h"
 
 void	create_map(t_map_err *map, char **line_s, int map_st)
 {

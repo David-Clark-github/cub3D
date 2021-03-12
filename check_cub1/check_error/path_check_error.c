@@ -6,11 +6,11 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 15:31:00 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/11 11:58:35 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/12 14:15:52 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include.h"
+#include "check_err.h"
 
 int	path_check_error(char *line)
 {

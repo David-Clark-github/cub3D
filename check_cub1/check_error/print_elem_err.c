@@ -6,11 +6,11 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 13:38:45 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/07 14:09:37 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/12 14:16:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include.h"
+#include "check_err.h"
 
 void    print_elem_err(t_elem_err *elem_check)
 {
