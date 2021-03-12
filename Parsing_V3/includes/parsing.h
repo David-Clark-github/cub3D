@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   include.h                                          :+:      :+:    :+:   */
+/*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:25:16 by user42            #+#    #+#             */
-/*   Updated: 2021/03/12 14:36:50 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/12 15:03:50 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDE_H
-# define INCLUDE_H
+#ifndef PARSING_H
+# define PARSING_H
+
+# include "mlx.h"
+# include "libft.h"
 
 typedef struct	s_resolution {
 	int	x;
