@@ -6,13 +6,14 @@
 /*   By: user42 <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:25:16 by user42            #+#    #+#             */
-/*   Updated: 2021/03/13 11:43:54 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/13 13:44:36 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
 
+# include "id_line.h"
 # include "mlx.h"
 # include "libft.h"
 # include <stdio.h>
@@ -103,4 +104,15 @@ typedef struct	s_pars {
 
 void	print_pars(t_pars *pars);
 
+void	parsing(char **line_s, t_elem_l *el_l, t_pars *pars);
+
+void	res_pars(char *line, t_pars *pars);
 void	north_pars(char *line, t_pars *pars);
+void	south_pars(char *line, t_pars *pars);
+void	west_pars(char *line, t_pars *pars);
+void	east_pars(char *line, t_pars *pars);
+void	sprite_pars(char *line, t_pars *pars);
+void	floor_pars(char *line, t_pars *pars);
+void	ceil_pars(char *line, t_pars *pars);
+
+#endif
