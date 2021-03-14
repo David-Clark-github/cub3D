@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 13:19:51 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/14 14:47:41 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/14 15:47:30 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,19 @@ static void	create_map(char **line_s, t_map *map)
 	while (y_l < map->height)
 	{
 		reste = map->width - ft_strlen(line_s[y_l]);
-		
+		map->map[y_l] = ft_strdup(line_s[y_l]);
+		while (reste-- > 0)
+		{
+			map->map[y_l][ft_strlen(line_s[y_l]) + x] = ' ';
+			x++;
+		}
+		x = 0;
 		y_l++;
 	}
 }
 
 void	map_pars(char **line_s, t_pars *pars)
 {
-	map_max(line_s, &pars.map);
-
+	map_max(line_s, &pars->map);
+	create_map(line_s, &pars->map);
 }

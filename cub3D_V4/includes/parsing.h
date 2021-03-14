@@ -6,7 +6,7 @@
 /*   By: user42 <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:25:16 by user42            #+#    #+#             */
-/*   Updated: 2021/03/14 13:42:06 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/14 15:06:12 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,6 @@ void	east_pars(char *line, t_pars *pars);
 void	sprite_pars(char *line, t_pars *pars);
 void	floor_pars(char *line, t_pars *pars);
 void	ceil_pars(char *line, t_pars *pars);
+void	map_pars(char **line_s, t_pars *pars);
 
 #endif
