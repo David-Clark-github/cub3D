@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 11:42:35 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/13 14:05:44 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/14 11:03:28 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	print_pars(t_pars *pars)
 {
 	printf("res x = %d\n", pars->res.x);
-	printf("res r = %d\n", pars->res.y);
+	printf("res y = %d\n", pars->res.y);
 	printf("img_north = %p\n", pars->north.img);
 	printf("img_south = %p\n", pars->south.img);
 	printf("img_west = %p\n", pars->west.img);

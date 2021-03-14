@@ -6,7 +6,7 @@
 /*   By: user42 <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:25:16 by user42            #+#    #+#             */
-/*   Updated: 2021/03/13 13:44:36 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/14 13:42:06 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct	s_floor {
 typedef struct	s_map {
 	int		height;
 	int		width;
-	char	*map;
+	char	**map;
 }				t_map;
 
 typedef struct	s_pars {
@@ -100,6 +100,7 @@ typedef struct	s_pars {
 	t_sprite	sprite;
 	t_ceil		ceil;
 	t_floor		floor;
+	t_map		map;
 }				t_pars;
 
 void	print_pars(t_pars *pars);
