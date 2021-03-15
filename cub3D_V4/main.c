@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 11:51:46 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/13 13:43:09 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/15 10:58:51 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int main(int ac, char **av)
 	t_elem_l	elem_l;
 	t_elem_err	elem_err;
 	t_pars		pars;
+	t_win		win;
+	t_map_img	map_img;
 	int			error_cub;
 	char		**line_s;
 
@@ -37,5 +39,8 @@ int main(int ac, char **av)
 		return (-1);
 	}
 	parsing(line_s, &elem_l, &pars);
+	win.mlx = mlx_init();
+	win.win = mlx_new_window(win.mlx, pars.res.x, pars.res.y, "cub3D");
+	map_img = map_to_image(&pars.map, &win);
 	print_pars(&pars);
 }
