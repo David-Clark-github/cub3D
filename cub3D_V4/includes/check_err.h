@@ -6,13 +6,14 @@
 /*   By: user42 <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 10:45:54 by user42            #+#    #+#             */
-/*   Updated: 2021/03/12 14:14:04 by user42           ###   ########.fr       */
+/*   Updated: 2021/03/15 12:10:51 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECK_ERR_H
 # define CHECK_ERR_H
 
+# include "include.h"
 # include "libft.h"
 # include "mlx.h"
 # include "id_line.h"
@@ -35,11 +36,6 @@ typedef struct	s_map_error {
 	int		player;
 	char	**map;
 }				t_map_err;
-
-typedef struct	s_window {
-	void	*mlx;
-	void	*win;
-}				t_win;
 
 typedef struct	s_image {
 	void	*img;

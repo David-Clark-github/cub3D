@@ -6,11 +6,12 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 11:51:46 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/15 10:58:51 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/15 14:04:15 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
+#include "libft.h"
 
 int main(int ac, char **av)
 {
@@ -41,6 +42,8 @@ int main(int ac, char **av)
 	parsing(line_s, &elem_l, &pars);
 	win.mlx = mlx_init();
 	win.win = mlx_new_window(win.mlx, pars.res.x, pars.res.y, "cub3D");
-	map_img = map_to_image(&pars.map, &win);
+	map_to_image(&map_img, &pars.map, &win);
+	mlx_put_image_to_window(win.mlx, win.win, map_img.img, 0, 0);
+	mlx_loop(win.mlx);
 	print_pars(&pars);
 }
