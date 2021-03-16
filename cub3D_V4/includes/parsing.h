@@ -6,7 +6,7 @@
 /*   By: user42 <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:25:16 by user42            #+#    #+#             */
-/*   Updated: 2021/03/15 10:48:35 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/16 14:19:19 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,14 @@ typedef struct	s_map {
 	char	**map;
 }				t_map;
 
+typedef struct	s_player {
+	double	posx;
+	double	posy;
+	double	pdx;
+	double	pdy;
+	double	pa;
+}				t_ply;
+
 typedef struct	s_pars {
 	t_res		res;
 	t_north		north;
@@ -101,6 +109,7 @@ typedef struct	s_pars {
 	t_ceil		ceil;
 	t_floor		floor;
 	t_map		map;
+	t_ply		player;
 }				t_pars;
 
 void	print_pars(t_pars *pars);
