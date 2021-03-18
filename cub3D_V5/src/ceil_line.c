@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ceil_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/18 16:27:48 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/18 16:28:35 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/02 11:09:45 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/10 21:12:28 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int main(int ac, char **av)
+void	ceil_line(char **sp_line, t_elem_l *elem_l)
 {
-	printf("ac = %d\n", ac);
-	if (check_ac_av(ac, av) == -1)
-	{	
-		printf("error\n");
-		return (-1);
+	int	i;
+	int	flag;
+
+	i = -1;
+	flag = 0;
+	while (sp_line[++i])
+	{
+		if (ft_strlen(sp_line[i]) < 2 && flag != 1)
+			elem_l->ceil = -1;
+		else if (sp_line[i][0] == 'C' &&\
+				(sp_line[i][1] == ' ' || sp_line[i][1] == '\t'))
+		{
+			elem_l->ceil = i;
+			flag++;
+		}
 	}
-	return (1);
+	if (flag > 1)
+		elem_l->ceil = -1;
 }

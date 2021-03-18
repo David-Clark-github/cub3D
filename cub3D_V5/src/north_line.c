@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   north_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/18 16:27:48 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/18 16:28:35 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/02 11:03:56 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/10 21:11:04 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int main(int ac, char **av)
+void	north_line(char **sp_line, t_elem_l *elem_l)
 {
-	printf("ac = %d\n", ac);
-	if (check_ac_av(ac, av) == -1)
-	{	
-		printf("error\n");
-		return (-1);
+	int	i;
+	int	flag;
+
+	i = -1;
+	flag = 0;
+	while (sp_line[++i])
+	{
+		if (ft_strlen(sp_line[i]) < 2 && flag != 1)
+			elem_l->north = -1;
+		else if (sp_line[i][0] == 'N' && sp_line[i][1] == 'O')
+		{
+			elem_l->north = i;
+			flag++;
+		}
 	}
-	return (1);
+	if (flag > 1)
+		elem_l->north = -1;
 }

@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   identify_lines.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/18 16:27:48 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/18 16:28:35 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/02 11:25:24 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/12 13:30:39 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int main(int ac, char **av)
+int	identify_lines(char **line_s, t_elem_l *elem_l)
 {
-	printf("ac = %d\n", ac);
-	if (check_ac_av(ac, av) == -1)
-	{	
-		printf("error\n");
+	init_elem_line(elem_l);
+	res_line(line_s, elem_l);
+	north_line(line_s, elem_l);
+	south_line(line_s, elem_l);
+	west_line(line_s, elem_l);
+	east_line(line_s, elem_l);
+	sprit_line(line_s, elem_l);
+	floor_line(line_s, elem_l);
+	ceil_line(line_s, elem_l);
+	map_line(line_s, elem_l);
+	if (check_elem_l(elem_l) == -1)
 		return (-1);
-	}
 	return (1);
 }

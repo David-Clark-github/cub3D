@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   res_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/18 16:27:48 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/18 16:28:35 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/02 10:26:34 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/10 21:10:47 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int main(int ac, char **av)
+void	res_line(char **line_s, t_elem_l *elem_l)
 {
-	printf("ac = %d\n", ac);
-	if (check_ac_av(ac, av) == -1)
-	{	
-		printf("error\n");
-		return (-1);
+	int	i;
+	int	flag;
+
+	i = -1;
+	flag = 0;
+	elem_l->res = -1;
+	while (line_s[++i])
+	{
+		if (ft_strlen(line_s[i]) >= 2)
+		{
+			if (line_s[i][0] == 'R' &&\
+					(line_s[i][1] == ' ' || line_s[i][1] == '\t'))
+			{
+				elem_l->res = i;
+				flag++;
+			}
+		}
 	}
-	return (1);
+	if (flag > 1)
+		elem_l->res = -1;
 }

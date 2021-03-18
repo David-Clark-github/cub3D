@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   south_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/18 16:27:48 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/18 16:28:35 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/02 11:05:59 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/11 14:46:52 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int main(int ac, char **av)
+void	south_line(char **sp_line, t_elem_l *elem_l)
 {
-	printf("ac = %d\n", ac);
-	if (check_ac_av(ac, av) == -1)
-	{	
-		printf("error\n");
-		return (-1);
+	int	i;
+	int	flag;
+
+	i = -1;
+	flag = 0;
+	while (sp_line[++i])
+	{
+		if (ft_strlen(sp_line[i]) < 2 && flag != 1)
+			elem_l->south = -1;
+		else if (sp_line[i][0] == 'S' && sp_line[i][1] == 'O')
+		{
+			elem_l->south = i;
+			flag++;
+		}
 	}
-	return (1);
+	if (flag > 1)
+		elem_l->south = -1;
 }

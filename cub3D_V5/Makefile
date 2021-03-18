@@ -13,7 +13,7 @@
 NAME	=	cub3D
 CFLAGS	+=	-Wall -Werror -Wextra -I includes
 LDFLAGS	+=	-L /usr/lib -lft -lmlx_Linux -lXext -lX11 -lm
-CC		=	clang
+CC		=	gcc
 
 all:
-	$(CC) $(CFLAGS) main.c $(LDFLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) main.c src/*.c $(LDFLAGS) -o $(NAME)
