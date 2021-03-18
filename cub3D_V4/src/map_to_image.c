@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/15 10:38:09 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/15 14:19:14 by dclark           ###   ########.fr       */
+/*   Created: 1021/03/15 10:38:09 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/18 14:38:32 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
+#include "parsing.h"
 
 int		color_r(char c)
 {
@@ -27,20 +28,20 @@ int		color_r(char c)
 	return (123456789);
 }
 
-void	map_to_image(t_map_img *map_i, t_map *map, t_win *win)
+void	map_to_image(t_img_a *img_a, t_map *map, t_win *win)
 {
 	int			y;
 	int			x;
 
-	map_i->width = map->width * 20;
-	map_i->height = map->height * 20;
-	map_i->img = mlx_new_image(win->mlx, map_i->width, map_i->height);	
-	map_i->addr = mlx_get_data_addr(map_i->img, &map_i->bpp, &map_i->line_l, &map_i->endian);
+	img_a->width = map->width * 10;
+	img_a->height = map->height * 10;
+	img_a->img = mlx_new_image(win->mlx, img_a->width, img_a->height);	
+	img_a->addr = mlx_get_data_addr(img_a->img, &img_a->bpp, &img_a->line_l, &img_a->endian);
 	while (y < map->height)
 	{
 		while (x < map->width)
 		{
-			draw_square(map_i, x * 20, y * 20, 20, color_r(map->map[y][x]));
+			draw_square(img_a, x * 10, y * 10, 10, color_r(map->map[y][x]));
 			x++;
 		}
 		x = 0;

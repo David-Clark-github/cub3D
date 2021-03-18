@@ -6,13 +6,13 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 11:38:56 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/15 13:12:33 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/18 14:41:43 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	draw_square(t_map_img *map_img, int x, int y, int size, int color)
+void	draw_square(t_img_a *img_a, int x, int y, int size, int color)
 {
 	int y_s;
 	int	x_s;
@@ -23,7 +23,7 @@ void	draw_square(t_map_img *map_img, int x, int y, int size, int color)
 	{
 		while (x_s < size)
 		{
-			my_mlx_pixel(map_img, (x + x_s), (y + y_s), color);
+			my_mlx_pixel(img_a, (x + x_s), (y + y_s), color);
 			x_s++;
 		}
 		x_s = 0;

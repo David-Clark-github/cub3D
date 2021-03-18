@@ -6,7 +6,7 @@
 /*   By: user42 <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/11 13:15:09 by user42            #+#    #+#             */
-/*   Updated: 2021/03/13 12:09:05 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/18 10:29:17 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static int	ztnsew(char c)
 
 static int	voisin(t_map_err *map, int x, int y)
 {
-	if (x == 0 || x == map->x_max)
+	if (x == 0 || x == map->x_max - 1)
 		return (-1);
-	if (y == 0 || y == map->y_max)
+	if (y == 0 || y == map->y_max - 1)
 		return (-1);
 	if (map->map[y][x + 1] == ' ' || map->map[y][x - 1] == ' ')
 		return (-1);

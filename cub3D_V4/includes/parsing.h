@@ -6,7 +6,7 @@
 /*   By: user42 <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/12 14:25:16 by user42            #+#    #+#             */
-/*   Updated: 2021/03/16 14:19:19 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/18 14:40:43 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,21 @@
 # include "mlx.h"
 # include "libft.h"
 # include <stdio.h>
+
+typedef struct	s_window {
+	void	*mlx;
+	void	*win;
+}				t_win;
+
+typedef struct	s_img_alpha {
+	void	*img;
+	char	*addr;
+	int		line_l;
+	int		bpp;
+	int		width;
+	int		height;
+	int		endian;
+}				t_img_a;
 
 typedef struct	s_resolution {
 	int	x;
@@ -110,6 +125,8 @@ typedef struct	s_pars {
 	t_floor		floor;
 	t_map		map;
 	t_ply		player;
+	t_win		win;
+	t_img_a		img_a;
 }				t_pars;
 
 void	print_pars(t_pars *pars);

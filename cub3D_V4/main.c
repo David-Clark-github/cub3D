@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 11:51:46 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/15 14:32:44 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/18 15:56:04 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int main(int ac, char **av)
 	t_elem_l	elem_l;
 	t_elem_err	elem_err;
 	t_pars		pars;
-	t_win		win;
-	t_map_img	map_img;
 	int			error_cub;
 	char		**line_s;
 
@@ -40,10 +38,11 @@ int main(int ac, char **av)
 		return (-1);
 	}
 	parsing(line_s, &elem_l, &pars);
-	win.mlx = mlx_init();
-	win.win = mlx_new_window(win.mlx, pars.res.x, pars.res.y, "cub3D");
-	map_to_image(&map_img, &pars.map, &win);
-	mlx_put_image_to_window(win.mlx, win.win, map_img.img, 0, 0);
-	mlx_loop(win.mlx);
-	print_pars(&pars);
+	pars.win.mlx = mlx_init();
+	pars.win.win = mlx_new_window(pars.win.mlx, pars.res.x, pars.res.y, "cub3D");
+//	mlx_hook(pars.win.win, 2, (1L<<0), func, &pars);
+	map_to_image(&pars.img_a, &pars.map, &pars.win);
+	mlx_put_image_to_window(pars.win.mlx, pars.win.win, pars.img_a.img, 0, 0);
+	mlx_loop(pars.win.mlx);
+	//print_pars(&pars);
 }
