@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 15:31:00 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/19 15:33:55 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/19 15:39:24 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ int	path_error(char *line)
 	win.win = mlx_new_window(win.mlx, 1, 1, "cub3D");
 	res = mlx_xpm_file_to_image(win.mlx, &line[i], &img.width, &img.height);
 	if (!res)
-	{
-		printf("res xpm = %p\n", res);
 		return (-1);
-	}
 	return (1);
 }
