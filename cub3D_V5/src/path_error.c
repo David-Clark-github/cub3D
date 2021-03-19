@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 15:31:00 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/19 14:46:06 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/19 15:33:55 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	path_error(char *line)
 	res = mlx_xpm_file_to_image(win.mlx, &line[i], &img.width, &img.height);
 	if (!res)
 	{
-		printf("res = %p\n", res);
+		printf("res xpm = %p\n", res);
 		return (-1);
 	}
 	return (1);
