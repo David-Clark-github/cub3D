@@ -1,38 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   one_player_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/18 16:27:48 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/19 16:32:56 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/04 15:40:39 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/19 17:00:50 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int main(int ac, char **av)
+static void	init(int *a, int *b, int *c)
 {
-	t_data	data;
+	*a = 0;
+	*b = 0;
+	*c = 0;
+}
 
-	if (check_ac_av(ac, av) == -1)
-	{	
-		printf("error ac av\n");
-		return (-1);
-	}
-	data.raw_cub_l = file_line_gnl(av[1]);
-	if (id_line_master(data.raw_cub_l, &data.elem_l) == -1)
+int	one_player_map(char **map)
+{
+	int	y;
+	int	x;
+	int	res;
+
+	init(&x, &y, &res);
+	while (map[y])
 	{
-		printf("error line\n");
-		print_elem_l(&data.elem_l);
-		return (-1);
+		while (map[y][x])
+		{
+			if (map[y][x] == 'N' || map[y][x] == 'S')
+				res++;
+			if (map[y][x] == 'W' || map[y][x] == 'E')
+				res++;
+			x++;
+		}
+		x = 0;
+		y++;
 	}
-	if (error_cub_master(&data.elem_err, &data.elem_l, data.raw_cub_l) == -1)
-	{
-		printf("error\n");
-		print_elem_err(&data.elem_err);
+	if (res != 1)
 		return (-1);
-	}	
 	return (1);
 }

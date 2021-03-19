@@ -1,38 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/18 16:27:48 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/19 16:32:56 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/19 16:34:46 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/19 16:41:12 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int main(int ac, char **av)
+int	map_error(t_data *data)
 {
-	t_data	data;
-
-	if (check_ac_av(ac, av) == -1)
-	{	
-		printf("error ac av\n");
+	if (check_map(&data->raw_cub_l[data->elem_l.map]) == -1)
 		return (-1);
-	}
-	data.raw_cub_l = file_line_gnl(av[1]);
-	if (id_line_master(data.raw_cub_l, &data.elem_l) == -1)
-	{
-		printf("error line\n");
-		print_elem_l(&data.elem_l);
-		return (-1);
-	}
-	if (error_cub_master(&data.elem_err, &data.elem_l, data.raw_cub_l) == -1)
-	{
-		printf("error\n");
-		print_elem_err(&data.elem_err);
-		return (-1);
-	}	
 	return (1);
 }

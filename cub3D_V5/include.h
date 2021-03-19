@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:30:51 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/19 14:44:52 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/19 16:59:42 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,13 @@ typedef struct	s_element_error {
 	int	map;
 }				t_elem_err;
 
+typedef struct	s_map_err {
+	int		x_max;
+	int		y_max;
+	int		player;
+	char	**map;
+}				t_map_err;
+
 int		error_cub_master(t_elem_err *elem_err, t_elem_l *elem_l, char **line_s);
 int		check_error(t_elem_err *elem_err);
 
@@ -93,6 +100,11 @@ void	print_elem_err(t_elem_err *elem_err);
 int		floor_ceil_err(char *line);
 int		res_err(char *line);
 int		path_error(char *line);
+int		map_error(t_map_err *map_err, char **map);
+int		check_map(char **map);
+int		one_player_map(char **map);
+int		empty_line_map(char **map);
+int		caract_map(char **map);
 
 /*
 ** ---- PARSING ----
