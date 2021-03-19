@@ -101,6 +101,9 @@ int		floor_ceil_err(char *line);
 int		res_err(char *line);
 int		path_error(char *line);
 int		map_error(t_map_err *map_err, char **map);
+void	map_max(t_map_err *s_map, char **map);
+void	create_map(t_map_err *s_map, char **map);
+int		cara_voisin(t_map_err *s_map);
 int		check_map(char **map);
 int		one_player_map(char **map);
 int		empty_line_map(char **map);
@@ -116,6 +119,7 @@ int		caract_map(char **map);
 
 int		check_ac_av(int ac, char **av);
 char	**file_line_gnl(char *av);
+void	print_split_l(char **line_s);
 
 typedef struct	s_window {
 	void	*mlx;
