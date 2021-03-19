@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:30:51 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/19 12:41:56 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/19 14:44:52 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define INCLUDE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 64
 # endif
 
 #include <stdio.h>
@@ -23,6 +23,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include "libft.h"
+#include "mlx.h"
 
 /*
 ** ---- get_next_line ----
@@ -53,10 +54,10 @@ typedef struct	s_element_line {
 
 int		id_line_master(char **line_s, t_elem_l *elem_l); // return 1 or -1
 
-void	print_elem_l(t_elem_l *elem_l);
-
 void	init_elem_line(t_elem_l *elem_l);
 int		check_elem_l(t_elem_l *elem_l);
+
+void	print_elem_l(t_elem_l *elem_l);
 
 void	res_line(char **line_s, t_elem_l *elem_l);
 void	north_line(char **sp_line, t_elem_l *elem_l);
@@ -84,11 +85,14 @@ typedef struct	s_element_error {
 	int	map;
 }				t_elem_err;
 
-int		elem_error_master();
+int		error_cub_master(t_elem_err *elem_err, t_elem_l *elem_l, char **line_s);
+int		check_error(t_elem_err *elem_err);
 
 void	print_elem_err(t_elem_err *elem_err);
 
-void	inti_elem_err(t_elem_err *elem_err);
+int		floor_ceil_err(char *line);
+int		res_err(char *line);
+int		path_error(char *line);
 
 /*
 ** ---- PARSING ----
@@ -98,7 +102,23 @@ void	inti_elem_err(t_elem_err *elem_err);
 ** ---- UTILS ----
 */
 
-int	check_ac_av(int ac, char **av);
+int		check_ac_av(int ac, char **av);
+char	**file_line_gnl(char *av);
+
+typedef struct	s_window {
+	void	*mlx;
+	void	*win;
+}				t_win;
+
+typedef struct	s_image {
+	void	*img;
+	char	*addr;
+	int		line_l;
+	int		bpp;
+	int		width;
+	int		height;
+	int		endian;
+}				t_img;
 
 /*
 **	---- MASTER_DATA ----
@@ -108,6 +128,7 @@ typedef struct	s_data {
 	char		**raw_cub_l;
 	t_elem_l	elem_l;
 	t_elem_err	elem_err;
+	t_win		win;
 }				t_data;
 
 #endif

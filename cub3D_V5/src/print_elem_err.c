@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   id_line_master.c                                   :+:      :+:    :+:   */
+/*   print_elem_err.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/02 11:25:24 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/19 13:12:23 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/02 13:38:45 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/19 14:51:21 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int	id_line_master(char **line_s, t_elem_l *elem_l)
+void    print_elem_err(t_elem_err *elem_check)
 {
-	init_elem_line(elem_l);
-	res_line(line_s, elem_l);
-	north_line(line_s, elem_l);
-	south_line(line_s, elem_l);
-	west_line(line_s, elem_l);
-	east_line(line_s, elem_l);
-	sprit_line(line_s, elem_l);
-	floor_line(line_s, elem_l);
-	ceil_line(line_s, elem_l);
-	map_line(line_s, elem_l);
-	if (check_elem_l(elem_l) == -1)
-		return (-1);
-	return (1);
+	printf("res = %d\n", elem_check->res);
+	printf("north = %d\n", elem_check->north);
+	printf("south = %d\n", elem_check->south);
+	printf("west = %d\n", elem_check->west);
+	printf("east = %d\n", elem_check->east);
+	printf("sprit = %d\n", elem_check->sprite);
+	printf("floor = %d\n", elem_check->floor);
+	printf("ceil = %d\n", elem_check->ceil);
+	printf("map = %d\n", elem_check->map);
 }

@@ -30,6 +30,7 @@ static int	ac_three(char **av)
 int	check_ac_av(int ac, char **av)
 {
 	int	res;
+	int	fd;
 
 	if (ac < 2 || ac > 3)
 		return (-1);
@@ -37,5 +38,15 @@ int	check_ac_av(int ac, char **av)
 		res = ac_two(av);
 	if (ac == 3)
 		res = ac_three(av);
+	if ((fd = open(av[1], O_DIRECTORY)) != -1)
+	{
+		close(fd);
+		return (-1);
+	}
+	if ((fd = open(av[1], O_RDONLY)) == -1)
+	{
+		close(fd);
+		return (-1);
+	}
 	return (res);
 }

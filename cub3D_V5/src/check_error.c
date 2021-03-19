@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   id_line_master.c                                   :+:      :+:    :+:   */
+/*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/02 11:25:24 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/19 13:12:23 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/03 14:54:38 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/19 14:38:29 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int	id_line_master(char **line_s, t_elem_l *elem_l)
+int	check_error(t_elem_err *el_err)
 {
-	init_elem_line(elem_l);
-	res_line(line_s, elem_l);
-	north_line(line_s, elem_l);
-	south_line(line_s, elem_l);
-	west_line(line_s, elem_l);
-	east_line(line_s, elem_l);
-	sprit_line(line_s, elem_l);
-	floor_line(line_s, elem_l);
-	ceil_line(line_s, elem_l);
-	map_line(line_s, elem_l);
-	if (check_elem_l(elem_l) == -1)
-		return (-1);
-	return (1);
+	int	res;
+
+	res = 1;
+	if (el_err->res == -1)
+		res = -1;
+	if (el_err->north == -1)
+		res = -1;
+	if (el_err->south == -1)
+		res = -1;
+	if (el_err->west == -1)
+		res = -1;
+	if (el_err->east == -1)
+		res = -1;
+	if (el_err->sprite == -1)
+		res = -1;
+	if (el_err->floor == -1)
+		res = -1;
+	if (el_err->ceil == -1)
+		res = -1;
+	if (el_err->map == -1)
+		res = -1;
+	return (res);
 }
