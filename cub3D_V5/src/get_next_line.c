@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 16:07:43 by dclark            #+#    #+#             */
-/*   Updated: 2020/12/23 19:45:30 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/19 12:42:10 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	get_next_line(int fd, char **line)
 			free(buffer);
 			return (-1);
 		}
-		tmp = ft_strjoin(tmp, ft_strlen(tmp), buffer, bytes_read);
+		tmp = ftft_strjoin(tmp, ft_strlen(tmp), buffer, bytes_read);
 	}
 	free(buffer);
 	*line = get_line(tmp);

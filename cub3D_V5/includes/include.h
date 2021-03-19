@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:30:51 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/18 16:50:50 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/19 12:41:56 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include "libft.h"
 
 /*
 ** ---- get_next_line ----
@@ -30,9 +31,8 @@
 int		get_next_line(int fd, char **line);
 char	*get_line(char *tmp);
 char	*get_after_eol(char *tmp);
-char	*ft_strjoin(char *tmp, int tmp_sz, char *buffer, int bytes_read);
+char	*ftft_strjoin(char *tmp, int tmp_sz, char *buffer, int bytes_read);
 int		check_eol(char *tmp);
-int		ft_strlen(char *str);
 int		return_zero(char *tmp);
 
 /*

@@ -6,25 +6,11 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 16:07:16 by dclark            #+#    #+#             */
-/*   Updated: 2020/12/23 18:00:17 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/19 12:43:19 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
-
-int		ft_strlen(char *str)
-{
-	int	res;
-
-	if (!str)
-		return (0);
-	res = 0;
-	while (str[res] != '\0')
-	{
-		res++;
-	}
-	return (res);
-}
 
 int		check_eol(char *tmp)
 {
@@ -90,7 +76,7 @@ char	*get_after_eol(char *tmp)
 	return (dest);
 }
 
-char	*ft_strjoin(char *tmp, int tmp_sz, char *buffer, int bytes_read)
+char	*ftft_strjoin(char *tmp, int tmp_sz, char *buffer, int bytes_read)
 {
 	char	*dest;
 	int		i_d;
