@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:27:48 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/20 11:14:19 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/20 15:13:22 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,9 @@ int main(int ac, char **av)
 		return (-1);
 	}	
 	parsing_master(&data);
+//	map_to_image(&data.img_a, &data.map);
+//	mlx_put_image_to_window(data.win.mlx, data.win.win, data.img_a.img, 0, 0);
+	mlx_hook(data.win.win, 2, 1L<<0, move, &data);
+	mlx_loop(data.win.mlx);
 	return (1);
 }

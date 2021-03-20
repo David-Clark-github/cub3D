@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:30:51 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/20 12:31:32 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/20 15:27:31 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,23 @@
 #include "libft.h"
 #include "mlx.h"
 
+# define PI 3.1415926535
+# define SIZE 30
+
 # define SPACE 0,200,200,200
 # define EMPTY 0,255,255,255
 # define WALL 0,125,125,125
 # define SPRITE 0,0,255,0
 # define CARA 0,255,0,0
+
+# define ESC 			65307
+# define ROTATE_RIGHT	65363
+# define ROTATE_LEFT	65361
+# define FORWARD		119
+# define BACK			115
+# define RIGHT			100
+# define LEFT			97
+
 
 /*
 ** ---- get_next_line ----
@@ -178,7 +190,7 @@ typedef	struct	s_player {
 	double	pdx;
 	double	pdy;
 	double	pa;
-}				t_ply;
+}				t_player;
 
 typedef struct	s_image_alpha {
 	void	*img;
@@ -207,16 +219,20 @@ typedef struct	s_data {
 	t_win		win;
 	t_img_a		img_a;
 	t_res		res;
-	t_north		north;
-	t_south		south;
-	t_east		east;
-	t_west		west;
-	t_sprite	sprite;
-	t_floor		floor;
-	t_ceil		ceil;
+	t_text		north;
+	t_text		south;
+	t_text		east;
+	t_text		west;
+	t_text		sprite;
+	t_color		floor;
+	t_color		ceil;
+	t_player	player;
 	t_map		map;
 }				t_data;
 
 void	parsing_master(t_data *data);
 void	get_res(char *line, t_res *res);
+void	get_color(char *line, t_color *color);
+int		move(int keycode, void *param);
+void	get_player(t_player *player, char **map);
 #endif

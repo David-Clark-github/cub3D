@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 11:09:00 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/20 11:35:19 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/20 15:27:18 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	map_to_image(t_img_a *img_a, t_map *map)
 		x = 0;
 		while (x < map->width)
 		{
-			draw_square(img_a, x * 10, y * 10, 10, color_r(map->map[y][x]));
+			draw_square(img_a, x * SIZE, y * SIZE, SIZE, color_r(map->map[y][x]));
 			x++;
 		}
 		y++;
