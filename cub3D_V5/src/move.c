@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 14:45:56 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/20 15:42:32 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/20 17:52:24 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	move(int keycode, void *param)
 
 	data = param;
 	map_to_image(&data->img_a, &data->map);
+	if (keycode == ESC)
+		exit(EXIT_SUCCESS);
 	if (keycode == ROTATE_LEFT)
 	{
 		data->player.pa -= 0.1;

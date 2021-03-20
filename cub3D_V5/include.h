@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:30:51 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/20 15:27:31 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/20 17:59:13 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@
 # define ESC 			65307
 # define ROTATE_RIGHT	65363
 # define ROTATE_LEFT	65361
-# define FORWARD		119
+# define FORWARD		122
 # define BACK			115
 # define RIGHT			100
-# define LEFT			97
+# define LEFT			113
 
 
 /*
