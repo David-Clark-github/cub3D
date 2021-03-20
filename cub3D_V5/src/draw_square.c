@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_error.c                                        :+:      :+:    :+:   */
+/*   draw_square.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/19 16:34:46 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/20 10:27:25 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/20 11:07:05 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/20 11:20:35 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int	map_error(t_map_err *map_err, char **map)
+void	draw_square(t_img_a *img_a, int x, int y, int size, int color)
 {
-	if (check_map(map) == -1)
-		return (-1);
-	map_max(map_err, map);
-	create_map(map_err, map);
-	if (cara_voisin(map_err) == -1)
-		return (-1);
-	return (1);
+	int y_s;
+	int	x_s;
+
+	y_s = 0;
+	x_s = 0;
+	while (y_s < size)
+	{
+		while (x_s < size)
+		{
+			my_put_pixel(img_a, (x + x_s), (y + y_s), color);
+			x_s++;
+		}
+		x_s = 0;
+		y_s++;
+	}
 }

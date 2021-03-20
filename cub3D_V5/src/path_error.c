@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 15:31:00 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/19 15:39:24 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/20 11:44:13 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	path_error(char *line)
 {
 	t_win	win;
-	t_img	img;
+	t_img_a	img;
 	void	*res;
 	int		i;
 

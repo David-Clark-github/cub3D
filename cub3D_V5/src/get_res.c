@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_error.c                                        :+:      :+:    :+:   */
+/*   get_res.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/19 16:34:46 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/20 10:27:25 by dclark           ###   ########.fr       */
+/*   Created: 2021/03/20 12:19:13 by dclark            #+#    #+#             */
+/*   Updated: 2021/03/20 12:21:05 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int	map_error(t_map_err *map_err, char **map)
+void	get_res(char *line, t_res *res)
 {
-	if (check_map(map) == -1)
-		return (-1);
-	map_max(map_err, map);
-	create_map(map_err, map);
-	if (cara_voisin(map_err) == -1)
-		return (-1);
-	return (1);
+	int	i;
+
+	i = 1;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	res->x = ft_atoi(&line[i]);
+	while (ft_isdigit(line[i]))
+		i++;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	res->y = ft_atoi(&line[i]);
 }
