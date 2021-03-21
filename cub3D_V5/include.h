@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:30:51 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/21 11:23:46 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/21 13:44:56 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define ROTATE_RIGHT	65363
 # define ROTATE_LEFT	65361
 # define FORWARD		122
-# define BACK			115
+# define BACKWARD		115
 # define RIGHT			100
 # define LEFT			113
 
@@ -235,4 +235,11 @@ void	get_res(char *line, t_res *res);
 void	get_color(char *line, t_color *color);
 int		move(int keycode, void *param);
 void	get_player(t_player *player, char **map);
+void	rotate_left(t_data *data);
+void	rotate_right(t_data *data);
+void	forward(t_data *data);
+void	backward(t_data *data);
+void	go_right(t_data *data);
+void	go_left(t_data *data);
+
 #endif

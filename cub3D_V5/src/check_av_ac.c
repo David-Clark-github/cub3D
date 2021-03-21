@@ -2,16 +2,9 @@
 
 static int	ac_two(char **av)
 {
-	int	i;
-
-	i = 0;
-	while (av[1][i] != '.')
-		++i;
-	if (av[1][i] == '.')
-		++i;
-	if (ft_strlen(&av[1][i]) != 3)
+	if (ft_strlen(av[1]) < 4)
 		return (-1);
-	if (av[1][i] != 'c' || av[1][i + 1] != 'u' || av[1][i + 2] != 'b')
+	if (ft_strncmp(&av[1][ft_strlen(av[1]) - 4], ".cub", 4) != 0)
 		return (-1);
 	return (1);
 }

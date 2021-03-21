@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 14:45:56 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/21 13:23:04 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/21 13:53:20 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,66 +15,24 @@
 int	move(int keycode, void *param)
 {
 	t_data	*data;
-	double	old_pa;
+//	double	old_pa;
 
 	data = param;
 	map_to_image(&data->img_a, &data->map);
 	if (keycode == ESC)
 		exit(EXIT_SUCCESS);
 	if (keycode == ROTATE_LEFT)
-	{
-		data->player.pa -= 0.1;
-		if (data->player.pa < 0)
-			data->player.pa += 2 * PI;
-		data->player.pdx = cosf(data->player.pa) * 5;
-		data->player.pdy = sinf(data->player.pa) * 5;
-	}
+		rotate_left(data);
 	if (keycode == ROTATE_RIGHT)
-	{
-		data->player.pa += 0.1;
-		if (data->player.pa > 2 * PI)
-			data->player.pa -= 2 * PI;
-		data->player.pdx = cosf(data->player.pa) * 5;
-		data->player.pdy = sinf(data->player.pa) * 5;
-	}
+		rotate_right(data);
 	if (keycode == FORWARD)
-	{
-		data->player.pos_x += data->player.pdx;
-		data->player.pos_y += data->player.pdy;
-	}
-	if (keycode == BACK)
-	{
-		data->player.pos_x -= data->player.pdx;
-		data->player.pos_y -= data->player.pdy;
-	}
+		forward(data);
+	if (keycode == BACKWARD)
+		backward(data);
 	if (keycode == RIGHT)
-	{
-		old_pa = data->player.pa;
-		data->player.pa += (2 * PI / 4);
-		if (data->player.pa > (2 * PI))
-			data->player.pa -= (2 * PI);
-		data->player.pdx = cosf(data->player.pa) * 5;
-		data->player.pdy = sinf(data->player.pa) * 5;
-		data->player.pos_x += data->player.pdx;
-		data->player.pos_y += data->player.pdy;
-		data->player.pa = old_pa;
-		data->player.pdx = cosf(data->player.pa) * 5;
-		data->player.pdy = sinf(data->player.pa) * 5;
-	}
+		go_right(data);
 	if (keycode == LEFT)
-	{
-		old_pa = data->player.pa;
-		data->player.pa -= (2 * PI / 4);
-		if (data->player.pa < 0)
-			data->player.pa += (2 * PI);
-		data->player.pdx = cosf(data->player.pa) * 5;
-		data->player.pdy = sinf(data->player.pa) * 5;
-		data->player.pos_x += data->player.pdx;
-		data->player.pos_y += data->player.pdy;
-		data->player.pa = old_pa;
-		data->player.pdx = cosf(data->player.pa) * 5;
-		data->player.pdy = sinf(data->player.pa) * 5;
-	}
+		go_left(data);
 	//my_put_pixel(&data->img_a, data->player.pos_x, data->player.pos_y, create_trgb(0,0,0,255));
 	draw_square(&data->img_a, 
 				data->player.pos_x , 
