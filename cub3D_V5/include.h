@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:30:51 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/20 17:59:13 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/21 11:23:46 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 #include "mlx.h"
 
 # define PI 3.1415926535
-# define SIZE 30
+# define SIZE 16
 
 # define SPACE 0,200,200,200
 # define EMPTY 0,255,255,255
