@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:30:51 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/21 13:44:56 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/21 16:23:55 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,19 @@ typedef struct	s_image_alpha {
 	int		endian;
 }				t_img_a;
 
+typedef struct	s_ray3d {
+	int		r;
+	int		mx;
+	int		my;
+	int		mp;
+	int		dof;
+	double	rx;
+	double	ry;
+	double	ra;
+	double	xo;
+	double	yo;
+}				t_ray;
+
 void	draw_square(t_img_a *img_a, int x, int y, int size, int color);
 void	my_put_pixel(t_img_a *img_a, int x, int y, int color);
 void	map_to_image(t_img_a *img_a, t_map *map);
@@ -228,6 +241,7 @@ typedef struct	s_data {
 	t_color		ceil;
 	t_player	player;
 	t_map		map;
+	t_ray		ray;
 }				t_data;
 
 void	parsing_master(t_data *data);
@@ -241,5 +255,7 @@ void	forward(t_data *data);
 void	backward(t_data *data);
 void	go_right(t_data *data);
 void	go_left(t_data *data);
+void	draw_line(int xa, int ya, int xb, int yb, t_data *data);
+void	ray_line_h(t_data *data);
 
 #endif

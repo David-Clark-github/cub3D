@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 14:45:56 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/21 13:53:20 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/21 16:47:10 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,17 @@ int	move(int keycode, void *param)
 				data->player.pos_y, 
 				SIZE / 2, 
 				create_trgb(0,0,0,255));
-	draw_square(&data->img_a, 
+	draw_line(data->player.pos_x,
+				data->player.pos_y,
+				data->player.pos_x + data->player.pdx * 4,
+				data->player.pos_y + data->player.pdy * 4,
+				data);
+	ray_line_h(data);
+/*	draw_square(&data->img_a, 
 				data->player.pos_x + SIZE / 8 + data->player.pdx * 4, 
 				data->player.pos_y + SIZE / 8 + data->player.pdy * 4, 
 				SIZE / 4, 
-				create_trgb(0,255,0,0));
+				create_trgb(0,255,0,0));*/
 	printf("pos_x = %f\n", data->player.pos_x);
 	printf("pos_y = %f\n", data->player.pos_y);
 	printf("pa = %f\n", data->player.pa);
