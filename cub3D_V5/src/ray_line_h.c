@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/21 16:21:19 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/21 16:55:39 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/21 17:32:01 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ray_line_h(t_data *data)
 		if (data->ray.ra > PI)
 		{
 			data->ray.ry = (((int)data->player.pos_y>>5)<<5) - 0.0001;
-			data->ray.rx = (data->player.pos_y-data->ray.ry) * aTan + data->player.pos_x;
+			data->ray.rx = (data->player.pos_y - data->ray.ry) * aTan + data->player.pos_x;
 			data->ray.yo = -32;
 			data->ray.xo = -data->ray.yo * aTan;
 		}
@@ -32,7 +32,7 @@ void	ray_line_h(t_data *data)
 		if (data->ray.ra < PI)
 		{
 			data->ray.ry = (((int)data->player.pos_y>>5)<<5) + 32;
-			data->ray.rx = (data->player.pos_y-data->ray.ry) * aTan + data->player.pos_x;
+			data->ray.rx = (data->player.pos_y - data->ray.ry) * aTan + data->player.pos_x;
 			data->ray.yo = 32;
 			data->ray.xo = -data->ray.yo * aTan;
 		}
@@ -50,7 +50,8 @@ void	ray_line_h(t_data *data)
 			data->ray.my = (int)(data->ray.ry)>>5;
 			data->ray.mp = data->ray.my * data->map.width + data->ray.mx;
 			printf("yo6\n");
-			if (data->ray.mp < data->map.height * data->map.width && data->map.map[data->ray.my][data->map.width + data->ray.mx] != '1') {
+			if (data->map.map[data->ray.my][data->ray.mx] == '1')
+			{
 				data->ray.dof = data->map.height;
 				printf("yo7\n");
 			}
@@ -59,6 +60,7 @@ void	ray_line_h(t_data *data)
 				data->ray.rx += data->ray.xo;
 				data->ray.ry += data->ray.yo;
 				data->ray.dof += 1;
+				printf("yo7.5\n");
 			}
 			printf("yo9\n");
 		}
