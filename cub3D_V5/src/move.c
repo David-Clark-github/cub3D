@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/20 14:45:56 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/21 16:47:10 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/22 12:55:13 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	move(int keycode, void *param)
 	printf("pos_x = %f\n", data->player.pos_x);
 	printf("pos_y = %f\n", data->player.pos_y);
 	printf("pa = %f\n", data->player.pa);
+	printf("to");
 	mlx_put_image_to_window(data->win.mlx, data->win.win, data->img_a.img, 0, 0);
 	mlx_loop(data->win.mlx);
 	return (1);
