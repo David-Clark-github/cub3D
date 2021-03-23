@@ -2,6 +2,8 @@
  #define INCLUDE_H
 
 #include "include.h"
+#include <math.h>
+#include <stdio.h>
 
 # define MAP_W 6
 # define MAP_H 6
@@ -15,13 +17,13 @@ int	map[MAP_H][MAP_W] =
 	{1, 0, 1, 0, 0, 1},
 	{1, 0, 0, 0, 0, 1},
 	{1, 1, 1, 1, 1, 1},
-}
+};
 
 typedef struct	s_ray {
 	double	pos_x;			//position x du joueur
 	double	pos_y;			//position y du joueur
-	double	dir_x;			//vecteur de direction
-	double	dir_y;			//vecteur de direction
+	double	dir_x;			//vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
+	double	dir_y;			//vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
 	double	ray_dir_x;		//vecteur de direction du rayon
 	double	ray_dir_y;		//vecteur de direction du rayon
 	int		map_x;			//coordonée x du carré dans lequel est pos
