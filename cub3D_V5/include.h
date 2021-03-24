@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:30:51 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/21 16:23:55 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/24 16:46:50 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,6 +184,33 @@ typedef struct	s_map {
 	char	**map;
 }				t_map;
 
+typedef struct	s_raycasting {
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plan_x;
+	double	plan_y;
+	double	ray_dir_x;
+	double	ray_dir_y;
+	double	camera_x;
+	double	map_x;
+	double	map_y;
+	double	side_dist_x;
+	double	side_dist_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	double	perpwalldist;
+	int		lineheight;
+	int		drawstart;
+	int		drawend;
+	int		x;
+}				t_ray;
+
 typedef	struct	s_player {
 	double	pos_x;
 	double	pos_y;
@@ -201,19 +228,6 @@ typedef struct	s_image_alpha {
 	int		height;
 	int		endian;
 }				t_img_a;
-
-typedef struct	s_ray3d {
-	int		r;
-	int		mx;
-	int		my;
-	int		mp;
-	int		dof;
-	double	rx;
-	double	ry;
-	double	ra;
-	double	xo;
-	double	yo;
-}				t_ray;
 
 void	draw_square(t_img_a *img_a, int x, int y, int size, int color);
 void	my_put_pixel(t_img_a *img_a, int x, int y, int color);
@@ -257,5 +271,6 @@ void	go_right(t_data *data);
 void	go_left(t_data *data);
 void	draw_line(int xa, int ya, int xb, int yb, t_data *data);
 void	ray_line_h(t_data *data);
+void	algo_ray(t_data *data);
 
 #endif
