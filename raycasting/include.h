@@ -1,5 +1,5 @@
 #ifndef INCLUDE_H
- #define INCLUDE_H
+# define INCLUDE_H
 
 #include "include.h"
 #include <math.h>
@@ -24,8 +24,11 @@ typedef struct	s_ray {
 	double	pos_y;			//position y du joueur
 	double	dir_x;			//vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
 	double	dir_y;			//vecteur de direction (commence à -1 pour W, 1 pour E, 0 sinon)
+	double	plan_x;			// vecteur du plan (commence à 0.66 pour E, -0.66 pour W, 0 sinon)
+	double	plan_y;			// vecteur du plan (commence à 0.66 pour N, -0.66 pour S, 0 sinon)
 	double	ray_dir_x;		//vecteur de direction du rayon
 	double	ray_dir_y;		//vecteur de direction du rayon
+	double	camera_x;		// point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
 	int		map_x;			//coordonée x du carré dans lequel est pos
 	int		map_y;			//coordonée y du carré dans lequel est pos
 	double	side_dist_x;	//distance que le rayon parcours jusqu'au premier point d'intersection vertical (=un coté x)
@@ -45,5 +48,6 @@ typedef struct	s_ray {
 
 void	draw_line();
 void	darw_square();
+void	algo(void);
 
 #endif
