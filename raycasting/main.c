@@ -23,6 +23,7 @@ int		move(int keycode, void *param)
 		ray->dir_x = cosf(ray->pa);
 		ray->dir_y = sinf(ray->pa);
 	}
+	algo(ray);
 }
 
 void	algo(t_ray *ray)
@@ -32,10 +33,12 @@ void	algo(t_ray *ray)
 	ray->hit = 0;
 	ray->pos_x = 1.5;
 	ray->pos_y = 3.5;
-	ray->dir_x = 1.0;
-	ray->dir_y = -0.7;
+	//ray->dir_x = 1.0;
+	//ray->dir_y = -0.7;
 	ray->plan_x = ray->dir_x * 0.66;
 	ray->plan_y = ray->dir_y * 0.66;
+	printf("dir_x = %f\n", ray->dir_x);
+	printf("dir_y = %f\n", ray->dir_y);
 	ray->camera_x = 0.0;//2.0 * 1.0 / 1.0 - 1.0;
 	ray->ray_dir_x = ray->dir_x + ray->plan_x * ray->camera_x;
 	ray->ray_dir_y = ray->dir_y + ray->plan_y * ray->camera_x;
@@ -65,7 +68,7 @@ void	algo(t_ray *ray)
 	else
 	{
 		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1->0 - ray->pos_y) * ray->delta_dist_y;
+		ray->side_dist_y = (ray->map_y + 1 - ray->pos_y) * ray->delta_dist_y;
 	}
 	//printf("side y = %f\n", ray->side_dist_y);
 	//printf("side x = %f\n", ray->side_dist_x);
@@ -98,9 +101,11 @@ void	algo(t_ray *ray)
 
 int main(void)
 {
+	t_ray	ray;
 	void *mlx = mlx_init();
 	void *win = mlx_new_window(mlx, 100, 100, "test Raycasting");
-	mlx_hook()
-	algo();
+	mlx_hook(win, 2, 1L<<0, move, &ray);
+	//algo(&ray);
+	mlx_loop(mlx);
 	return (0);
 }

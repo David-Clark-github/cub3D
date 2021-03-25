@@ -4,6 +4,8 @@
 #include "include.h"
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <mlx.h>
 
 # define MAP_W 6
 # define MAP_H 6
@@ -50,6 +52,6 @@ typedef struct	s_ray {
 
 void	draw_line();
 void	darw_square();
-void	algo(void);
+void	algo(t_ray *ray);
 int		move(int keycode, void *param);
 #endif
