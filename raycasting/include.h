@@ -11,15 +11,16 @@
 
 int	map[MAP_H][MAP_W] = 
 {
-	{1, 1, 1, 1, 1, 1},
-	{1, 0, 1, 0, 0, 1},
-	{1, 0, 1, 0, 0, 1},
-	{1, 0, 1, 0, 0, 1},
-	{1, 0, 0, 0, 0, 1},
-	{1, 1, 1, 1, 1, 1},
+	{1,1,1,1,1,1},
+	{1,0,1,0,0,1},
+	{1,0,1,0,0,1},
+	{1,0,1,0,0,1},
+	{1,0,0,0,0,1},
+	{1,1,1,1,1,1},
 };
 
 typedef struct	s_ray {
+	double	pa;
 	double	pos_x;			//position x du joueur
 	double	pos_y;			//position y du joueur
 	double	dir_x;			//vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)
@@ -49,5 +50,5 @@ typedef struct	s_ray {
 void	draw_line();
 void	darw_square();
 void	algo(void);
-
+int		move(int keycode, void *param);
 #endif

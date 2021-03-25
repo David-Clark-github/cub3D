@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 12:11:22 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/20 11:43:08 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/25 13:12:45 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 int	error_cub_master(t_elem_err *elem_err, t_elem_l *el_l, char **line_s)
 {
 	elem_err->res = res_err(line_s[el_l->res]);
-	elem_err->north = 1;
-	elem_err->south = 1;
-	elem_err->east = 1;
-	elem_err->west = 1;
+	elem_err->north = path_error(line_s[el_l->sprite]);
+	elem_err->south = path_error(line_s[el_l->sprite]);
+	elem_err->east = path_error(line_s[el_l->sprite]);
+	elem_err->west = path_error(line_s[el_l->sprite]);
 	elem_err->sprite = path_error(line_s[el_l->sprite]);
 	elem_err->floor = floor_ceil_err(line_s[el_l->floor]);
 	elem_err->ceil = floor_ceil_err(line_s[el_l->ceil]);
