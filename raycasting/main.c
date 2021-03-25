@@ -9,7 +9,19 @@ int		move(int keycode, void *param)
 		exit(EXIT_SUCCESS);
 	if (keycode == 65363)
 	{
-		ray.
+		ray->pa += 0.1;
+		if (ray->pa > 2 * PI)
+			ray->pa -= 2 * PI;
+		ray->dir_x = cosf(ray->pa);
+		ray->dir_y = sinf(ray->pa);
+	}
+	if (keycode == 65361)
+	{
+		ray->pa -= 0.1;
+		if (ray->pa < 0)
+			ray->pa += 2 * PI;
+		ray->dir_x = cosf(ray->pa);
+		ray->dir_y = sinf(ray->pa);
 	}
 }
 

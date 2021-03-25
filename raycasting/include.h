@@ -7,6 +7,7 @@
 
 # define MAP_W 6
 # define MAP_H 6
+# define PI 3.1415926535
 
 
 int	map[MAP_H][MAP_W] = 
