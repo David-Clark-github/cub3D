@@ -9,6 +9,10 @@
 
 # define MAP_W 6
 # define MAP_H 6
+# define FLOOR 0,100,100,100
+# define CEIL 0,135,206,235
+# define WIN_H 200
+# define WIN_W 200
 # define PI 3.1415926535
 
 
@@ -21,6 +25,19 @@ int	map[MAP_H][MAP_W] =
 	{1,0,0,0,0,1},
 	{1,1,1,1,1,1},
 };
+
+typedef struct	s_image {
+	void	*img;
+	char	*addr;
+	int		line_l;
+	int		bpp;
+	int		endian;
+}				t_img;
+
+typedef struct	s_window {
+	void	*mlx;
+	void	*win;
+}				t_win;
 
 typedef struct	s_ray {
 	double	pa;
@@ -48,10 +65,14 @@ typedef struct	s_ray {
 	int		drawstart;		//position de debut ou il faut dessiner
 	int		drawend;		// position de fin ou il faut dessiner
 	int		x;				// permet de parcourir tous les rayons
+	t_img	img;
+	t_win	win;
 }				t_ray;
+
 
 void	draw_line();
 void	darw_square();
 void	algo(t_ray *ray);
+void	init_image(t_img *img, int width, int height, int floor, int ceil);
 int		move(int keycode, void *param);
 #endif

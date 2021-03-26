@@ -1,5 +1,67 @@
 #include "include.h"
 
+int		trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
+void	my_put_pixel(t_img *img, int x, int y, int color)
+{
+	char *dst;
+
+	dst = img->addr + (y * img->line_l + x * (img->bpp / 8));
+	*(unsigned int*)dst = color;
+}
+
+void	init_image(t_img *img, int width, int height, int floor, int ceil)
+{
+	int	middle = height / 2;
+	int	x;
+	int	y = 0;
+	while (y < middle)
+	{
+		x = 0;
+		while (x < width)
+		{
+			my_put_pixel(img, x, y, ceil);
+			x++;
+		}
+		y++;
+	}
+	while (y < height)	
+	{
+		x = 0;
+		while (x < width)
+		{
+			my_put_pixel(img, x, y, floor);
+			x++;
+		}
+		y++;
+	}
+}
+
+void	draw_vertical_line(t_img *img, int x, int start, int end, int color)
+{
+	int	i = start;
+	while (i < end)
+	{
+		my_put_pixel(img, x, i, color);
+		i++;
+	}
+	i = start;
+	while (i < end)
+	{
+		my_put_pixel(img, x + 1, i, color);
+		i++;
+	}
+	i = start;
+	while (i < end)
+	{
+		my_put_pixel(img, x - 1, i, color);
+		i++;
+	}
+}
+
 int		move(int keycode, void *param)
 {
 	t_ray	*ray;
@@ -24,6 +86,10 @@ int		move(int keycode, void *param)
 		ray->dir_y = sinf(ray->pa);
 	}
 	algo(ray);
+	init_image(&ray->img, WIN_W, WIN_H, trgb(FLOOR), trgb(CEIL));
+	draw_vertical_line(&ray->img, WIN_W / 2, ray->drawstart, ray->drawend, trgb(0,255,0,0));
+	mlx_put_image_to_window(ray->win.mlx, ray->win.win, ray->img.img, 0, 0);
+	mlx_loop(ray->win.mlx);
 }
 
 void	algo(t_ray *ray)
@@ -95,17 +161,30 @@ void	algo(t_ray *ray)
 		ray->perpwalldist = (ray->map_x - ray->pos_x + (1 - ray->step_x) / 2) / ray->ray_dir_x;
 	else
 		ray->perpwalldist = (ray->map_y - ray->pos_y + (1 - ray->step_y) / 2) / ray->ray_dir_y;
-
+	ray->lineheight = (int)(WIN_H / ray->perpwalldist);
+	ray->drawstart = -ray->lineheight / 2 + WIN_H / 2;
+	if (ray->drawstart < 0)
+		ray->drawstart = 0;
+	ray->drawend = ray->lineheight / 2 + WIN_H / 2;
+	if (ray->drawend >= WIN_H)
+		ray->drawend = WIN_H - 1;
+	printf("drawstart = %d\n", ray->drawstart);
+	printf("drawend = %d\n", ray->drawend);
 	printf("len = %f\n", ray->perpwalldist);
 }
 
 int main(void)
 {
 	t_ray	ray;
-	void *mlx = mlx_init();
-	void *win = mlx_new_window(mlx, 100, 100, "test Raycasting");
-	mlx_hook(win, 2, 1L<<0, move, &ray);
+	ray.drawstart = 0;
+	ray.drawend = 10;
+	ray.win.mlx = mlx_init();
+	ray.win.win = mlx_new_window(ray.win.mlx, WIN_W, WIN_H, "test Raycasting");
+	ray.img.img = mlx_new_image(ray.win.mlx, WIN_W, WIN_H);
+	ray.img.addr = mlx_get_data_addr(ray.img.img, &ray.img.bpp, &ray.img.line_l, &ray.img.endian);
+	mlx_hook(ray.win.win, 2, 1L<<0, move, &ray);
 	//algo(&ray);
-	mlx_loop(mlx);
+	printf("apres hook \nst = %d\nend = %d\n", ray.drawstart, ray.drawend);
+	mlx_loop(ray.win.mlx);
 	return (0);
 }
