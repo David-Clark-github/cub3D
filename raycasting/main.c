@@ -110,8 +110,10 @@ void	algo(t_ray *ray)
 	ray->ray_dir_y = ray->dir_y + ray->plan_y * ray->camera_x;
 	ray->map_x = (int)ray->pos_x;
 	ray->map_y = (int)ray->pos_y;
-	ray->delta_dist_x = sqrt(1 + (ray->ray_dir_y * ray->ray_dir_y) / (ray->ray_dir_x * ray->ray_dir_x));	
-	ray->delta_dist_y = sqrt(1 + (ray->ray_dir_x * ray->ray_dir_x) / (ray->ray_dir_y * ray->ray_dir_y));	
+	//ray->delta_dist_x = sqrt(1 + (ray->ray_dir_y * ray->ray_dir_y) / (ray->ray_dir_x * ray->ray_dir_x));	
+	//ray->delta_dist_y = sqrt(1 + (ray->ray_dir_x * ray->ray_dir_x) / (ray->ray_dir_y * ray->ray_dir_y));	
+	ray->delta_dist_x = sqrt(1 + pow(ray->ray_dir_y, 2) / pow(ray->ray_dir_x, 2));	
+	ray->delta_dist_y = sqrt(1 + pow(ray->ray_dir_x, 2) / pow(ray->ray_dir_y, 2));	
 	//ray->delta_dist_x = (ray->ray_dir_y == 0) ? 0 : ((ray->ray_dir_x == 0) ? 1 : fabs(1 / ray->ray_dir_x));
 	//ray->delta_dist_y = (ray->ray_dir_x == 0) ? 0 : ((ray->ray_dir_y == 0) ? 1 : fabs(1 / ray->ray_dir_y));
 	//printf("delta dist y = %f\n", ray->delta_dist_y);
