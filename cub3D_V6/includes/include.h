@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/26 12:23:38 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/26 15:26:52 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,47 @@ typedef struct	s_image {
 	int		endian;
 }				t_img;
 
-typedef struct	s_png{
-	
-}
-typedef struct	s_raycasting{
+typedef struct	s_png {
+	double	pa;
+	double	px;
+	double	py;
+	double	pdx;
+	double	pdy;
+}				t_png;
 
+typedef struct	s_raycasting {
+	double	posx;
+	double	posy;
+	double	dirx;
+	double	diry;
+	double	planx;
+	double	plany;
+	double	camerax;
+	int		mapx;
+	int		mapy;
+	double	sidedistx;
+	double	sidedisty;
+	double	deltadistx;
+	double	deltadisty;
+	int		stepx;
+	int		stepy;
+	int		hit;
+	int		side;
+	double	perpwalldist;
+	int		lineheight;
+	int		drawstart;
+	int		drawend;
+	int		x;
 }				t_ray;
 
-typedef struct	s_texture{
+typedef struct	s_texture {
 
 }				t_tex;
 
-typedef struct	s_sprite{
+typedef struct	s_sprite {
 
 }				t_sp;
 
-typedef struct	s_data{
+typedef struct	s_data {
 
 }				t_data;

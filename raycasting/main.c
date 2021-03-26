@@ -97,7 +97,7 @@ void	algo(t_ray *ray)
 	//t_ray	ray;
 
 	ray->hit = 0;
-	ray->pos_x = 1.5;
+	ray->pos_x = 4.5;
 	ray->pos_y = 3.5;
 	//ray->dir_x = 1.0;
 	//ray->dir_y = -0.7;
@@ -184,7 +184,6 @@ int main(void)
 	ray.img.addr = mlx_get_data_addr(ray.img.img, &ray.img.bpp, &ray.img.line_l, &ray.img.endian);
 	mlx_hook(ray.win.win, 2, 1L<<0, move, &ray);
 	//algo(&ray);
-	printf("apres hook \nst = %d\nend = %d\n", ray.drawstart, ray.drawend);
 	mlx_loop(ray.win.mlx);
 	return (0);
 }
