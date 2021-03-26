@@ -86,26 +86,25 @@ int		move(int keycode, void *param)
 		ray->dir_y = sinf(ray->pa);
 	}
 	algo(ray);
-	init_image(&ray->img, WIN_W, WIN_H, trgb(FLOOR), trgb(CEIL));
-	draw_vertical_line(&ray->img, WIN_W / 2, ray->drawstart, ray->drawend, trgb(0,255,0,0));
-	mlx_put_image_to_window(ray->win.mlx, ray->win.win, ray->img.img, 0, 0);
-	mlx_loop(ray->win.mlx);
 }
 
 void	algo(t_ray *ray)
 {
 	//t_ray	ray;
 
+	int x = 0;
+	while (x < WIN_W)
+	{
 	ray->hit = 0;
 	ray->pos_x = 4.5;
 	ray->pos_y = 3.5;
 	//ray->dir_x = 1.0;
-	//ray->dir_y = -0.7;
+	//ray->dir_y = 0.0;
 	ray->plan_x = ray->dir_x * 0.66;
 	ray->plan_y = ray->dir_y * 0.66;
-	printf("dir_x = %f\n", ray->dir_x);
-	printf("dir_y = %f\n", ray->dir_y);
-	ray->camera_x = 0.0;//2.0 * 1.0 / 1.0 - 1.0;
+	//printf("dir_x = %f\n", ray->dir_x);
+	//printf("dir_y = %f\n", ray->dir_y);
+	ray->camera_x = 2 * x / (double)WIN_W - 1;
 	ray->ray_dir_x = ray->dir_x + ray->plan_x * ray->camera_x;
 	ray->ray_dir_y = ray->dir_y + ray->plan_y * ray->camera_x;
 	ray->map_x = (int)ray->pos_x;
@@ -170,9 +169,15 @@ void	algo(t_ray *ray)
 	ray->drawend = ray->lineheight / 2 + WIN_H / 2;
 	if (ray->drawend >= WIN_H)
 		ray->drawend = WIN_H - 1;
-	printf("drawstart = %d\n", ray->drawstart);
-	printf("drawend = %d\n", ray->drawend);
-	printf("len = %f\n", ray->perpwalldist);
+		x++;
+	init_image(&ray->img, WIN_W, WIN_H, trgb(FLOOR), trgb(CEIL));
+	draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(0,255,0,0));
+	}
+	mlx_put_image_to_window(ray->win.mlx, ray->win.win, ray->img.img, 0, 0);
+	mlx_loop(ray->win.mlx);
+	//printf("drawstart = %d\n", ray->drawstart);
+	//printf("drawend = %d\n", ray->drawend);
+	//printf("len = %f\n", ray->perpwalldist);
 }
 
 int main(void)
