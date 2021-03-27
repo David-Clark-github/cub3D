@@ -55,6 +55,8 @@ int		move(int keycode, void *param)
 	t_ray	*ray;
 
 	ray = param;
+	double	old_px = ray->plan_x;
+	double	old_py = ray->plan_y;
 	if (keycode == 65307)
 		exit(EXIT_SUCCESS);
 	if (keycode == 65363)
@@ -64,6 +66,7 @@ int		move(int keycode, void *param)
 			ray->pa -= 2 * PI;
 		ray->dir_x = cosf(ray->pa);
 		ray->dir_y = sinf(ray->pa);
+		//ray->plan_x = 
 	}
 	if (keycode == 65361)
 	{
@@ -90,10 +93,12 @@ void	algo(t_ray *ray)
 		ray->pos_y = 4.5;
 		//ray->dir_x = 1.0;
 		//ray->dir_y = 0.0;
-		ray->plan_x = ray->dir_y * 0.66 * -1.0;
-		ray->plan_y = ray->dir_x * 0.66;
-		//printf("dir_x = %f\n", ray->dir_x);
-	//	printf("dir_y = %f\n", ray->dir_y);
+		ray->plan_x = 0.66;
+		ray->plan_y = 0;
+	//	ray->plan_x = ray->dir_y * 0.66;// * -1.0;
+	//	ray->plan_y = ray->dir_x * 0.66 * -1.0;
+		printf("dir_x = %f\n", ray->dir_x);
+		printf("dir_y = %f\n", ray->dir_y);
 	//	printf("plan_x = %f\n", ray->plan_x);
 	//	printf("plan_y = %f\n", ray->plan_y);
 		ray->camera_x = 2 * x / (double)WIN_W - 1;
@@ -171,14 +176,15 @@ void	algo(t_ray *ray)
 	//printf("drawstart = %d\n", ray->drawstart);
 	//printf("drawend = %d\n", ray->drawend);
 	//printf("len = %f\n", ray->perpwalldist);
-}	
+}
+
 int main(void)
 {
 	t_ray	ray;
 	ray.drawstart = 0;
 	ray.drawend = 10;
-	ray.dir_x = 1.0;
-	ray.dir_y = 0.0;
+	ray.dir_x = 0.0;
+	ray.dir_y = -1.0;
 	ray.win.mlx = mlx_init();
 	ray.win.win = mlx_new_window(ray.win.mlx, WIN_W, WIN_H, "test Raycasting");
 	ray.img.img = mlx_new_image(ray.win.mlx, WIN_W, WIN_H);

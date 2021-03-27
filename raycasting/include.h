@@ -11,8 +11,8 @@
 # define MAP_H 6
 # define FLOOR 0,100,100,100
 # define CEIL 0,135,206,235
-# define WIN_H 200
-# define WIN_W 200
+# define WIN_H 500
+# define WIN_W 500
 # define PI 3.1415926535
 
 
