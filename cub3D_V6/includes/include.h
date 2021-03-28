@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/26 15:26:52 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/28 12:56:28 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ typedef struct	s_raycasting {
 	double	camerax;
 	int		mapx;
 	int		mapy;
+	double	time;
+	double	old_time;
+	double	mv_spd;
+	double	rot_spd;
 	double	sidedistx;
 	double	sidedisty;
 	double	deltadistx;

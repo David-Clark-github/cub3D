@@ -15,7 +15,6 @@
 # define WIN_W 300
 # define PI 3.1415926535
 
-
 int	map[MAP_H][MAP_W] = 
 {
 	{1,1,1,1,1,1},
