@@ -55,27 +55,45 @@ int		move(int keycode, void *param)
 	t_ray	*ray;
 
 	ray = param;
-	double	old_px = ray->plan_x;
-	double	old_py = ray->plan_y;
+	double	old_dir_x = ray->dir_x;
+	double	old_plx = ray->plan_x;
 	if (keycode == 65307)
 		exit(EXIT_SUCCESS);
-	if (keycode == 65363)
+	if (keycode == 65363) //turn right
 	{
-		ray->pa += 0.1;
+		ray->dir_x = ray->dir_x * cosf(-ray->rot_spd) - ray->dir_y * sinf(-ray->rot_spd);
+		ray->dir_y = old_dir_x * sinf(-ray->rot_spd) + ray->dir_y * cosf(-ray->rot_spd);
+		ray->plan_x = ray->plan_x * cosf(-ray->rot_spd) - ray->plan_y * sinf(-ray->rot_spd);
+		ray->plan_y = old_plx * sinf(-ray->rot_spd) + ray->plan_y * cosf(-ray->rot_spd);
+	/*	ray->pa += 0.1;
 		if (ray->pa > 2 * PI)
 			ray->pa -= 2 * PI;
 		ray->dir_x = cosf(ray->pa);
-		ray->dir_y = sinf(ray->pa);
-		//ray->plan_x = 
+		ray->dir_y = sinf(ray->pa);*/
 	}
-	if (keycode == 65361)
+	if (keycode == 65361) //turn left
 	{
-		ray->pa -= 0.1;
+	/*	ray->pa -= 0.1;
 		if (ray->pa < 0)
 			ray->pa += 2 * PI;
 		ray->dir_x = cosf(ray->pa);
-		ray->dir_y = sinf(ray->pa);
+		ray->dir_y = sinf(ray->pa);*/
+		ray->dir_x = ray->dir_x * cosf(ray->rot_spd) - ray->dir_y * sinf(ray->rot_spd);
+		ray->dir_y = old_dir_x * sinf(ray->rot_spd) + ray->dir_y * cosf(ray->rot_spd);
+		ray->plan_x = ray->plan_x * cosf(ray->rot_spd) - ray->plan_y * sinf(ray->rot_spd);
+		ray->plan_y = old_plx * sinf(ray->rot_spd) + ray->plan_y * cosf(ray->rot_spd);
 	}
+	if (keycode == 122) // forward
+	{
+		if (map[(int)(ray->pos_y)][(int)(ray->pos_x + ray->dir_x * ray->move_spd)] != 1)
+			ray->pos_x += ray->dir_x * ray->move_spd;
+		if (map[(int)(ray->pos_y + ray->dir_y * ray->move_spd)][(int)(ray->pos_x)] != 1)
+			ray->pos_y += ray->dir_y * ray->move_spd;
+	}
+	if (keycode == 115)
+	{
+		double toto = 5.0;
+	}// backward
 	algo(ray);
 	return (1);
 }
@@ -89,12 +107,12 @@ void	algo(t_ray *ray)
 	while (x < WIN_W)
 	{
 		ray->hit = 0;
-		ray->pos_x = 1.5;
-		ray->pos_y = 4.5;
+	//	ray->pos_x = 1.5;
+	//	ray->pos_y = 4.5;
 		//ray->dir_x = 1.0;
 		//ray->dir_y = 0.0;
-		ray->plan_x = 0.66;
-		ray->plan_y = 0;
+	//	ray->plan_x = 0.66;
+	//	ray->plan_y = 0;
 	//	ray->plan_x = ray->dir_y * 0.66;// * -1.0;
 	//	ray->plan_y = ray->dir_x * 0.66 * -1.0;
 		printf("dir_x = %f\n", ray->dir_x);
@@ -183,8 +201,14 @@ int main(void)
 	t_ray	ray;
 	ray.drawstart = 0;
 	ray.drawend = 10;
-	ray.dir_x = 0.0;
-	ray.dir_y = -1.0;
+	ray.dir_x = -1.0;
+	ray.dir_y = 0.0;
+	ray.pos_x = 3.5;
+	ray.pos_y = 4.5;
+	ray.plan_x = 0.0;
+	ray.plan_y = -0.66;
+	ray.time = 0.0;
+	ray.rot_spd = 0.05;
 	ray.win.mlx = mlx_init();
 	ray.win.win = mlx_new_window(ray.win.mlx, WIN_W, WIN_H, "test Raycasting");
 	ray.img.img = mlx_new_image(ray.win.mlx, WIN_W, WIN_H);

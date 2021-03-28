@@ -11,8 +11,8 @@
 # define MAP_H 6
 # define FLOOR 0,100,100,100
 # define CEIL 0,135,206,235
-# define WIN_H 500
-# define WIN_W 500
+# define WIN_H 300
+# define WIN_W 300
 # define PI 3.1415926535
 
 
@@ -52,6 +52,10 @@ typedef struct	s_ray {
 	double	camera_x;		// point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
 	int		map_x;			//coordonée x du carré dans lequel est pos
 	int		map_y;			//coordonée y du carré dans lequel est pos
+	double	time;			//time of current frame
+	double	old_time;		//time of previous frame
+	double	move_spd;		//constant value in sqaure/second
+	double	rot_spd;		//constant value in radians/second
 	double	side_dist_x;	//distance que le rayon parcours jusqu'au premier point d'intersection vertical (=un coté x)
 	double	side_dist_y;	//distance que le rayon parcours jusqu'au premier point d'intersection horizontal (= un coté y)
 	double	delta_dist_x;	//distance que rayon parcours entre chaque point d'intersection vertical
