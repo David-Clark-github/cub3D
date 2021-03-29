@@ -11,8 +11,12 @@
 # define MAP_H 6
 # define FLOOR 0,100,100,100
 # define CEIL 0,135,206,235
-# define WIN_H 300
-# define WIN_W 300
+# define N_C 0,0,0,255
+# define S_C 0,0,255,0
+# define E_C 0,255,0,0
+# define W_C 0,255,255,0
+# define WIN_W 1000
+# define WIN_H 1000
 # define PI 3.1415926535
 
 int	map[MAP_H][MAP_W] = 
