@@ -90,10 +90,13 @@ int		move(int keycode, void *param)
 		if (map[(int)(ray->pos_y + ray->dir_y * ray->move_spd)][(int)(ray->pos_x)] != 1)
 			ray->pos_y += ray->dir_y * ray->move_spd;
 	}
-	if (keycode == 115)
+	if (keycode == 115) // backward
 	{
-		double toto = 5.0;
-	}// backward
+		if (map[(int)(ray->pos_y)][(int)(ray->pos_x - ray->dir_x * ray->move_spd)] != 1)
+			ray->pos_x -= ray->dir_x * ray->move_spd;
+		if (map[(int)(ray->pos_y - ray->dir_y * ray->move_spd)][(int)(ray->pos_x)] != 1)
+			ray->pos_y -= ray->dir_y * ray->move_spd;
+	}
 	algo(ray);
 	return (1);
 }
@@ -115,8 +118,8 @@ void	algo(t_ray *ray)
 	//	ray->plan_y = 0;
 	//	ray->plan_x = ray->dir_y * 0.66;// * -1.0;
 	//	ray->plan_y = ray->dir_x * 0.66 * -1.0;
-		printf("dir_x = %f\n", ray->dir_x);
-		printf("dir_y = %f\n", ray->dir_y);
+	//	printf("dir_x = %f\n", ray->dir_x);
+	//	printf("dir_y = %f\n", ray->dir_y);
 	//	printf("plan_x = %f\n", ray->plan_x);
 	//	printf("plan_y = %f\n", ray->plan_y);
 		ray->camera_x = 2 * x / (double)WIN_W - 1;
@@ -209,6 +212,7 @@ int main(void)
 	ray.plan_y = -0.66;
 	ray.time = 0.0;
 	ray.rot_spd = 0.05;
+	ray.move_spd = 0.07;
 	ray.win.mlx = mlx_init();
 	ray.win.win = mlx_new_window(ray.win.mlx, WIN_W, WIN_H, "test Raycasting");
 	ray.img.img = mlx_new_image(ray.win.mlx, WIN_W, WIN_H);
