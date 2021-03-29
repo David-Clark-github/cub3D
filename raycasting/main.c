@@ -139,7 +139,7 @@ void	algo(t_ray *ray)
 		else
 		{
 			ray->step_x = 1;
-			ray->side_dist_x = (ray->pos_x  + 1.0 - ray->map_x) * ray->delta_dist_x;
+			ray->side_dist_x = (ray->map_x + 1.0 - ray->pos_x) * ray->delta_dist_x;
 		}
 		if (ray->ray_dir_y < 0)
 		{
@@ -149,7 +149,7 @@ void	algo(t_ray *ray)
 		else
 		{
 			ray->step_y = 1;
-			ray->side_dist_y = (ray->map_y + 1 - ray->pos_y) * ray->delta_dist_y;
+			ray->side_dist_y = (ray->map_y + 1.0 - ray->pos_y) * ray->delta_dist_y;
 		}
 		//printf("side y = %f\n", ray->side_dist_y);
 		//printf("side x = %f\n", ray->side_dist_x);
