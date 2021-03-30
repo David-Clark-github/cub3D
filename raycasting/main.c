@@ -13,6 +13,21 @@ void	my_put_pixel(t_img *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+void	init_tx(char *path, t_tx *text, void *mlx)
+{
+	text->img = mlx_xpm_file_to_image(mlx, path, &text->width, &text->height);
+	text->addr = mlx_get_data_addr(text->img, &text->bpp, &text->line_l, &text->endian);
+	printf("text->img = %p\n", text->img);
+	printf("text->height = %d\n", text->height);
+	printf("text->width = %d\n", text->width);
+}
+
+int	index_color(int x, int y, t_tx *txt)
+{
+	int	index = (y * txt->line_l + x * (txt->bpp / 8));
+	return (((int *)txt->addr)[index]);
+}
+
 void	init_image(t_img *img, int width, int height, int floor, int ceil)
 {
 	int	middle = height / 2;
@@ -40,12 +55,27 @@ void	init_image(t_img *img, int width, int height, int floor, int ceil)
 	}
 }
 
+/*
+void	draw_txt_line(t_tx *txt, x, t_ray *data)
+{
+	int		step;
+	double	tex_pos;
+	int		y;
+
+	y = -1;
+	step = ray->lineheight / txt->height;
+	while (++y)
+	{
+
+	}
+}*/
+
 void	draw_vertical_line(t_img *img, int x, int start, int end, int color)
 {
 	while (start < end)
 	{
-		my_put_pixel(img, x, start, color);
 		++start;
+		my_put_pixel(img, x, start, color);
 	}
 }
 
@@ -153,42 +183,44 @@ void	algo(t_ray *ray)
 		ray->drawend = (ray->lineheight + WIN_H) / 2;
 		if (ray->drawend >= WIN_H)
 			ray->drawend = WIN_H - 1;
-	/*
+		/*
+		** Calcul des coordonnees pour la texture
+		** cast en int (wallx) pour l'utiliser en map :)
+		*/
 		if (ray->side == 0)
-			draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(0,155,0,0));
+			ray->wall_x = ray->pos_y + ray->perpwalldist * ray->ray_dir_y;
 		else
-			draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(0,0,0,155));
-	*/
-		if (ray->ray_dir_x >= 0) // East side
-		{
-			if (ray->ray_dir_y > 0 && ray->side == 0)
+			ray->wall_x = ray->pos_x + ray->perpwalldist * ray->ray_dir_x;
+		ray->wall_x -= floor(ray->wall_x);
+		ray->tex_x = (int)(ray->wall_x * TXT_W);
+		//if ()
+		printf("tex_x = %d\n", ray->tex_x);
+		/*
+		** Colorier les murs en fonctions de leurs directions
+		*/
+		if (ray->ray_dir_x > 0 && ray->side == 0)
 				draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(E_C));
-			else if (ray->ray_dir_y < 0 && ray->side == 0)
-				draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(E_C));
-			else if (ray->ray_dir_y > 0 && ray->side != 0)
-				draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(S_C));
-			else if (ray->ray_dir_y < 0 && ray->side != 0)
-				draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(N_C));
-		}
-		if (ray->ray_dir_x <= 0) // West side
-		{
-			if (ray->ray_dir_y > 0 && ray->side == 0)
+		else if (ray->ray_dir_x < 0 && ray->side == 0)
 				draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(W_C));
-			else if (ray->ray_dir_y < 0 && ray->side == 0)
-				draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(W_C));
-			else if (ray->ray_dir_y > 0 && ray->side != 0)
-				draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(S_C));
-			else if (ray->ray_dir_y < 0 && ray->side != 0)
+		else if (ray->ray_dir_y > 0 && ray->side != 0)
 				draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(N_C));
-		}
+		else if (ray->ray_dir_y < 0 && ray->side != 0)
+				draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(S_C));
 	}
 	mlx_put_image_to_window(ray->win.mlx, ray->win.win, ray->img.img, 0, 0);
 	mlx_loop(ray->win.mlx);
 }
 
-int main(void)
+int main(int ac, char **av)
 {
+	t_tx	txt[5];
 	t_ray	ray;
+	ray.win.mlx = mlx_init();
+	ray.win.win = mlx_new_window(ray.win.mlx, WIN_W, WIN_H, "test Raycasting");
+	for (int i = 0; i < 5; i++)
+	{
+		init_tx(av[i+1], &txt[i], ray.win.mlx);
+	}
 	ray.drawstart = 0;
 	ray.drawend = 10;
 	ray.dir_x = -1.0;
@@ -200,8 +232,6 @@ int main(void)
 	ray.time = 0.0;
 	ray.rot_spd = 0.05;
 	ray.move_spd = 0.1;
-	ray.win.mlx = mlx_init();
-	ray.win.win = mlx_new_window(ray.win.mlx, WIN_W, WIN_H, "test Raycasting");
 	ray.img.img = mlx_new_image(ray.win.mlx, WIN_W, WIN_H);
 	ray.img.addr = mlx_get_data_addr(ray.img.img, &ray.img.bpp, &ray.img.line_l, &ray.img.endian);
 	mlx_hook(ray.win.win, 2, 1L<<0, move, &ray);

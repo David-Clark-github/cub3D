@@ -15,8 +15,11 @@
 # define S_C 0,0,255,0
 # define E_C 0,255,0,0
 # define W_C 0,255,255,0
-# define WIN_W 1000
-# define WIN_H 1000
+# define TXT_H 64
+# define TXT_W 64
+# define WIN_W 200
+# define WIN_H 200
+
 # define PI 3.1415926535
 
 int	map[MAP_H][MAP_W] = 
@@ -71,11 +74,21 @@ typedef struct	s_ray {
 	int		lineheight;		//hauteur de la ligne a dessiner
 	int		drawstart;		//position de debut ou il faut dessiner
 	int		drawend;		// position de fin ou il faut dessiner
-	int		x;				// permet de parcourir tous les rayons
+	double	wall_x;
+	int		tex_x;
 	t_img	img;
 	t_win	win;
 }				t_ray;
 
+typedef struct	s_texture {
+	void	*img;
+	char	*addr;
+	int		line_l;
+	int		bpp;
+	int		width;
+	int		height;
+	int		endian;
+}				t_tx;
 
 void	draw_line();
 void	darw_square();
