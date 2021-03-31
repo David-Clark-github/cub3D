@@ -17,8 +17,8 @@
 # define W_C 0,255,255,0
 # define TXT_H 64
 # define TXT_W 64
-# define WIN_W 200
-# define WIN_H 200
+# define WIN_W 500
+# define WIN_H 500
 
 # define PI 3.1415926535
 

@@ -60,15 +60,16 @@ void	draw_txt_line(t_tx *txt, int x, t_ray *ray)
 {
 	int		y;
 
-	ray->step =  txt->height / ray->lineheight;
+	ray->step = 1.0 * txt->height / ray->lineheight;
 	ray->tex_pos = (ray->drawstart - WIN_H / 2 + ray->lineheight / 2) * ray->step;
-	y = ray->drawstart - 1;
+	y = ray->drawstart;
 	while (++y < ray->drawend)
 	{
-		ray->tex_y = (int)ray->tex_pos & (TXT_H - 1);
+		ray->tex_y = (int)ray->tex_pos;// & (TXT_H - 1);
 		ray->tex_pos += ray->step;
-		my_put_pixel(&ray->img, x, y, index_color(ray->tex_x, ray->tex_y, txt));
-		printf("ray->tex_pos = %f\n", ray->tex_pos);
+		my_put_pixel(&ray->img, x, y, index_color(ray->tex_x, (int)ray->tex_y, txt));
+		printf("");
+		//printf("ray->tex_pos = %f\n", ray->tex_pos);
 	}
 }
 
@@ -201,16 +202,13 @@ void	algo(t_ray *ray)
 		** Colorier les murs en fonctions de leurs directions
 		*/
 		if (ray->ray_dir_x > 0 && ray->side == 0)
-		{
 			draw_txt_line(&ray->txt[0], x, ray);
-			//draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(E_C));
-		}
 		else if (ray->ray_dir_x < 0 && ray->side == 0)
-			draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(W_C));
+			draw_txt_line(&ray->txt[1], x, ray);
 		else if (ray->ray_dir_y > 0 && ray->side != 0)
-			draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(N_C));
+			draw_txt_line(&ray->txt[2], x, ray);
 		else if (ray->ray_dir_y < 0 && ray->side != 0)
-			draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(S_C));
+			draw_txt_line(&ray->txt[3], x, ray);
 	}
 	mlx_put_image_to_window(ray->win.mlx, ray->win.win, ray->img.img, 0, 0);
 	mlx_loop(ray->win.mlx);
