@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/28 12:56:28 by dclark           ###   ########.fr       */
+/*   Updated: 2021/03/31 16:35:07 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,22 @@ typedef struct	s_raycasting {
 	int		lineheight;
 	int		drawstart;
 	int		drawend;
+	double	wall_x;
+	int		tex_x;
+	int		tex_y;
+	double	tex_pos;
+	double	step;
 	int		x;
 }				t_ray;
 
 typedef struct	s_texture {
-
+	void	*img;
+	char	*addr;
+	int		line_l;
+	int		bpp;
+	int		width;
+	int		height;
+	int		endian;
 }				t_tex;
 
 typedef struct	s_sprite {
@@ -77,5 +88,5 @@ typedef struct	s_sprite {
 }				t_sp;
 
 typedef struct	s_data {
-
+	t_tex	text[4];
 }				t_data;

@@ -7,8 +7,8 @@
 #include <stdlib.h>
 #include <mlx.h>
 
-# define MAP_W 6
-# define MAP_H 6
+# define MAP_W 8
+# define MAP_H 8
 # define FLOOR 0,100,100,100
 # define CEIL 0,135,206,235
 # define N_C 0,0,0,255
@@ -17,19 +17,21 @@
 # define W_C 0,255,255,0
 # define TXT_H 64
 # define TXT_W 64
-# define WIN_W 500
-# define WIN_H 500
+# define WIN_W 1000
+# define WIN_H 1000
 
 # define PI 3.1415926535
 
 int	map[MAP_H][MAP_W] = 
 {
-	{1,1,1,1,1,1},
-	{1,0,1,0,0,1},
-	{1,0,1,0,0,1},
-	{1,0,1,0,0,1},
-	{1,0,0,0,0,1},
-	{1,1,1,1,1,1},
+	{1,1,1,1,1,1,1,1},
+	{1,0,1,0,0,1,0,1},
+	{1,0,1,0,0,1,0,1},
+	{1,0,0,0,0,0,1,1},
+	{1,0,0,0,0,1,0,1},
+	{1,0,1,0,0,0,0,1},
+	{1,0,0,0,0,0,0,1},
+	{1,1,1,1,1,1,1,1},
 };
 
 typedef struct	s_image {
