@@ -45,6 +45,16 @@ typedef struct	s_window {
 	void	*win;
 }				t_win;
 
+typedef struct	s_texture {
+	void	*img;
+	char	*addr;
+	int		line_l;
+	int		bpp;
+	int		width;
+	int		height;
+	int		endian;
+}				t_tx;
+
 typedef struct	s_ray {
 	double	pa;
 	double	pos_x;			//position x du joueur
@@ -76,19 +86,14 @@ typedef struct	s_ray {
 	int		drawend;		// position de fin ou il faut dessiner
 	double	wall_x;
 	int		tex_x;
+	int		tex_y;
+	double	tex_pos;
+	double	step;
 	t_img	img;
 	t_win	win;
+	t_tx	txt[5];
 }				t_ray;
 
-typedef struct	s_texture {
-	void	*img;
-	char	*addr;
-	int		line_l;
-	int		bpp;
-	int		width;
-	int		height;
-	int		endian;
-}				t_tx;
 
 void	draw_line();
 void	darw_square();

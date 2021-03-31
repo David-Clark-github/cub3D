@@ -25,7 +25,7 @@ void	init_tx(char *path, t_tx *text, void *mlx)
 int	index_color(int x, int y, t_tx *txt)
 {
 	int	index = (y * txt->line_l + x * (txt->bpp / 8));
-	return (((int *)txt->addr)[index]);
+	return (((int *)txt->addr)[index/4]);
 }
 
 void	init_image(t_img *img, int width, int height, int floor, int ceil)
@@ -55,20 +55,22 @@ void	init_image(t_img *img, int width, int height, int floor, int ceil)
 	}
 }
 
-/*
-void	draw_txt_line(t_tx *txt, x, t_ray *data)
+
+void	draw_txt_line(t_tx *txt, int x, t_ray *ray)
 {
-	int		step;
-	double	tex_pos;
 	int		y;
 
-	y = -1;
-	step = ray->lineheight / txt->height;
-	while (++y)
+	ray->step =  txt->height / ray->lineheight;
+	ray->tex_pos = (ray->drawstart - WIN_H / 2 + ray->lineheight / 2) * ray->step;
+	y = ray->drawstart - 1;
+	while (++y < ray->drawend)
 	{
-
+		ray->tex_y = (int)ray->tex_pos & (TXT_H - 1);
+		ray->tex_pos += ray->step;
+		my_put_pixel(&ray->img, x, y, index_color(ray->tex_x, ray->tex_y, txt));
+		printf("ray->tex_pos = %f\n", ray->tex_pos);
 	}
-}*/
+}
 
 void	draw_vertical_line(t_img *img, int x, int start, int end, int color)
 {
@@ -194,18 +196,21 @@ void	algo(t_ray *ray)
 		ray->wall_x -= floor(ray->wall_x);
 		ray->tex_x = (int)(ray->wall_x * TXT_W);
 		//if ()
-		printf("tex_x = %d\n", ray->tex_x);
+		//printf("tex_x = %d\n", ray->tex_x);
 		/*
 		** Colorier les murs en fonctions de leurs directions
 		*/
 		if (ray->ray_dir_x > 0 && ray->side == 0)
-				draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(E_C));
+		{
+			draw_txt_line(&ray->txt[0], x, ray);
+			//draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(E_C));
+		}
 		else if (ray->ray_dir_x < 0 && ray->side == 0)
-				draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(W_C));
+			draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(W_C));
 		else if (ray->ray_dir_y > 0 && ray->side != 0)
-				draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(N_C));
+			draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(N_C));
 		else if (ray->ray_dir_y < 0 && ray->side != 0)
-				draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(S_C));
+			draw_vertical_line(&ray->img, x, ray->drawstart, ray->drawend, trgb(S_C));
 	}
 	mlx_put_image_to_window(ray->win.mlx, ray->win.win, ray->img.img, 0, 0);
 	mlx_loop(ray->win.mlx);
@@ -213,13 +218,12 @@ void	algo(t_ray *ray)
 
 int main(int ac, char **av)
 {
-	t_tx	txt[5];
 	t_ray	ray;
 	ray.win.mlx = mlx_init();
 	ray.win.win = mlx_new_window(ray.win.mlx, WIN_W, WIN_H, "test Raycasting");
 	for (int i = 0; i < 5; i++)
 	{
-		init_tx(av[i+1], &txt[i], ray.win.mlx);
+		init_tx(av[i+1], &ray.txt[i], ray.win.mlx);
 	}
 	ray.drawstart = 0;
 	ray.drawend = 10;
