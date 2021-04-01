@@ -58,7 +58,7 @@ typedef struct	s_texture {
 }				t_tx;
 
 typedef struct	s_ray {
-	double	pa;
+	double	pa;				//cercle de 0 a 2 PI
 	double	pos_x;			//position x du joueur
 	double	pos_y;			//position y du joueur
 	double	dir_x;			//vecteur de direction (commence à -1 pour N, 1 pour S, 0 sinon)

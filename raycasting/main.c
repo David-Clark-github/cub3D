@@ -17,9 +17,9 @@ void	init_tx(char *path, t_tx *text, void *mlx)
 {
 	text->img = mlx_xpm_file_to_image(mlx, path, &text->width, &text->height);
 	text->addr = mlx_get_data_addr(text->img, &text->bpp, &text->line_l, &text->endian);
-	printf("text->img = %p\n", text->img);
-	printf("text->height = %d\n", text->height);
-	printf("text->width = %d\n", text->width);
+//	printf("text->img = %p\n", text->img);
+//	printf("text->height = %d\n", text->height);
+//	printf("text->width = %d\n", text->width);
 }
 
 int	index_color(int x, int y, t_tx *txt)
@@ -62,14 +62,12 @@ void	draw_txt_line(t_tx *txt, int x, t_ray *ray)
 
 	ray->step = 1.0 * txt->height / ray->lineheight;
 	ray->tex_pos = (ray->drawstart - WIN_H / 2 + ray->lineheight / 2) * ray->step;
-	y = ray->drawstart;
+	y = ray->drawstart - 1;
 	while (++y < ray->drawend)
 	{
-		ray->tex_y = (int)ray->tex_pos;// & (TXT_H - 1);
+		ray->tex_y = (int)ray->tex_pos;
 		ray->tex_pos += ray->step;
 		my_put_pixel(&ray->img, x, y, index_color(ray->tex_x, (int)ray->tex_y, txt));
-		printf("");
-		//printf("ray->tex_pos = %f\n", ray->tex_pos);
 	}
 }
 
@@ -89,35 +87,78 @@ int		move(int keycode, void *param)
 	ray = param;
 	double	old_dir_x = ray->dir_x;
 	double	old_plx = ray->plan_x;
+	double	old_pa;
 	if (keycode == 65307)
 		exit(EXIT_SUCCESS);
-	if (keycode == 65361) //turn left
+	else if (keycode == 65361) //turn left
 	{
-		ray->dir_x = ray->dir_x * cosf(-ray->rot_spd) - ray->dir_y * sinf(-ray->rot_spd);
-		ray->dir_y = old_dir_x * sinf(-ray->rot_spd) + ray->dir_y * cosf(-ray->rot_spd);
+//		ray->dir_x = ray->dir_x * cosf(-ray->rot_spd) - ray->dir_y * sinf(-ray->rot_spd);
+//		ray->dir_y = old_dir_x * sinf(-ray->rot_spd) + ray->dir_y * cosf(-ray->rot_spd);
+		ray->pa -= ray->rot_spd;
+		if (ray->pa < 0)
+			ray->pa += (2 * PI);
+		ray->dir_x = cosf(ray->pa);
+		ray->dir_y = sinf(ray->pa);
 		ray->plan_x = ray->plan_x * cosf(-ray->rot_spd) - ray->plan_y * sinf(-ray->rot_spd);
 		ray->plan_y = old_plx * sinf(-ray->rot_spd) + ray->plan_y * cosf(-ray->rot_spd);
 	}
-	if (keycode == 65363) //turn right
+	else if (keycode == 65363) //turn right
 	{
-		ray->dir_x = ray->dir_x * cosf(ray->rot_spd) - ray->dir_y * sinf(ray->rot_spd);
-		ray->dir_y = old_dir_x * sinf(ray->rot_spd) + ray->dir_y * cosf(ray->rot_spd);
+//		ray->dir_x = ray->dir_x * cosf(ray->rot_spd) - ray->dir_y * sinf(ray->rot_spd);
+//		ray->dir_y = old_dir_x * sinf(ray->rot_spd) + ray->dir_y * cosf(ray->rot_spd);
+		ray->pa += ray->rot_spd;
+		if (ray->pa > 2 * PI)
+			ray->pa -= (2 * PI);
+		ray->dir_x = cosf(ray->pa);
+		ray->dir_y = sinf(ray->pa);
 		ray->plan_x = ray->plan_x * cosf(ray->rot_spd) - ray->plan_y * sinf(ray->rot_spd);
 		ray->plan_y = old_plx * sinf(ray->rot_spd) + ray->plan_y * cosf(ray->rot_spd);
 	}
-	if (keycode == 122) // forward
+	else if (keycode == 122) // forward
 	{
 		if (map[(int)(ray->pos_y)][(int)(ray->pos_x + ray->dir_x * ray->move_spd)] != 1)
 			ray->pos_x += ray->dir_x * ray->move_spd;
 		if (map[(int)(ray->pos_y + ray->dir_y * ray->move_spd)][(int)(ray->pos_x)] != 1)
 			ray->pos_y += ray->dir_y * ray->move_spd;
 	}
-	if (keycode == 115) // backward
+	else if (keycode == 115) // backward
 	{
 		if (map[(int)(ray->pos_y)][(int)(ray->pos_x - ray->dir_x * ray->move_spd)] != 1)
 			ray->pos_x -= ray->dir_x * ray->move_spd;
 		if (map[(int)(ray->pos_y - ray->dir_y * ray->move_spd)][(int)(ray->pos_x)] != 1)
 			ray->pos_y -= ray->dir_y * ray->move_spd;
+	}
+	else if (keycode == 113) //crabe left
+	{
+		old_pa = ray->pa;
+		ray->pa -= (2 * PI / 4);
+		if (ray->pa < 0)
+			ray->pa += (2 * PI);
+		ray->dir_x = cosf(ray->pa);
+		ray->dir_y = sinf(ray->pa);
+		if (map[(int)(ray->pos_y)][(int)(ray->pos_x + ray->dir_x * ray->move_spd * 2)] != 1)
+			ray->pos_x += ray->dir_x * ray->move_spd;
+		if (map[(int)(ray->pos_y + ray->dir_y * ray->move_spd * 2)][(int)(ray->pos_x)] != 1)
+			ray->pos_y += ray->dir_y * ray->move_spd;
+		ray->pa = old_pa;
+		ray->dir_x = cosf(ray->pa);
+		ray->dir_y = sinf(ray->pa);
+	}
+	else if (keycode == 100) //crabe right
+	{
+		old_pa = ray->pa;
+		ray->pa += (2 * PI / 4);
+		if (ray->pa > 2 * PI)
+			ray->pa -= (2 * PI);
+		ray->dir_x = cosf(ray->pa);
+		ray->dir_y = sinf(ray->pa);
+		if (map[(int)(ray->pos_y)][(int)(ray->pos_x + ray->dir_x * ray->move_spd * 2)] != 1)
+			ray->pos_x += ray->dir_x * ray->move_spd;
+		if (map[(int)(ray->pos_y + ray->dir_y * ray->move_spd * 2)][(int)(ray->pos_x)] != 1)
+			ray->pos_y += ray->dir_y * ray->move_spd;
+		ray->pa = old_pa;
+		ray->dir_x = cosf(ray->pa);
+		ray->dir_y = sinf(ray->pa);
 	}
 	algo(ray);
 	return (1);
@@ -196,8 +237,6 @@ void	algo(t_ray *ray)
 			ray->wall_x = ray->pos_x + ray->perpwalldist * ray->ray_dir_x;
 		ray->wall_x -= floor(ray->wall_x);
 		ray->tex_x = (int)(ray->wall_x * TXT_W);
-		//if ()
-		//printf("tex_x = %d\n", ray->tex_x);
 		/*
 		** Colorier les murs en fonctions de leurs directions
 		*/
@@ -225,8 +264,9 @@ int main(int ac, char **av)
 	}
 	ray.drawstart = 0;
 	ray.drawend = 10;
-	ray.dir_x = -1.0;
-	ray.dir_y = 0.0;
+	ray.pa = PI;
+	ray.dir_x = cosf(ray.pa);//-1.0;
+	ray.dir_y = sinf(ray.pa);//0.0;
 	ray.pos_x = 3.5;
 	ray.pos_y = 4.5;
 	ray.plan_x = 0.0;
