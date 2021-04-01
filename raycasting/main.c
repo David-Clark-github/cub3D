@@ -248,7 +248,9 @@ void	algo(t_ray *ray)
 			draw_txt_line(&ray->txt[2], x, ray);
 		else if (ray->ray_dir_y < 0 && ray->side != 0)
 			draw_txt_line(&ray->txt[3], x, ray);
+		ray->zbuffer[x] = ray->perpwalldist;
 	}
+
 	mlx_put_image_to_window(ray->win.mlx, ray->win.win, ray->img.img, 0, 0);
 	mlx_loop(ray->win.mlx);
 }

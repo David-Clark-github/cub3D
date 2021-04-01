@@ -91,6 +91,7 @@ typedef struct	s_ray {
 	int		tex_y;
 	double	tex_pos;
 	double	step;
+	double	zbuffer[WIN_H];
 	t_img	img;
 	t_win	win;
 	t_tx	txt[5];
