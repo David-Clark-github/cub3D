@@ -19,17 +19,18 @@
 # define TXT_W 64
 # define WIN_W 1000
 # define WIN_H 1000
+# define SP_NUM	2
 
 # define PI 3.1415926535
 
 int	map[MAP_H][MAP_W] = 
 {
 	{1,1,1,1,1,1,1,1},
-	{1,0,1,0,0,1,0,1},
-	{1,0,1,0,0,1,0,1},
-	{1,0,0,0,0,0,1,1},
 	{1,0,0,0,0,1,0,1},
+	{1,0,0,0,0,0,0,1},
+	{1,0,2,0,0,1,1,1},
 	{1,0,1,0,0,0,0,1},
+	{1,1,2,0,0,0,0,1},
 	{1,0,0,0,0,0,0,1},
 	{1,1,1,1,1,1,1,1},
 };
@@ -56,6 +57,11 @@ typedef struct	s_texture {
 	int		height;
 	int		endian;
 }				t_tx;
+
+typedef struct	s_sprite {
+	int	x;
+	int	y;
+}				t_sp;
 
 typedef struct	s_ray {
 	double	pa;				//cercle de 0 a 2 PI
@@ -92,9 +98,24 @@ typedef struct	s_ray {
 	double	tex_pos;
 	double	step;
 	double	zbuffer[WIN_H];
+	int		sp_order[SP_NUM];
+	double	sp_dist[SP_NUM];
+	double	sp_x;
+	double	sp_y;
+	double	invdet;
+	double	transformx;
+	double	transformy;
+	int		sp_screenx;
+	int		sp_height;
+	int		sp_width;
+	int		drawstart_x;
+	int		drawstart_y;
+	int		drawend_x;
+	int		drawend_y;
 	t_img	img;
 	t_win	win;
 	t_tx	txt[5];
+	t_sp	sp[SP_NUM];
 }				t_ray;
 
 

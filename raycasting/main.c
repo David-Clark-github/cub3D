@@ -67,7 +67,7 @@ void	draw_txt_line(t_tx *txt, int x, t_ray *ray)
 	{
 		ray->tex_y = (int)ray->tex_pos;
 		ray->tex_pos += ray->step;
-		my_put_pixel(&ray->img, x, y, index_color(ray->tex_x, (int)ray->tex_y, txt));
+		my_put_pixel(&ray->img, x, y, index_color(ray->tex_x, ray->tex_y, txt));
 	}
 }
 
@@ -77,6 +77,37 @@ void	draw_vertical_line(t_img *img, int x, int start, int end, int color)
 	{
 		++start;
 		my_put_pixel(img, x, start, color);
+	}
+}
+
+void sort_sprite(int sp_order[SP_NUM], double sp_dist[SP_NUM], int num_sp)
+{
+	int	tmp_o;
+	double	tmp_d;
+	int	x;
+	int	y;
+	x = 0;
+	y = 1;
+	while (x < num_sp - 1)
+	{
+		while (y < num_sp)
+		{
+			if (sp_dist[x] < sp_dist[y])
+			{
+				tmp_d = sp_dist[x];
+				tmp_o = sp_order[x];
+				sp_dist[x] = sp_dist[y];
+				sp_dist[y] = tmp_d;
+				sp_order[x] = sp_order[y];
+				sp_order[y] = tmp_o;
+				x = 0;
+				y = x + 1;
+			}
+			else
+				y++;
+		}
+		x++;
+		y = x + 1;
 	}
 }
 
@@ -116,16 +147,16 @@ int		move(int keycode, void *param)
 	}
 	else if (keycode == 122) // forward
 	{
-		if (map[(int)(ray->pos_y)][(int)(ray->pos_x + ray->dir_x * ray->move_spd)] != 1)
+		if (map[(int)(ray->pos_y)][(int)(ray->pos_x + ray->dir_x * ray->move_spd)] == 0)
 			ray->pos_x += ray->dir_x * ray->move_spd;
-		if (map[(int)(ray->pos_y + ray->dir_y * ray->move_spd)][(int)(ray->pos_x)] != 1)
+		if (map[(int)(ray->pos_y + ray->dir_y * ray->move_spd)][(int)(ray->pos_x)] == 0)
 			ray->pos_y += ray->dir_y * ray->move_spd;
 	}
 	else if (keycode == 115) // backward
 	{
-		if (map[(int)(ray->pos_y)][(int)(ray->pos_x - ray->dir_x * ray->move_spd)] != 1)
+		if (map[(int)(ray->pos_y)][(int)(ray->pos_x - ray->dir_x * ray->move_spd)] == 0)
 			ray->pos_x -= ray->dir_x * ray->move_spd;
-		if (map[(int)(ray->pos_y - ray->dir_y * ray->move_spd)][(int)(ray->pos_x)] != 1)
+		if (map[(int)(ray->pos_y - ray->dir_y * ray->move_spd)][(int)(ray->pos_x)] == 0)
 			ray->pos_y -= ray->dir_y * ray->move_spd;
 	}
 	else if (keycode == 113) //crabe left
@@ -136,9 +167,9 @@ int		move(int keycode, void *param)
 			ray->pa += (2 * PI);
 		ray->dir_x = cosf(ray->pa);
 		ray->dir_y = sinf(ray->pa);
-		if (map[(int)(ray->pos_y)][(int)(ray->pos_x + ray->dir_x * ray->move_spd * 2)] != 1)
+		if (map[(int)(ray->pos_y)][(int)(ray->pos_x + ray->dir_x * ray->move_spd * 2)] == 0)
 			ray->pos_x += ray->dir_x * ray->move_spd;
-		if (map[(int)(ray->pos_y + ray->dir_y * ray->move_spd * 2)][(int)(ray->pos_x)] != 1)
+		if (map[(int)(ray->pos_y + ray->dir_y * ray->move_spd * 2)][(int)(ray->pos_x)] == 0)
 			ray->pos_y += ray->dir_y * ray->move_spd;
 		ray->pa = old_pa;
 		ray->dir_x = cosf(ray->pa);
@@ -152,9 +183,9 @@ int		move(int keycode, void *param)
 			ray->pa -= (2 * PI);
 		ray->dir_x = cosf(ray->pa);
 		ray->dir_y = sinf(ray->pa);
-		if (map[(int)(ray->pos_y)][(int)(ray->pos_x + ray->dir_x * ray->move_spd * 2)] != 1)
+		if (map[(int)(ray->pos_y)][(int)(ray->pos_x + ray->dir_x * ray->move_spd * 2)] == 0)
 			ray->pos_x += ray->dir_x * ray->move_spd;
-		if (map[(int)(ray->pos_y + ray->dir_y * ray->move_spd * 2)][(int)(ray->pos_x)] != 1)
+		if (map[(int)(ray->pos_y + ray->dir_y * ray->move_spd * 2)][(int)(ray->pos_x)] == 0)
 			ray->pos_y += ray->dir_y * ray->move_spd;
 		ray->pa = old_pa;
 		ray->dir_x = cosf(ray->pa);
@@ -250,7 +281,55 @@ void	algo(t_ray *ray)
 			draw_txt_line(&ray->txt[3], x, ray);
 		ray->zbuffer[x] = ray->perpwalldist;
 	}
-
+	for (int i = 0; i < SP_NUM; i++)
+	{
+		ray->sp_order[i] = i;
+		ray->sp_dist[i] = (pow((ray->pos_x - ray->sp[i].x), 2) + pow((ray->pos_y - ray->sp[i].y), 2));
+	}
+	sort_sprite(ray->sp_order, ray->sp_dist, SP_NUM);
+	for (int i = 0; i < SP_NUM; i++)
+	{
+		// translate sprite pos to relative to camera
+		ray->sp_x = ray->sp[ray->sp_order[i]].x - ray->pos_x;
+		ray->sp_y = ray->sp[ray->sp_order[i]].y - ray->pos_y;
+		// transform sprite with the inverse camera matrix
+		ray->invdet = 1.0 / (ray->plan_x * ray->dir_y - ray->dir_x * ray->plan_y);
+		ray->transformx = ray->invdet * (ray->dir_y * ray->sp_x - ray->dir_x * ray->sp_y);
+		ray->transformy = ray->invdet * (-ray->plan_y * ray->sp_x + ray->plan_x * ray->sp_y);
+		ray->sp_screenx = (int)((WIN_W / 2) * (1 + ray->transformx / ray->transformy));
+		// calcul height
+		ray->sp_height = abs((int)(WIN_H / ray->transformy));
+		// calcul lowest and heighest pixel to fill in current stipe
+		ray->drawstart_y = -ray->sp_height / 2 + WIN_H / 2;
+		if (ray->drawstart_y < 0)
+			ray->drawstart_y = 0;
+		ray->drawend_y = ray->sp_height / 2 + WIN_H / 2;
+		if (ray->sp_height >= WIN_H)
+			ray->drawend_y = WIN_H - 1;
+		// calcul width of the sprite
+		ray->sp_width = abs((int)(WIN_H / ray->transformy));
+		ray->drawstart_x = -ray->sp_width / 2 + ray->sp_screenx;
+		if (ray->drawstart_x < 0)
+			ray->drawstart_x = 0;
+		ray->drawend_x = ray->sp_width / 2 + ray->sp_screenx;
+		if (ray->drawend_x >= WIN_W)
+			ray->drawend_x = WIN_W - 1;
+		for (int stripe = ray->drawstart_x; stripe < ray->drawend_x; stripe++)
+		{
+			ray->tex_x = (int)(256 * (stripe - (-ray->sp_width / 2 + ray->sp_screenx)) * ray->txt[4].width / ray->sp_width) / 256;
+			if (ray->transformy > 0 && stripe > 0 && stripe < WIN_W && ray->transformy < ray->zbuffer[stripe])
+			{
+				for (int y = ray->drawstart_y; y < ray->drawend_y; y++)
+				{
+					int d = (y) * 256 - WIN_H * 128 + ray->sp_height * 128;
+					ray->tex_y = ((d * ray->txt[4].height) / ray->sp_height) / 256;
+					int color = index_color(ray->tex_x, ray->tex_y, &ray->txt[4]);
+					if (color != 0)
+					my_put_pixel(&ray->img, stripe, y, color);
+				}
+			}
+		}
+	}
 	mlx_put_image_to_window(ray->win.mlx, ray->win.win, ray->img.img, 0, 0);
 	mlx_loop(ray->win.mlx);
 }
@@ -264,6 +343,11 @@ int main(int ac, char **av)
 	{
 		init_tx(av[i+1], &ray.txt[i], ray.win.mlx);
 	}
+	//printf("color = %d\n", index_color(0, 0, &ray.txt[4]));
+	ray.sp[0].x = 2;
+	ray.sp[0].y = 5;
+	ray.sp[1].x = 2;
+	ray.sp[1].y = 3;
 	ray.drawstart = 0;
 	ray.drawend = 10;
 	ray.pa = PI;
