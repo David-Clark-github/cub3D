@@ -344,10 +344,10 @@ int main(int ac, char **av)
 		init_tx(av[i+1], &ray.txt[i], ray.win.mlx);
 	}
 	//printf("color = %d\n", index_color(0, 0, &ray.txt[4]));
-	ray.sp[0].x = 5;
-	ray.sp[0].y = 1;
-	ray.sp[1].x = 5;
-	ray.sp[1].y = 3;
+	ray.sp[0].x = 5.5;
+	ray.sp[0].y = 1.5;
+	ray.sp[1].x = 5.5;
+	ray.sp[1].y = 3.5;
 	ray.drawstart = 0;
 	ray.drawend = 10;
 	ray.pa = PI;

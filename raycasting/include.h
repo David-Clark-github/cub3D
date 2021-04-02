@@ -59,8 +59,8 @@ typedef struct	s_texture {
 }				t_tx;
 
 typedef struct	s_sprite {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }				t_sp;
 
 typedef struct	s_ray {
