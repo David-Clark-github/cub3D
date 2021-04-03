@@ -1,14 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   include.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/03 11:57:12 by dclark            #+#    #+#             */
+/*   Updated: 2021/04/03 15:17:43 by dclark           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef INCLUDE_H
 # define INCLUDE_H
 
-#include "include.h"
+
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <mlx.h>
 
-# define MAP_W 8
-# define MAP_H 8
 # define FLOOR 0,100,100,100
 # define CEIL 0,135,206,235
 # define N_C 0,0,0,255
@@ -19,21 +29,10 @@
 # define TXT_W 64
 # define WIN_W 1000
 # define WIN_H 1000
-# define SP_NUM	2
+# define SP_NUM 2
 
 # define PI 3.1415926535
 
-int	map[MAP_H][MAP_W] = 
-{
-	{1,1,1,1,1,1,1,1},
-	{1,0,0,0,1,2,0,1},
-	{1,0,0,0,1,0,0,1},
-	{1,0,0,0,1,2,0,1},
-	{1,0,0,0,1,0,0,1},
-	{1,0,0,0,1,0,0,1},
-	{1,0,0,0,0,0,0,1},
-	{1,1,1,1,1,1,1,1},
-};
 
 typedef struct	s_image {
 	void	*img;
@@ -58,9 +57,17 @@ typedef struct	s_texture {
 	int		endian;
 }				t_tx;
 
+typedef struct	s_player {
+	double	pa;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+}				t_ply;
+
 typedef struct	s_sprite {
-	double	x;
-	double	y;
+	double	pos_x;
+	double	pos_y;
 }				t_sp;
 
 typedef struct	s_ray {
@@ -123,5 +130,8 @@ void	draw_line();
 void	darw_square();
 void	algo(t_ray *ray);
 void	init_image(t_img *img, int width, int height, int floor, int ceil);
+int		trgb(int t, int r, int g, int b);
+void	init_text(char *path, t_tx *text, void *mlx);
+void	my_put_pixel(t_img *img, int x, int y, int color);
 int		move(int keycode, void *param);
 #endif

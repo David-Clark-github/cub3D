@@ -1,5 +1,6 @@
 #include "include.h"
-
+#include "mapo.h"
+/*
 int		trgb(int t, int r, int g, int b)
 {
 	return (t << 24 | r << 16 | g << 8 | b);
@@ -13,14 +14,11 @@ void	my_put_pixel(t_img *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void	init_tx(char *path, t_tx *text, void *mlx)
+void	init_text(char *path, t_tx *text, void *mlx)
 {
 	text->img = mlx_xpm_file_to_image(mlx, path, &text->width, &text->height);
 	text->addr = mlx_get_data_addr(text->img, &text->bpp, &text->line_l, &text->endian);
-//	printf("text->img = %p\n", text->img);
-//	printf("text->height = %d\n", text->height);
-//	printf("text->width = %d\n", text->width);
-}
+}*/
 
 int	index_color(int x, int y, t_tx *txt)
 {
@@ -121,25 +119,21 @@ int		move(int keycode, void *param)
 	double	old_pa;
 	if (keycode == 65307)
 		exit(EXIT_SUCCESS);
-	else if (keycode == 65361) //turn left
+	else if (keycode == 65361) //rotate left
 	{
-//		ray->dir_x = ray->dir_x * cosf(-ray->rot_spd) - ray->dir_y * sinf(-ray->rot_spd);
-//		ray->dir_y = old_dir_x * sinf(-ray->rot_spd) + ray->dir_y * cosf(-ray->rot_spd);
 		ray->pa -= ray->rot_spd;
 		if (ray->pa < 0)
-			ray->pa += (2 * PI);
+			ray->pa += (2 * M_PI);
 		ray->dir_x = cosf(ray->pa);
 		ray->dir_y = sinf(ray->pa);
 		ray->plan_x = ray->plan_x * cosf(-ray->rot_spd) - ray->plan_y * sinf(-ray->rot_spd);
 		ray->plan_y = old_plx * sinf(-ray->rot_spd) + ray->plan_y * cosf(-ray->rot_spd);
 	}
-	else if (keycode == 65363) //turn right
+	else if (keycode == 65363) //rotate right
 	{
-//		ray->dir_x = ray->dir_x * cosf(ray->rot_spd) - ray->dir_y * sinf(ray->rot_spd);
-//		ray->dir_y = old_dir_x * sinf(ray->rot_spd) + ray->dir_y * cosf(ray->rot_spd);
 		ray->pa += ray->rot_spd;
-		if (ray->pa > 2 * PI)
-			ray->pa -= (2 * PI);
+		if (ray->pa > 2 * M_PI)
+			ray->pa -= (2 * M_PI);
 		ray->dir_x = cosf(ray->pa);
 		ray->dir_y = sinf(ray->pa);
 		ray->plan_x = ray->plan_x * cosf(ray->rot_spd) - ray->plan_y * sinf(ray->rot_spd);
@@ -162,9 +156,9 @@ int		move(int keycode, void *param)
 	else if (keycode == 113) //crabe left
 	{
 		old_pa = ray->pa;
-		ray->pa -= (2 * PI / 4);
+		ray->pa -= (2 * M_PI / 4);
 		if (ray->pa < 0)
-			ray->pa += (2 * PI);
+			ray->pa += (2 * M_PI);
 		ray->dir_x = cosf(ray->pa);
 		ray->dir_y = sinf(ray->pa);
 		if (map[(int)(ray->pos_y)][(int)(ray->pos_x + ray->dir_x * ray->move_spd * 2)] == 0)
@@ -178,9 +172,9 @@ int		move(int keycode, void *param)
 	else if (keycode == 100) //crabe right
 	{
 		old_pa = ray->pa;
-		ray->pa += (2 * PI / 4);
-		if (ray->pa > 2 * PI)
-			ray->pa -= (2 * PI);
+		ray->pa += (2 * M_PI / 4);
+		if (ray->pa > 2 * M_PI)
+			ray->pa -= (2 * M_PI);
 		ray->dir_x = cosf(ray->pa);
 		ray->dir_y = sinf(ray->pa);
 		if (map[(int)(ray->pos_y)][(int)(ray->pos_x + ray->dir_x * ray->move_spd * 2)] == 0)
@@ -284,14 +278,14 @@ void	algo(t_ray *ray)
 	for (int i = 0; i < SP_NUM; i++)
 	{
 		ray->sp_order[i] = i;
-		ray->sp_dist[i] = (pow((ray->pos_x - ray->sp[i].x), 2) + pow((ray->pos_y - ray->sp[i].y), 2));
+		ray->sp_dist[i] = (pow((ray->pos_x - ray->sp[i].pos_x), 2) + pow((ray->pos_y - ray->sp[i].pos_y), 2));
 	}
 	sort_sprite(ray->sp_order, ray->sp_dist, SP_NUM);
 	for (int i = 0; i < SP_NUM; i++)
 	{
 		// translate sprite pos to relative to camera
-		ray->sp_x = ray->sp[ray->sp_order[i]].x - ray->pos_x;
-		ray->sp_y = ray->sp[ray->sp_order[i]].y - ray->pos_y;
+		ray->sp_x = ray->sp[ray->sp_order[i]].pos_x - ray->pos_x;
+		ray->sp_y = ray->sp[ray->sp_order[i]].pos_y - ray->pos_y;
 		// transform sprite with the inverse camera matrix
 		ray->invdet = 1.0 / (ray->plan_x * ray->dir_y - ray->dir_x * ray->plan_y);
 		ray->transformx = ray->invdet * (ray->dir_y * ray->sp_x - ray->dir_x * ray->sp_y);
@@ -341,16 +335,16 @@ int main(int ac, char **av)
 	ray.win.win = mlx_new_window(ray.win.mlx, WIN_W, WIN_H, "test Raycasting");
 	for (int i = 0; i < 5; i++)
 	{
-		init_tx(av[i+1], &ray.txt[i], ray.win.mlx);
+		init_text(av[i+1], &ray.txt[i], ray.win.mlx);
 	}
 	//printf("color = %d\n", index_color(0, 0, &ray.txt[4]));
-	ray.sp[0].x = 5.5;
-	ray.sp[0].y = 1.5;
-	ray.sp[1].x = 5.5;
-	ray.sp[1].y = 3.5;
+	ray.sp[0].pos_x = 5.5;
+	ray.sp[0].pos_y = 1.5;
+	ray.sp[1].pos_x = 5.5;
+	ray.sp[1].pos_y = 3.5;
 	ray.drawstart = 0;
 	ray.drawend = 10;
-	ray.pa = PI;
+	ray.pa = M_PI;
 	ray.dir_x = cosf(ray.pa);//-1.0;
 	ray.dir_y = sinf(ray.pa);//0.0;
 	ray.pos_x = 3.5;
