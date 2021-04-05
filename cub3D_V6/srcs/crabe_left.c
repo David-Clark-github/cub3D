@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_right.c                                     :+:      :+:    :+:   */
+/*   crabe_left.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 14:50:54 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/03 16:11:35 by dclark           ###   ########.fr       */
+/*   Created: 2021/04/05 11:36:13 by dclark            #+#    #+#             */
+/*   Updated: 2021/04/05 11:43:23 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	rotate_left(t_ply *ply)
+void	crabe_left(t_ply *ply)
 {
-	double	old_plx;
+	double	old_pa;
 
-	old_plx = ply->planx;
-	ply->pa += ply->rot_spd;
-	if (ply->pa > 2 * M_PI)
-		ply->pa -= (2 * M_PI);
+	old_pa = ply->pa;
+	ply->pa -= (2 * M_PI / 4);
+	if (ply->pa < 0)
+		ply->pa += (2 * M_PI);
 	ply->dirx = cosf(ply->pa);
 	ply->diry = sinf(ply->pa);
-	ply->planx = ply->planx * cosf(ply->rot_spd) - \
-				ply->plany * sinf(ply->rot_spd);
-	ply->plany = old_plx * sinf(ply->rot_spd) + ply->plany * cosf(ply->rot_spd);
+	if (map[(int)(ply->posy)][(int)(ply->posx + ply->dirx * ply->mv_spd * 2)] == 0)
+		ply->posx += ply->dirx * ply->mv_spd;
+	if (map[(int)(ply->posy + ply->diry * ply->mv_spd * 2)][(int)(ply->posx)] == 0)
+		ply->posy += ply->diry * ply->mv_spd;
+	ply->pa = old_pa;
+	ply->dirx = cosf(ply->pa);
+	ply->diry = sinf(ply->pa);
 }

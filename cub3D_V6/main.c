@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_ray.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/26 15:25:05 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/26 15:28:22 by dclark           ###   ########.fr       */
+/*   Created: 2021/04/05 12:24:11 by dclark            #+#    #+#             */
+/*   Updated: 2021/04/05 14:18:18 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	init_ray(t_ray *ray, t_png *png)
+int	main(int ac, char **av)
 {
-	ray->hit = 0;
-	ray->
-}
+	t_data	data;
 
-void	algo_ray(t_ray *ray, t_png *png)
-{
-	
+	check_ac_av(ac, av);
+	data.raw_cub = file_line_gnl(av[1]);
+	id_line_master(&data);
 }

@@ -344,13 +344,13 @@ int main(int ac, char **av)
 	ray.sp[1].pos_y = 3.5;
 	ray.drawstart = 0;
 	ray.drawend = 10;
-	ray.pa = M_PI;
+	ray.pa = 2 * M_PI;
 	ray.dir_x = cosf(ray.pa);//-1.0;
 	ray.dir_y = sinf(ray.pa);//0.0;
 	ray.pos_x = 3.5;
 	ray.pos_y = 4.5;
 	ray.plan_x = 0.0;
-	ray.plan_y = -0.66;
+	ray.plan_y = 0.66;
 	ray.time = 0.0;
 	ray.rot_spd = 0.05;
 	ray.move_spd = 0.1;

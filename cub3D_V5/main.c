@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:27:48 by dclark            #+#    #+#             */
-/*   Updated: 2021/03/21 13:55:08 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/05 12:21:29 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@ int main(int ac, char **av)
 	t_data	data;
 
 	if (check_ac_av(ac, av) == -1)
-	{	
-		printf("error\nac av\n");
-		return (-1);
-	}
 	data.raw_cub_l = file_line_gnl(av[1]);
 	if (id_line_master(data.raw_cub_l, &data.elem_l) == -1)
 	{

@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/03 16:05:23 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/05 15:00:10 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,24 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
+# include "libft.h"
+
+typedef struct	s_id_line {
+	int	res;
+	int	north;
+	int	south;
+	int	east;
+	int	west;
+	int	sprite;
+	int	floor;
+	int	ceil;
+	int	map;
+}				t_id_l;
 
 typedef struct	s_window {
 	void	*mlx;
 	void	*win;
-}
+}				t_win;
 
 typedef struct	s_image {
 	void	*img;
@@ -45,15 +58,15 @@ typedef struct	s_player {
 }				t_ply;
 
 typedef struct	s_mapou {
-	char	**map;
+	int		**map;
 	int		map_h;
 	int		map_w;
 	int		sp_num;
-}
+}				t_mapou;
 
 typedef struct	s_raycasting {
-	double	dirx;
-	double	diry;
+	double	rdirx;
+	double	rdiry;
 	double	camerax;
 	int		mapx;
 	int		mapy;
@@ -102,7 +115,7 @@ typedef struct	s_texture {
 	int		width;
 	int		height;
 	int		endian;
-}				t_tex;
+}				t_text;
 
 typedef struct	s_sprite {
 	double	posx;
@@ -110,7 +123,27 @@ typedef struct	s_sprite {
 }				t_sp;
 
 typedef struct	s_data {
-	t_tex	text[5];
+	char	**raw_cub;
+	t_id_l	id_l;
+	t_img	img;
+	t_win	win;
+	t_ply	ply;
+	t_ray	ray;
+	t_text	text[5];
 	t_sp	*sp;
-	t_ply	ply;	
 }				t_data;
+
+void	ft_error(char *message, int error, t_data *data);
+void	check_ac_av(int ac, char **av);
+char	**file_line_gnl(char *av);
+void	id_line_master(t_data *data);
+int		id_res(char **av);
+int		id_north(char **av);
+int		id_south(char **av);
+int		id_east(char **av);
+int		id_west(char **av);
+int		id_sprite(char **av);
+int		id_floor(char **av);
+int		id_ceil(char **av);
+int		id_map(char **av);
+#endif

@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_texture.c                                     :+:      :+:    :+:   */
+/*   backward.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 11:14:41 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/03 11:38:06 by dclark           ###   ########.fr       */
+/*   Created: 2021/04/05 11:23:18 by dclark            #+#    #+#             */
+/*   Updated: 2021/04/05 11:31:41 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	init_text(char *path, t_tx *text, void *mlx)
+void	backward(t_ply *ply, t_mapou *mapou)
 {
-	text->img = mlx_xpm_file_to_image(mlx, path, &text->width, &text->height);
-	text->addr = mlx_get_data_addr(text->img, &text->bpp, &text->line_l, \
-	&text->endian);
+	if (mapou->map[(int)ply->posy][(int)ply->posx - ply->dirx * ply->mv_spd] \
+		== 0)
+		ply->posx -= ply->dirx * ply->mv_spd;
+	if (mapou->map[(int)ply->posy - ply->diry * ply->mv_spd][(int)ply->posx] \
+		== 0)
+		ply->posy -= ply->diry * ply->mv_spd;
 }
