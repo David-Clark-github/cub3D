@@ -42,5 +42,5 @@ libft.a:
 	make -C libft/
 
 $(NAME): $(SRCS) libft.a
-	$(CC) main.c $(CFLAGS) $(SRCS) libft/libft.a -o $(NAME)
+	$(CC) main.c $(CFLAGS) $(OBJS) libft/libft.a -o $(NAME)
 

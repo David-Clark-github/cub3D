@@ -19,4 +19,5 @@ int	main(int ac, char **av)
 	check_ac_av(ac, av);
 	data.raw_cub = file_line_gnl(av[1]);
 	id_line_master(&data);
+	check_master(&data);
 }

@@ -33,6 +33,8 @@ typedef struct	s_id_line {
 typedef struct	s_window {
 	void	*mlx;
 	void	*win;
+	int		height;
+	int		width;
 }				t_win;
 
 typedef struct	s_image {
@@ -146,4 +148,6 @@ int		id_sprite(char **av);
 int		id_floor(char **av);
 int		id_ceil(char **av);
 int		id_map(char **av);
+void	check_res(char *);
+void	pars_res(t_data *);
 #endif
