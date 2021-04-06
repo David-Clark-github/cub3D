@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 12:24:11 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/06 16:30:37 by dclark           ###   ########.fr       */
+/*   Created: 2021/04/06 15:09:26 by dclark            #+#    #+#             */
+/*   Updated: 2021/04/06 15:10:59 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int	main(int ac, char **av)
+void	free_img(t_img *img)
 {
-	t_data	data;
-
-	check_ac_av(ac, av);
-	init_data(&data);
-	data.raw_cub = file_line_gnl(av[1]);
-	id_line_master(&data);
-//	print_data(&data);
-	check_master(&data);
+	if (img->img != NULL)
+		free(img->img);
+	if (img->addr != NULL)
+		free(img->addr);
 }

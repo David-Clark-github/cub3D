@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 12:24:11 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/06 16:30:37 by dclark           ###   ########.fr       */
+/*   Created: 2021/04/06 15:21:51 by dclark            #+#    #+#             */
+/*   Updated: 2021/04/06 15:23:29 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int	main(int ac, char **av)
+void	free_ray(t_ray *ray)
 {
-	t_data	data;
-
-	check_ac_av(ac, av);
-	init_data(&data);
-	data.raw_cub = file_line_gnl(av[1]);
-	id_line_master(&data);
-//	print_data(&data);
-	check_master(&data);
+	if (ray->zbuffer != NULL)
+		free(ray->zbuffer);
+	if (ray->sp_order != NULL)
+		free(ray->sp_order);
+	if (ray->sp_dist != NULL)
+		free(ray->sp_dist);
 }

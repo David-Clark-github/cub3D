@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/06 11:12:22 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/06 16:44:26 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
+# include <limits.h>
+# include "mlx.h"
 # include "libft.h"
 
 typedef struct	s_id_line {
@@ -127,15 +129,29 @@ typedef struct	s_sprite {
 typedef struct	s_data {
 	char	**raw_cub;
 	t_id_l	id_l;
-	t_img	img;
 	t_win	win;
+	t_img	img;
 	t_ply	ply;
 	t_ray	ray;
 	t_text	text[5];
 	t_sp	*sp;
 }				t_data;
 
+void	print_data(t_data *data);
+
 void	ft_error(char *message, int error, t_data *data);
+void	ft_empty_data(t_data *data);
+void	free_win(t_win *win);
+void	free_img(t_img *img);
+void	free_ray(t_ray *ray);
+void	free_text(t_data *data);
+void	init_data(t_data *data);
+void	init_id_l(t_id_l *id_l);
+void	init_img(t_img *img);
+void	init_win(t_win *win);
+void	init_ply(t_ply *ply);
+void	init_ray(t_ray *ray);
+void	init_text(t_data *data);
 void	check_ac_av(int ac, char **av);
 char	**file_line_gnl(char *av);
 void	id_line_master(t_data *data);
@@ -148,6 +164,7 @@ int		id_sprite(char **av);
 int		id_floor(char **av);
 int		id_ceil(char **av);
 int		id_map(char **av);
+void	check_master(t_data *data);
 void	check_res(char *);
 void	pars_res(t_data *);
 #endif

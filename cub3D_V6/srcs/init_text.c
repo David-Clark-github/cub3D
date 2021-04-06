@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 11:27:03 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/06 11:32:48 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/06 13:15:56 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ void		init_text(t_data *data)
 {
 	int	i;
 
-	i = 0;
-	while (i < 5)
-	{
+	i = -1;
+	while (++i < 5)
 		titi_text(&data->text[i]);
-		++i;
-	}
 }
