@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_texture.c                                     :+:      :+:    :+:   */
+/*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 11:14:41 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/06 11:33:08 by dclark           ###   ########.fr       */
+/*   Created: 2021/04/06 10:55:14 by dclark            #+#    #+#             */
+/*   Updated: 2021/04/06 11:15:43 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	init_texture(char *path, t_text *text, t_win *win)
+void	init_data(t_data *data)
 {
-	text->img = mlx_xpm_file_to_image(win->mlx, path, \
-	&text->width, &text->height);
-	text->addr = mlx_get_data_addr(text->img, &text->bpp, &text->line_l, \
-	&text->endian);
+	init_id_l(&data->id_l);
+	init_win(&data->win);
+	init_img(&data->img);
+	init_ply(&data->ply);
+	init_ray(&data->ray);
+	init_text(data);
+	data->sp = NULL;
 }

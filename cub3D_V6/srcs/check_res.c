@@ -17,7 +17,18 @@ void	n_number(char *line)
 			++i;
 	}
 	if (num != 2)
-		ft_error("L'element R est incorrect", 0, 0);
+		ft_error("L'element R est incorrect", 1, 0);
+}
+
+void	min_max(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && !ft_isdigit(line[i]))
+		++i;
+	if (ft_atoi(&line[i]) < 1)
+		ft_error("La largeur de la fenetre est trop petite", 1, 0);
 }
 
 void	check_res(char *line)

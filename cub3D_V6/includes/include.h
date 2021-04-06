@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/05 15:00:10 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/06 11:12:22 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct	s_image {
 	int		line_l;
 	int		bpp;
 	int		width;
-	int		hieght;
+	int		height;
 	int		endian;
 }				t_img;
 

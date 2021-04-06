@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_texture.c                                     :+:      :+:    :+:   */
+/*   init_win.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/03 11:14:41 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/06 11:33:08 by dclark           ###   ########.fr       */
+/*   Created: 2021/04/06 11:01:24 by dclark            #+#    #+#             */
+/*   Updated: 2021/04/06 11:05:43 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	init_texture(char *path, t_text *text, t_win *win)
+void	init_win(t_win *win)
 {
-	text->img = mlx_xpm_file_to_image(win->mlx, path, \
-	&text->width, &text->height);
-	text->addr = mlx_get_data_addr(text->img, &text->bpp, &text->line_l, \
-	&text->endian);
+	win->mlx = mlx_init();
+	win->win = NULL;
+	mlx_get_screen_size(win->mlx, &win->width, &win->height);
 }
