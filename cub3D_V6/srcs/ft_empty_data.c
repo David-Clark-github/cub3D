@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:20:19 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/06 15:19:46 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/07 11:52:49 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static void	free_raw_cub(char **raw_cub)
 	free(raw_cub);
 }
 
-void	ft_empty_data(t_data *data)
+void		ft_empty_data(t_data *data)
 {
 	if (!data)
-		return;
+		return ;
 	if (data->raw_cub != NULL)
 		free_raw_cub(data->raw_cub);
 	free_win(&data->win);

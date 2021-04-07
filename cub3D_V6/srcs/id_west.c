@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:35:50 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/05 15:03:25 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/07 11:56:36 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	id_west(char **cub)
 
 	i = -1;
 	flag = 0;
-	while(cub[++i])
+	while (cub[++i])
 	{
 		if (ft_strncmp(cub[i], "WE ", 2) == 0)
 		{

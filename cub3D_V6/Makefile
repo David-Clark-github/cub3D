@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/06 15:35:42 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/07 15:00:23 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,12 +34,19 @@ SRCS	=	srcs/print_data.c \
 			srcs/init_data.c \
 			srcs/check_master.c \
 			srcs/check_res.c \
+			srcs/check_xpm.c \
+			srcs/check_floor_ceil.c \
+			srcs/check_map1.c \
+			srcs/check_map2.c \
 			srcs/init_id_l.c \
 			srcs/init_win.c \
 			srcs/init_img.c \
 			srcs/init_ply.c \
 			srcs/init_ray.c \
 			srcs/init_text.c \
+			srcs/parsing_master.c \
+			srcs/pars_res.c \
+			srcs/pars_xpm.c \
 
 OBJS	=	$(SRCS:.c=.o)
 

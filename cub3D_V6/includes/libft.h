@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 18:02:22 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/05 13:49:04 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/07 15:52:46 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s1, char const *set);
 char			**ft_split(char const *s, char c);
 void			ft_print_split(char **sp);
+void			print_int_tab(int **tab, int w, int h);
 
 int				ft_lstsize(t_list *lst);
 t_list			*ft_lstlast(t_list *lst);

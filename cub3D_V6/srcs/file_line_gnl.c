@@ -6,18 +6,18 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 13:20:42 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/05 14:14:36 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/07 11:59:22 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 #include "get_next_line.h"
 
-static int		number_l(char *av)
+static int	number_l(char *av)
 {
-	int	fd;
-	int	gnl;
-	int	res;
+	int		fd;
+	int		gnl;
+	int		res;
 	char	*line;
 
 	res = 0;
@@ -33,7 +33,7 @@ static int		number_l(char *av)
 	return (res);
 }
 
-char	**file_line_gnl(char *av)
+char		**file_line_gnl(char *av)
 {
 	int		fd;
 	int		num_l;

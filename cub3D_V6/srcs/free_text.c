@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:24:38 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/06 15:36:20 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/07 11:52:14 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	toto_free(t_text *text)
 		free(text->addr);
 }
 
-void	free_text(t_data *data)
+void		free_text(t_data *data)
 {
 	int	i;
 

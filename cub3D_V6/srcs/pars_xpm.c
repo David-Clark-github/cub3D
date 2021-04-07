@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   id_floor.c                                         :+:      :+:    :+:   */
+/*   pars_xpm.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 14:35:50 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/07 11:53:15 by dclark           ###   ########.fr       */
+/*   Created: 2021/04/07 14:26:44 by dclark            #+#    #+#             */
+/*   Updated: 2021/04/07 14:53:17 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int	id_floor(char **cub)
+void	pars_xpm(t_data *data, int t, char *line)
 {
 	int	i;
-	int	flag;
-	int	res;
 
-	i = -1;
-	flag = 0;
-	while (cub[++i])
-	{
-		if (ft_strncmp(cub[i], "F ", 2) == 0)
-		{
-			res = i;
-			++flag;
-		}
-	}
-	if (flag > 1)
-		ft_error("Il y plus de 1 elements de floor", 1, 0);
-	if (flag == 0)
-		ft_error("L'elements floor n'existe pas", 1, 0);
-	return (res);
+	i = 0;
+	while (line[i] != '.')
+		i++;
+	data->text[t].img = mlx_xpm_file_to_image(data->win.mlx, &line[i], 
+	&data->text[t].width, &data->text[t].height);
+	if (data->text[t].img == NULL)
+		ft_error("la texture n'a pas ete charger", 1, data);
+	data->text[t].addr = mlx_get_data_addr(data->text[t].img,
+	&data->text[t].bpp, &data->text[t].line_l, &data->text[t].endian);
 }

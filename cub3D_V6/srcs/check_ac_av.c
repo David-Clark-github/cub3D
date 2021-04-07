@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_av_ac.c                                      :+:      :+:    :+:   */
+/*   check_ac_av.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 12:17:18 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/05 12:45:57 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/07 11:58:51 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,13 @@ static void	ac_two(char **av)
 
 static void	ac_three(char **av)
 {
-	/*if (ac_two(av) == -1)
-		return (-1);*/
 	if (ft_strlen(av[2]) != 6)
 		ft_error("L'argument n°2 est incorrect", 1, 0);
 	if (ft_strncmp("--save", av[2], 6) != 0)
 		ft_error("L'argument n°2 est incorrect", 1, 0);
 }
 
-void	check_ac_av(int ac, char **av)
+void		check_ac_av(int ac, char **av)
 {
 	int	fd;
 

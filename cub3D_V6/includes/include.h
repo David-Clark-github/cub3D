@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/06 16:44:26 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/07 16:18:21 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,18 @@ typedef struct	s_image {
 	int		endian;
 }				t_img;
 
+typedef struct	s_floor {
+	int	r;
+	int	g;
+	int	b;
+}				t_floor;
+
+typedef struct	s_ceil {
+	int	r;
+	int	g;
+	int	b;
+}				t_ceil;
+
 typedef struct	s_player {
 	double	pa;
 	double	posx;
@@ -62,7 +74,7 @@ typedef struct	s_player {
 }				t_ply;
 
 typedef struct	s_mapou {
-	int		**map;
+	char	**map;
 	int		map_h;
 	int		map_w;
 	int		sp_num;
@@ -128,9 +140,12 @@ typedef struct	s_sprite {
 
 typedef struct	s_data {
 	char	**raw_cub;
+	t_mapou	map;
 	t_id_l	id_l;
 	t_win	win;
 	t_img	img;
+	t_floor	floor;
+	t_ceil	ceil;
 	t_ply	ply;
 	t_ray	ray;
 	t_text	text[5];
@@ -165,6 +180,17 @@ int		id_floor(char **av);
 int		id_ceil(char **av);
 int		id_map(char **av);
 void	check_master(t_data *data);
-void	check_res(char *);
-void	pars_res(t_data *);
+void	check_res(char *res);
+void	check_north(char *north);
+void	check_south(char *south);
+void	check_east(char *east);
+void	check_west(char *west);
+void	check_xpm(char *line);
+void	check_sprite(char *sprite);
+void	check_floor_ceil(char *line);
+void	check_map1(char **map, t_data *data);
+void	check_map2(char **map, t_data *data);
+void	parsing_master(t_data *data);
+void	pars_res(t_win *win, char *line);
+void	pars_xpm(t_data *data, int i, char *line);
 #endif
