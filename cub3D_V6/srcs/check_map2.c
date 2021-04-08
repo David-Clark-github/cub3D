@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 15:00:42 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/08 14:11:01 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/08 15:17:21 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	create_map(char **map, t_data *data)
 	int	reste;
 
 	y = -1;
-	while(++y < data->map.map_h)
+	while (++y < data->map.map_h)
 	{
 		x = 0;
 		reste = data->map.map_w - ft_strlen(map[y]);
@@ -44,7 +44,7 @@ static void	create_map(char **map, t_data *data)
 			data->map.map[y][x] = map[y][x];
 			++x;
 		}
-		while(reste-- > 0)
+		while (reste-- > 0)
 		{
 			data->map.map[y][x] = ' ';
 			++x;
@@ -64,9 +64,11 @@ static void	voisin(t_data *data, int x, int y)
 		ft_error("map incorrect", 1, data);
 	if (data->map.map[y + 1][x] == ' ' || data->map.map[y - 1][x] == ' ')
 		ft_error("map incorrect", 1, data);
-	if (data->map.map[y + 1][x - 1] == ' ' || data->map.map[y - 1][x - 1] == ' ')
+	if (data->map.map[y + 1][x - 1] == ' ' || data->map.map[y - 1]
+		[x - 1] == ' ')
 		ft_error("map incorrect", 1, data);
-	if (data->map.map[y + 1][x + 1] == ' ' || data->map.map[y - 1][x + 1] == ' ')
+	if (data->map.map[y + 1][x + 1] == ' ' || data->map.map[y - 1]
+		[x + 1] == ' ')
 		ft_error("map incorrect", 1, data);
 }
 
@@ -85,7 +87,7 @@ static void	cara_voisin(t_data *data)
 	}
 }
 
-void	check_map2(char **map, t_data *data)
+void		check_map2(char **map, t_data *data)
 {
 	malloc_map(data);
 	create_map(map, data);

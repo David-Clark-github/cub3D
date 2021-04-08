@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 12:24:11 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/07 14:07:55 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/08 15:32:41 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ int	main(int ac, char **av)
 	id_line_master(&data);
 	check_master(&data);
 	parsing_master(&data);
+	ft_error("fin du programme", 1, &data);
 }

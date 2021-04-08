@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   check_map1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 12:42:49 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/07 14:58:39 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/08 15:18:18 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	map_limits(t_data *data, char **map)
 	data->map.map_h = y;
 }
 
-void	check_empty_l(char **map)
+static void	check_empty_l(char **map)
 {
 	int	y;
 
@@ -42,10 +42,10 @@ static void	check_cara(char **map)
 	int	x;
 
 	y = -1;
-	while(map[++y])
+	while (map[++y])
 	{
 		x = -1;
-		while(map[y][++x])
+		while (map[y][++x])
 		{
 			if (ft_strrchr(" 012NSEW", map[y][x]) == 0)
 				ft_error("Mauvais caractere dans la map", 1, 0);
@@ -61,10 +61,10 @@ static void	check_player(char **map)
 
 	y = -1;
 	res = 0;
-	while(map[++y])
+	while (map[++y])
 	{
 		x = -1;
-		while(map[y][++x])
+		while (map[y][++x])
 		{
 			if (ft_strrchr("NSEW", map[y][x]) != 0)
 				res++;

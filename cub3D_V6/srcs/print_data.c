@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:40:38 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/08 13:49:19 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/08 15:28:32 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,27 @@ static void	print_xpm(t_text *text)
 	printf("endian = %d\n", text->endian);
 }
 
-void	print_mapou(t_mapou *map)
+static void	print_ceil(t_ceil *ceil)
+{
+	printf("\nceil\n");
+	printf("r = %d\n", ceil->r);
+	printf("g = %d\n", ceil->g);
+	printf("b = %d\n", ceil->b);
+}
+
+static void	print_floor(t_floor *floor)
+{
+	printf("\nfloor\n");
+	printf("r = %d\n", floor->r);
+	printf("g = %d\n", floor->g);
+	printf("b = %d\n", floor->b);
+}
+
+static void	print_mapou(t_mapou *map)
 {
 	printf("\nmap_width = %d\n", map->map_w);
 	printf("map_height = %d\n", map->map_h);
-	ft_print_split(map->map);
+	//ft_print_split(map->map);
 }
 
 void		print_data(t_data *data)
@@ -61,5 +77,7 @@ void		print_data(t_data *data)
 	print_xpm(&data->text[2]);
 	print_xpm(&data->text[3]);
 	print_xpm(&data->text[4]);
+	print_floor(&data->floor);
+	print_ceil(&data->ceil);
 	print_mapou(&data->map);
 }

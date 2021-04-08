@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:20:19 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/07 11:52:49 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/08 15:39:21 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ void		ft_empty_data(t_data *data)
 		return ;
 	if (data->raw_cub != NULL)
 		free_raw_cub(data->raw_cub);
-	free_win(&data->win);
-	free_img(&data->img);
-	free_ray(&data->ray);
+//	free_win(&data->win);
+//	free_img(&data->img);
+//	free_ray(&data->ray);
 	free_text(data);
+//	free_map(data->map);
 	if (data->sp != NULL)
 		free(data->sp);
 }
