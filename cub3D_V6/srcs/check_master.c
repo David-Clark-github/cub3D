@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 11:55:18 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/07 14:59:02 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/08 13:26:31 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ void	check_master(t_data *data)
 	check_floor_ceil(data->raw_cub[data->id_l.floor]);
 	check_floor_ceil(data->raw_cub[data->id_l.ceil]);
 	check_map1(&data->raw_cub[data->id_l.map], data);
+	check_map2(&data->raw_cub[data->id_l.map], data);
 }

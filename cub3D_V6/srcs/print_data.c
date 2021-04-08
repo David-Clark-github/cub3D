@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:40:38 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/07 16:21:30 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/08 13:49:19 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ static void	print_xpm(t_text *text)
 	printf("endian = %d\n", text->endian);
 }
 
+void	print_mapou(t_mapou *map)
+{
+	printf("\nmap_width = %d\n", map->map_w);
+	printf("map_height = %d\n", map->map_h);
+	ft_print_split(map->map);
+}
+
 void		print_data(t_data *data)
 {
 	ft_print_split(data->raw_cub);
@@ -54,5 +61,5 @@ void		print_data(t_data *data)
 	print_xpm(&data->text[2]);
 	print_xpm(&data->text[3]);
 	print_xpm(&data->text[4]);
-	ft_print_split(data->map.map);
+	print_mapou(&data->map);
 }

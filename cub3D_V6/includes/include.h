@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/07 16:18:21 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/08 14:34:12 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,4 +193,6 @@ void	check_map2(char **map, t_data *data);
 void	parsing_master(t_data *data);
 void	pars_res(t_win *win, char *line);
 void	pars_xpm(t_data *data, int i, char *line);
+void	pars_floor(t_data *data, char *line);
+void	pars_ceil(t_data *data, char *line);
 #endif
