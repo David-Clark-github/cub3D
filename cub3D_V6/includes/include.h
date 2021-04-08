@@ -53,12 +53,14 @@ typedef struct	s_floor {
 	int	r;
 	int	g;
 	int	b;
+	int	color;
 }				t_floor;
 
 typedef struct	s_ceil {
 	int	r;
 	int	g;
 	int	b;
+	int	color;
 }				t_ceil;
 
 typedef struct	s_player {

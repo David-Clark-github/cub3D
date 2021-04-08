@@ -30,4 +30,5 @@ void	pars_floor(t_data *data, char *line)
 	while (!ft_isdigit(line[i]))
 		i++;
 	data->floor.b = ft_atoi(&line[i]);
+	data->floor.color = trgb(0, data->floor.r, data->floor.g, data->floor.b);
 }

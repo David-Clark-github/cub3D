@@ -30,4 +30,5 @@ void	pars_ceil(t_data *data, char *line)
 	while (!ft_isdigit(line[i]))
 		i++;
 	data->ceil.b = ft_atoi(&line[i]);
+	data->ceil.color = trgb(0, data->ceil.r, data->ceil.g, data->ceil.b);
 }

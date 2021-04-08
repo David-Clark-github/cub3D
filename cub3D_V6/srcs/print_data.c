@@ -50,6 +50,7 @@ static void	print_ceil(t_ceil *ceil)
 	printf("r = %d\n", ceil->r);
 	printf("g = %d\n", ceil->g);
 	printf("b = %d\n", ceil->b);
+	printf("color = %d\n", ceil->color);
 }
 
 static void	print_floor(t_floor *floor)
@@ -58,6 +59,7 @@ static void	print_floor(t_floor *floor)
 	printf("r = %d\n", floor->r);
 	printf("g = %d\n", floor->g);
 	printf("b = %d\n", floor->b);
+	printf("color = %d\n", floor->color);
 }
 
 static void	print_mapou(t_mapou *map)
