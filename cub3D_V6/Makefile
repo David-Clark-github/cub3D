@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/09 11:33:48 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/09 13:16:30 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ SRCS	=	srcs/print_data.c \
 			srcs/pars_sprite.c \
 			srcs/pars_floor.c \
 			srcs/pars_ceil.c \
+			srcs/pars_ply.c \
 			srcs/trgb.c \
 
 OBJS	=	$(SRCS:.c=.o)

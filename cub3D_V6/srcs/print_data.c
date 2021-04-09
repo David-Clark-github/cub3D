@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:40:38 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/09 11:45:18 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/09 13:29:10 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,16 @@ static void	print_mapou(t_mapou *map)
 	ft_print_split(map->map);
 }
 
+static void	print_ply(t_ply *ply)
+{
+	printf("\nposx = %f\n", ply->posx);
+	printf("posy = %f\n", ply->posy);
+	printf("dirx = %f\n", ply->dirx);
+	printf("diry = %f\n", ply->diry);
+	printf("planx = %f\n", ply->planx);
+	printf("plany = %f\n", ply->plany);
+}
+
 static void	print_sp(t_data* data)
 {
 	int toto;
@@ -105,4 +115,5 @@ void		print_data(t_data *data)
 	print_ceil(&data->ceil);
 	print_mapou(&data->map);
 	print_sp(data);
+	print_ply(&data->ply);
 }
