@@ -199,6 +199,7 @@ void	pars_res(t_data *data, char *line);
 void	pars_xpm(t_data *data, int i, char *line);
 void	pars_sprite(char **map, t_data *data);
 void	pars_ply(char **map, t_data *data);
+void	pars_img(t_img *img, t_win *win);
 void	pars_floor(t_data *data, char *line);
 void	pars_ceil(t_data *data, char *line);
 int		trgb(int t, int r, int g, int b);

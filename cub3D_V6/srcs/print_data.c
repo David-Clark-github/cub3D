@@ -106,7 +106,7 @@ void		print_data(t_data *data)
 {
 //	ft_print_split(data->raw_cub);
 //	print_id_l(&data->id_l);
-	print_win(&data->win);
+//	print_win(&data->win);
 //	print_xpm(&data->text[0], 0);
 //	print_xpm(&data->text[1], 1);
 //	print_xpm(&data->text[2], 2);

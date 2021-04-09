@@ -24,5 +24,6 @@ void	parsing_master(t_data *data)
 	pars_floor(data, data->raw_cub[data->id_l.floor]);
 	pars_ceil(data, data->raw_cub[data->id_l.ceil]);
 	pars_ply(data->map.map, data);
+	pars_img(&data->img, &data->win);
 	print_data(data);
 }

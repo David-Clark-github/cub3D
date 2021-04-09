@@ -22,7 +22,9 @@ int	main(int ac, char **av)
 	id_line_master(&data);
 	check_master(&data);
 	parsing_master(&data);
-//	ceil_floor_to_img(&data);
+	ceil_floor_to_img(&data);
+	mlx_put_image_to_window(data.win.mlx, data.win.win, data.img.img, 0, 0);
+	mlx_loop(data.win.mlx);
 	/*algo(data);
 	if (ac == 3)
 		ft_save(data);

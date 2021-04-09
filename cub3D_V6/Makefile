@@ -53,6 +53,7 @@ SRCS	=	srcs/print_data.c \
 			srcs/pars_floor.c \
 			srcs/pars_ceil.c \
 			srcs/pars_ply.c \
+			srcs/pars_img.c \
 			srcs/index_color.c \
 			srcs/ceil_floor_to_img.c \
 			srcs/my_put_pixel.c \

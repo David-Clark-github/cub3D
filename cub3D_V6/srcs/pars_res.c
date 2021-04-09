@@ -30,5 +30,5 @@ void	pars_res(t_data *data, char *line)
 		data->win.height = ft_atoi(&line[i]);
 	data->img.img = mlx_new_image(data->win.mlx, data->win.width, 
 	data->win.height);
-//	data->win.win = mlx_new_window(data->win.mlx, data->win.width, data->win.height, "cub3D");
+	data->win.win = mlx_new_window(data->win.mlx, data->win.width, data->win.height, "cub3D");
 }
