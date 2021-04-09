@@ -68,7 +68,7 @@ void	draw_txt_line(t_tx *txt, int x, t_ray *ray)
 		my_put_pixel(&ray->img, x, y, index_color(ray->tex_x, ray->tex_y, txt));
 	}
 }
-
+/*
 void	draw_vertical_line(t_img *img, int x, int start, int end, int color)
 {
 	while (start < end)
@@ -77,7 +77,7 @@ void	draw_vertical_line(t_img *img, int x, int start, int end, int color)
 		my_put_pixel(img, x, start, color);
 	}
 }
-
+*/
 void sort_sprite(int sp_order[SP_NUM], double sp_dist[SP_NUM], int num_sp)
 {
 	int	tmp_o;

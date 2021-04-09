@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/09 16:25:06 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/09 16:37:15 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,5 +203,6 @@ void	pars_floor(t_data *data, char *line);
 void	pars_ceil(t_data *data, char *line);
 int		trgb(int t, int r, int g, int b);
 void	my_put_pixel(t_img *img, int x, int y, int color);
+int		index_color(int x, int y, t_text *text);
 void	ceil_floor_to_img(t_data *data);
 #endif
