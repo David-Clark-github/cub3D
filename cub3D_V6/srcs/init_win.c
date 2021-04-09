@@ -6,12 +6,11 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 11:01:24 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/06 13:37:02 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/09 10:49:29 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
-#include "mlx.h"
 
 void	init_win(t_win *win)
 {

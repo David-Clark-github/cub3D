@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/08 15:23:13 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/09 11:33:48 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRCS	=	srcs/print_data.c \
 			srcs/ft_empty_data.c \
 			srcs/free_win.c \
 			srcs/free_img.c \
+			srcs/free_map.c \
 			srcs/free_ray.c \
 			srcs/free_text.c \
 			srcs/check_ac_av.c \
@@ -44,11 +45,14 @@ SRCS	=	srcs/print_data.c \
 			srcs/init_ply.c \
 			srcs/init_ray.c \
 			srcs/init_text.c \
+			srcs/init_map.c \
 			srcs/parsing_master.c \
 			srcs/pars_res.c \
 			srcs/pars_xpm.c \
+			srcs/pars_sprite.c \
 			srcs/pars_floor.c \
 			srcs/pars_ceil.c \
+			srcs/trgb.c \
 
 OBJS	=	$(SRCS:.c=.o)
 

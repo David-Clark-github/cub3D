@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_text.c                                        :+:      :+:    :+:   */
+/*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/06 15:24:38 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/09 10:36:14 by dclark           ###   ########.fr       */
+/*   Created: 2021/04/09 10:42:12 by dclark            #+#    #+#             */
+/*   Updated: 2021/04/09 10:43:41 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-static void	toto_free(t_data *data, t_text *text)
+void	init_map(t_mapou *map)
 {
-	if (text->img != NULL)
-		mlx_destroy_image(data->win.mlx, text->img);
-}
-
-void		free_text(t_data *data)
-{
-	int	i;
-
-	i = -1;
-	while (++i < 5)
-		toto_free(data, &data->text[i]);
+	map->map = NULL;
+	map->map_h = 0;
+	map->map_w = 0;
+	map->sp_num = 0;
 }

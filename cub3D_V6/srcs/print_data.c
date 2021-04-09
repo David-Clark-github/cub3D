@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:40:38 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/08 15:28:32 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/09 11:45:18 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,19 @@ static void	print_win(t_win *win)
 	printf("win_h = %d\n", win->height);
 }
 
-static void	print_xpm(t_text *text)
+static void	print_xpm(t_text *text, int i)
 {
-	printf("\nimg = %p\n", text->img);
+	if (i == 0)
+		printf("\nnorth\n");
+	if (i == 1)
+		printf("\nsouth\n");
+	if (i == 2)
+		printf("\neast\n");
+	if (i == 3)
+		printf("\nwest\n");
+	if (i == 4)
+		printf("\nsprite\n");
+	printf("img = %p\n", text->img);
 	printf("addr = %p\n", text->addr);
 	printf("bpp = %d\n", text->bpp);
 	printf("line_l = %d\n", text->line_l);
@@ -66,7 +76,19 @@ static void	print_mapou(t_mapou *map)
 {
 	printf("\nmap_width = %d\n", map->map_w);
 	printf("map_height = %d\n", map->map_h);
-	//ft_print_split(map->map);
+	ft_print_split(map->map);
+}
+
+static void	print_sp(t_data* data)
+{
+	int toto;
+	toto = 0;
+	while (toto < data->map.sp_num)
+	{
+		printf("\nposx = %f\n", data->sp[toto].posx);
+		printf("posy = %f\n", data->sp[toto].posy);
+		++toto;
+	}
 }
 
 void		print_data(t_data *data)
@@ -74,12 +96,13 @@ void		print_data(t_data *data)
 	ft_print_split(data->raw_cub);
 	print_id_l(&data->id_l);
 	print_win(&data->win);
-	print_xpm(&data->text[0]);
-	print_xpm(&data->text[1]);
-	print_xpm(&data->text[2]);
-	print_xpm(&data->text[3]);
-	print_xpm(&data->text[4]);
+	print_xpm(&data->text[0], 0);
+	print_xpm(&data->text[1], 1);
+	print_xpm(&data->text[2], 2);
+	print_xpm(&data->text[3], 3);
+	print_xpm(&data->text[4], 4);
 	print_floor(&data->floor);
 	print_ceil(&data->ceil);
 	print_mapou(&data->map);
+	print_sp(data);
 }

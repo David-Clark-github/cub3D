@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/08 14:34:12 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/09 11:34:29 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@ typedef struct	s_image {
 	int		endian;
 }				t_img;
 
+typedef struct	s_mapou {
+	char	**map;
+	int		map_h;
+	int		map_w;
+	int		sp_num;
+}				t_mapou;
+
 typedef struct	s_floor {
 	int	r;
 	int	g;
@@ -74,13 +81,6 @@ typedef struct	s_player {
 	double	rot_spd;
 	double	mv_spd;
 }				t_ply;
-
-typedef struct	s_mapou {
-	char	**map;
-	int		map_h;
-	int		map_w;
-	int		sp_num;
-}				t_mapou;
 
 typedef struct	s_raycasting {
 	double	rdirx;
@@ -160,12 +160,14 @@ void	ft_error(char *message, int error, t_data *data);
 void	ft_empty_data(t_data *data);
 void	free_win(t_win *win);
 void	free_img(t_img *img);
+void	free_map(t_mapou *map);
 void	free_ray(t_ray *ray);
 void	free_text(t_data *data);
 void	init_data(t_data *data);
 void	init_id_l(t_id_l *id_l);
 void	init_img(t_img *img);
 void	init_win(t_win *win);
+void	init_map(t_mapou* map);
 void	init_ply(t_ply *ply);
 void	init_ray(t_ray *ray);
 void	init_text(t_data *data);
@@ -195,6 +197,8 @@ void	check_map2(char **map, t_data *data);
 void	parsing_master(t_data *data);
 void	pars_res(t_win *win, char *line);
 void	pars_xpm(t_data *data, int i, char *line);
+void	pars_sprite(char **map, t_data *data);
 void	pars_floor(t_data *data, char *line);
 void	pars_ceil(t_data *data, char *line);
+int		trgb(int t, int r, int g, int b);
 #endif

@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 15:06:44 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/06 15:08:40 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/09 10:37:12 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,5 @@
 void	free_win(t_win *win)
 {
 	if (win->mlx != NULL)
-		free(win->mlx);
-	if (win->win != NULL)
-		free(win->win);
+		mlx_destroy_window(win->mlx, win->win);
 }
