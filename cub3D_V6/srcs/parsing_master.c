@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 13:35:44 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/09 13:21:20 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/09 16:06:00 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	parsing_master(t_data *data)
 {
-	pars_res(&data->win, data->raw_cub[data->id_l.res]);
+	pars_res(data, data->raw_cub[data->id_l.res]);
 	pars_xpm(data, 0, data->raw_cub[data->id_l.north]);
 	pars_xpm(data, 1, data->raw_cub[data->id_l.south]);
 	pars_xpm(data, 2, data->raw_cub[data->id_l.east]);

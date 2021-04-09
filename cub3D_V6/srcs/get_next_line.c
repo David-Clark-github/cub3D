@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 16:07:43 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/05 14:15:23 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/09 14:50:57 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,24 @@ int	return_zero(char *tmp)
 	free(tmp);
 	return (0);
 }
+/*
+int	algo(int fd, char *buffer, char *tmp)
+{
+	int	bytes_read;
 
+	bytes_read = 42;
+	while (bytes_read && check_eol(tmp) != 1)
+	{
+		if ((bytes_read = read(fd, buffer, BUFFER_SIZE)) == -1)
+		{
+			free(buffer);
+			return (-1);
+		}
+		tmp = ftft_strjoin(tmp, ft_strlen(tmp), buffer, bytes_read);
+	}
+	return (bytes_read);
+}
+*/
 int	get_next_line(int fd, char **line)
 {
 	static char	*tmp;
@@ -30,6 +47,7 @@ int	get_next_line(int fd, char **line)
 	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	bytes_read = 42;
+	//bytes_read = algo(fd, buffer, tmp);
 	while (bytes_read && check_eol(tmp) != 1)
 	{
 		if ((bytes_read = read(fd, buffer, BUFFER_SIZE)) == -1)

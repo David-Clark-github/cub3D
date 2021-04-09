@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 12:24:11 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/09 11:40:45 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/09 16:10:00 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,11 @@ int	main(int ac, char **av)
 	id_line_master(&data);
 	check_master(&data);
 	parsing_master(&data);
+//	ceil_floor_to_img(&data);
+	/*algo(data);
+	if (ac == 3)
+		ft_save(data);
+	else
+		exec(data);*/
 	ft_error("\nfin du programme", 0, &data);
 }

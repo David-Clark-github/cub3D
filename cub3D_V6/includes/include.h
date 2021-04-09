@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/09 13:17:07 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/09 16:25:06 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,7 +159,7 @@ void	print_data(t_data *data);
 void	ft_error(char *message, int error, t_data *data);
 void	ft_empty_data(t_data *data);
 void	free_win(t_win *win);
-void	free_img(t_img *img);
+void	free_img(t_img *img, t_win *win);
 void	free_map(t_mapou *map);
 void	free_ray(t_ray *ray);
 void	free_text(t_data *data);
@@ -195,11 +195,13 @@ void	check_floor_ceil(char *line);
 void	check_map1(char **map, t_data *data);
 void	check_map2(char **map, t_data *data);
 void	parsing_master(t_data *data);
-void	pars_res(t_win *win, char *line);
+void	pars_res(t_data *data, char *line);
 void	pars_xpm(t_data *data, int i, char *line);
 void	pars_sprite(char **map, t_data *data);
 void	pars_ply(char **map, t_data *data);
 void	pars_floor(t_data *data, char *line);
 void	pars_ceil(t_data *data, char *line);
 int		trgb(int t, int r, int g, int b);
+void	my_put_pixel(t_img *img, int x, int y, int color);
+void	ceil_floor_to_img(t_data *data);
 #endif

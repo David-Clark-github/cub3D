@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:40:38 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/09 13:29:10 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/09 16:13:01 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ static void	print_mapou(t_mapou *map)
 
 static void	print_ply(t_ply *ply)
 {
-	printf("\nposx = %f\n", ply->posx);
+	printf("\npa = %f\n", ply->pa);
+	printf("posx = %f\n", ply->posx);
 	printf("posy = %f\n", ply->posy);
 	printf("dirx = %f\n", ply->dirx);
 	printf("diry = %f\n", ply->diry);
@@ -103,17 +104,17 @@ static void	print_sp(t_data* data)
 
 void		print_data(t_data *data)
 {
-	ft_print_split(data->raw_cub);
-	print_id_l(&data->id_l);
+//	ft_print_split(data->raw_cub);
+//	print_id_l(&data->id_l);
 	print_win(&data->win);
-	print_xpm(&data->text[0], 0);
-	print_xpm(&data->text[1], 1);
-	print_xpm(&data->text[2], 2);
-	print_xpm(&data->text[3], 3);
-	print_xpm(&data->text[4], 4);
-	print_floor(&data->floor);
-	print_ceil(&data->ceil);
-	print_mapou(&data->map);
-	print_sp(data);
-	print_ply(&data->ply);
+//	print_xpm(&data->text[0], 0);
+//	print_xpm(&data->text[1], 1);
+//	print_xpm(&data->text[2], 2);
+//	print_xpm(&data->text[3], 3);
+//	print_xpm(&data->text[4], 4);
+//	print_floor(&data->floor);
+//	print_ceil(&data->ceil);
+//	print_mapou(&data->map);
+//	print_sp(data);
+//	print_ply(&data->ply);
 }

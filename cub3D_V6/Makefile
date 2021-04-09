@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/09 13:16:30 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/09 16:00:42 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,8 @@ SRCS	=	srcs/print_data.c \
 			srcs/pars_floor.c \
 			srcs/pars_ceil.c \
 			srcs/pars_ply.c \
+			srcs/ceil_floor_to_img.c \
+			srcs/my_put_pixel.c \
 			srcs/trgb.c \
 
 OBJS	=	$(SRCS:.c=.o)
@@ -61,7 +63,7 @@ HEADER	=	includes/
 
 NAME	=	cub3D
 
-CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER)
+CFLAGS	+=	-Wall -Wextra -I $(HEADER)
 
 CC		=	gcc
 

@@ -6,11 +6,21 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:20:19 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/09 10:46:00 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/09 16:28:33 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
+
+static void	free_text2(t_data *data)
+{
+	int	i;
+
+	i = -1;
+	while (++i < 5)
+		if (data->text[i].img != NULL)
+			mlx_destroy_image(data->win.mlx, data->text[i].img);
+}
 
 static void	free_raw_cub(char **raw_cub)
 {
@@ -28,11 +38,11 @@ void		ft_empty_data(t_data *data)
 		return ;
 	if (data->raw_cub != NULL)
 		free_raw_cub(data->raw_cub);
-	free_win(&data->win);
-	free_img(&data->img);
 	free_ray(&data->ray);
-	free_text(data);
+	free_text2(data);
 	free_map(&data->map);
 	if (data->sp != NULL)
 		free(data->sp);
+	free_img(&data->img, &data->win);
+	free_win(&data->win);
 }
