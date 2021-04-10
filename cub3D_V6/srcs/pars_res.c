@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 13:36:19 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/10 10:39:21 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/10 14:51:50 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,4 @@ void	pars_res(t_data *data, char *line)
 		data->win.height = ft_atoi(&line[i]);
 	data->img.img = mlx_new_image(data->win.mlx, data->win.width,
 	data->win.height);
-	data->win.win = mlx_new_window(data->win.mlx, data->win.width,
-	data->win.height, "cub3D");
 }

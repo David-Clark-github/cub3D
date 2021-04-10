@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 12:54:35 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/10 10:41:51 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/10 14:18:53 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void	ply_dir(char c, t_ply *ply)
 {
-	if (c == 'N')
+	if (c == 'S')
 	{
 		ply->pa = M_PI / 2;
 		ply->planx = -0.66;
 		ply->plany = 0.0;
 	}
-	if (c == 'S')
+	if (c == 'N')
 	{
 		ply->pa = 3 * M_PI / 2;
 		ply->planx = 0.66;

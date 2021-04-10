@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_img.c                                         :+:      :+:    :+:   */
+/*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/06 15:09:26 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/10 14:49:14 by dclark           ###   ########.fr       */
+/*   Created: 2021/04/10 14:25:28 by dclark            #+#    #+#             */
+/*   Updated: 2021/04/10 14:47:22 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	free_img(t_img *img, t_win *win)
+int	move(int keycode, void *param)
 {
-	if (img->img != NULL)
-		mlx_destroy_image(win->mlx, img->img);
-/*	if (img->addr != NULL)
-		free(img->addr);*/
+	t_data *data;
+
+	data = param;
+	if (keycode == 65307)
+		ft_error("Fin du programme", 0, data);
+	return (1);
 }

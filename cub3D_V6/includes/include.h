@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/10 12:07:48 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/10 14:42:54 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,4 +210,5 @@ void	ceil_floor_to_img(t_data *data);
 void	algo(t_data *data);
 void	exec(t_data *data);
 void	draw_text_line(t_text *text, int x, t_ray *ray, t_data *data);
+int		move(int keycode, void *param);
 #endif

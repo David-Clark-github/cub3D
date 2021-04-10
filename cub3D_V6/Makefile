@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/10 12:16:15 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/10 14:34:52 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ SRCS	=	srcs/print_data.c \
 			srcs/trgb.c \
 			srcs/draw_text_line.c \
 			srcs/algo.c \
+			srcs/move.c \
 			srcs/exec.c \
 
 OBJS	=	$(SRCS:.c=.o)
