@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:28:44 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/10 12:15:31 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/10 13:28:35 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,14 @@ void	algo(t_data *data)
 	while (++data->ray.x < data->win.width)
 	{
 		init_algo1(&data->ray, data);
+		printf("yolo2\n");
 		init_algo2(&data->ray, &data->ply);
+		printf("yolo3\n");
 		init_algo3(&data->ray, &data->ply, data);
+		printf("yolo4\n");
 		init_algo4(data, &data->win, &data->ray, &data->ply);
+		printf("yolo5\n");
+		print_data(data);
 		if (data->ray.rdirx > 0 && data->ray.side == 0)
 			draw_text_line(&data->text[2], data->ray.x, &data->ray, data);
 		if (data->ray.rdirx < 0 && data->ray.side == 0)

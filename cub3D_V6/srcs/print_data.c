@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:40:38 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/09 16:13:01 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/10 13:39:23 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,12 +102,41 @@ static void	print_sp(t_data* data)
 	}
 }
 
+static void	print_ray(t_ray *ray)
+{
+	printf("\nrdirx = %f\n", ray->rdirx);
+	printf("rdiry = %f\n", ray->rdiry);
+	printf("camerax = %f\n", ray->camerax);
+	printf("mapx = %d\n", ray->mapx);
+	printf("mapy = %d\n", ray->mapy);
+	printf("time = %f\n", ray->time);
+	printf("old_time = %f\n", ray->old_time);
+	printf("sidedistx = %f\n", ray->sidedistx);
+	printf("sidedisty = %f\n", ray->sidedisty);
+	printf("deltadistx = %f\n", ray->deltadistx);
+	printf("deltadisty = %f\n", ray->deltadisty);
+	printf("stepx = %d\n", ray->stepx);
+	printf("stepy = %d\n", ray->stepy);
+	printf("hit = %d\n", ray->hit);
+	printf("side = %d\n", ray->side);
+	printf("perpwd = %f\n", ray->perpwd);
+	printf("lineheight = %d\n", ray->lineheight);
+	printf("drawstart = %d\n", ray->drawstart);
+	printf("drawend = %d\n", ray->drawend);
+	printf("wallx = %f\n", ray->wallx);
+	printf("tex_x = %d\n", ray->tex_x);
+	printf("tex_y = %d\n", ray->tex_y);
+	printf("tex_pos = %f\n", ray->tex_pos);
+	printf("step = %f\n", ray->step);
+	printf("x = %d\n", ray->x);
+}
+
 void		print_data(t_data *data)
 {
 //	ft_print_split(data->raw_cub);
 //	print_id_l(&data->id_l);
 //	print_win(&data->win);
-//	print_xpm(&data->text[0], 0);
+	print_xpm(&data->text[0], 0);
 //	print_xpm(&data->text[1], 1);
 //	print_xpm(&data->text[2], 2);
 //	print_xpm(&data->text[3], 3);
@@ -117,4 +146,5 @@ void		print_data(t_data *data)
 //	print_mapou(&data->map);
 //	print_sp(data);
 //	print_ply(&data->ply);
+	print_ray(&data->ray);
 }

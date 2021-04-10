@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 12:24:11 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/10 10:31:50 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/10 13:58:20 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ int	main(int ac, char **av)
 	check_master(&data);
 	parsing_master(&data);
 	ceil_floor_to_img(&data);
-	mlx_put_image_to_window(data.win.mlx, data.win.win, data.img.img, 0, 0);
-	mlx_loop(data.win.mlx);
-	algo(&data);
+	//algo(&data);
 	if (ac == 3)
 		ft_save(&data);
 	else
