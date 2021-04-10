@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:02:29 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/09 11:36:48 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/10 10:40:04 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static void	pars_sp_num(char **map, t_mapou *mapou)
 	while (map[++y])
 	{
 		x = -1;
-		while(map[y][++x])
+		while (map[y][++x])
 			if (map[y][x] == '2')
 				mapou->sp_num++;
 	}
 }
 
-void	pars_sprite(char **map, t_data *data)
+void		pars_sprite(char **map, t_data *data)
 {
 	int	i;
 	int	y;
@@ -41,7 +41,7 @@ void	pars_sprite(char **map, t_data *data)
 	while (map[++y])
 	{
 		x = -1;
-		while(map[y][++x])
+		while (map[y][++x])
 		{
 			if (map[y][x] == '2')
 			{

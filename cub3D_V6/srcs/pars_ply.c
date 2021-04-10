@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 12:54:35 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/09 13:30:35 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/10 10:41:51 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void		pars_ply(char **map, t_data *data)
 				data->ply.posx = x + 0.5;
 				data->ply.posy = y + 0.5;
 				ply_dir(map[y][x], &data->ply);
-				break;
+				map[y][x] = '0';
+				break ;
 			}
 		}
 	}

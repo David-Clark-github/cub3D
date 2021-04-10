@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 11:15:51 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/06 11:26:21 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/10 12:12:48 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	init_1(t_ray *ray)
 	ray->stepy = 0;
 	ray->hit = 0;
 	ray->side = 0;
-	ray->perpwalldist = 0;
+	ray->perpwd = 0;
 	ray->lineheight = 0;
 	ray->drawstart = 0;
 	ray->drawend = 0;
-	ray->wall_x = 0;
+	ray->wallx = 0;
 	ray->tex_x = 0;
 	ray->tex_y = 0;
 	ray->tex_pos = 0;

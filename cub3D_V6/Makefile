@@ -6,13 +6,14 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/09 16:37:38 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/10 12:16:15 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	=	srcs/print_data.c \
 			srcs/ft_error.c \
 			srcs/ft_empty_data.c \
+			srcs/ft_save.c \
 			srcs/free_win.c \
 			srcs/free_img.c \
 			srcs/free_map.c \
@@ -58,6 +59,9 @@ SRCS	=	srcs/print_data.c \
 			srcs/ceil_floor_to_img.c \
 			srcs/my_put_pixel.c \
 			srcs/trgb.c \
+			srcs/draw_text_line.c \
+			srcs/algo.c \
+			srcs/exec.c \
 
 OBJS	=	$(SRCS:.c=.o)
 

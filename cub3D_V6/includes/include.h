@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/09 16:37:15 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/10 12:07:48 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,11 @@ typedef struct	s_raycasting {
 	int		stepy;
 	int		hit;
 	int		side;
-	double	perpwalldist;
+	double	perpwd;
 	int		lineheight;
 	int		drawstart;
 	int		drawend;
-	double	wall_x;
+	double	wallx;
 	int		tex_x;
 	int		tex_y;
 	double	tex_pos;
@@ -157,6 +157,7 @@ typedef struct	s_data {
 void	print_data(t_data *data);
 
 void	ft_error(char *message, int error, t_data *data);
+void	ft_save(t_data *data);
 void	ft_empty_data(t_data *data);
 void	free_win(t_win *win);
 void	free_img(t_img *img, t_win *win);
@@ -206,4 +207,7 @@ int		trgb(int t, int r, int g, int b);
 void	my_put_pixel(t_img *img, int x, int y, int color);
 int		index_color(int x, int y, t_text *text);
 void	ceil_floor_to_img(t_data *data);
+void	algo(t_data *data);
+void	exec(t_data *data);
+void	draw_text_line(t_text *text, int x, t_ray *ray, t_data *data);
 #endif
