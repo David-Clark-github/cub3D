@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/10 15:12:37 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/10 16:55:56 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 # include <limits.h>
 # include "mlx.h"
 # include "libft.h"
+
+# define ESC		65307
+# define RT_LEFT	65361
+# define RT_RIGHT	65363
+# define FORWARD	122
+# define BACKWARD	115
 
 typedef struct	s_id_line {
 	int	res;
@@ -212,4 +218,7 @@ void	exec(t_data *data);
 void	draw_text_line(t_text *text, int x, t_ray *ray, t_data *data);
 int		move(int keycode, void *param);
 void	rotate_left(t_ply *ply);
+void	rotate_right(t_ply *ply);
+void	forward(t_ply *ply, t_mapou *map);
+void	backward(t_ply *ply, t_mapou *map);
 #endif

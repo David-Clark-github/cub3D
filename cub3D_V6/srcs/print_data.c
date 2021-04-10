@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:40:38 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/10 13:39:23 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/10 16:12:54 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void		print_data(t_data *data)
 //	ft_print_split(data->raw_cub);
 //	print_id_l(&data->id_l);
 //	print_win(&data->win);
-	print_xpm(&data->text[0], 0);
+//	print_xpm(&data->text[0], 0);
 //	print_xpm(&data->text[1], 1);
 //	print_xpm(&data->text[2], 2);
 //	print_xpm(&data->text[3], 3);
@@ -145,6 +145,6 @@ void		print_data(t_data *data)
 //	print_ceil(&data->ceil);
 //	print_mapou(&data->map);
 //	print_sp(data);
-//	print_ply(&data->ply);
+	print_ply(&data->ply);
 	print_ray(&data->ray);
 }

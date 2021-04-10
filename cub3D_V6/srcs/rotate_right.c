@@ -6,13 +6,13 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 14:50:54 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/05 11:35:19 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/10 16:38:55 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	rotate_left(t_ply *ply)
+void	rotate_right(t_ply *ply)
 {
 	double	old_plx;
 
