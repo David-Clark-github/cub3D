@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:28:44 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/10 14:43:52 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/11 15:55:34 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,7 @@ static void	init_algo4(t_data *data, t_win *win, t_ray *ray, t_ply *ply)
 	else
 		ray->wallx = ply->posx + ray->perpwd * ray->rdirx;
 	ray->wallx -= floor(ray->wallx);
-	ray->tex_x = (int)(ray->wallx * data->text[0].width);
-
+	ray->tex_x = (int)(ray->wallx * 64/*data->text[0].width*/);
 }
 
 void	algo(t_data *data)
@@ -102,12 +101,12 @@ void	algo(t_data *data)
 		init_algo4(data, &data->win, &data->ray, &data->ply);
 		if (data->ray.rdirx > 0 && data->ray.side == 0)
 			draw_text_line(&data->text[2], data->ray.x, &data->ray, data);
-		if (data->ray.rdirx < 0 && data->ray.side == 0)
+		else if (data->ray.rdirx < 0 && data->ray.side == 0)
 			draw_text_line(&data->text[3], data->ray.x, &data->ray, data);
-		if (data->ray.rdiry > 0 && data->ray.side != 0)
+		else if (data->ray.rdiry > 0 && data->ray.side != 0)
 			draw_text_line(&data->text[1], data->ray.x, &data->ray, data);
-		if (data->ray.rdiry < 0 && data->ray.side != 0)
+		else if (data->ray.rdiry < 0 && data->ray.side != 0)
 			draw_text_line(&data->text[0], data->ray.x, &data->ray, data);
-		//data->ray.zbuffer[data->ray.x] = data->ray.perpwd;
+		data->ray.zbuffer[data->ray.x] = data->ray.perpwd;
 	}
 }

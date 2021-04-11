@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 11:57:12 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/03 15:17:43 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/11 13:23:00 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define TXT_W 64
 # define WIN_W 1000
 # define WIN_H 1000
-# define SP_NUM 2
+# define SP_NUM 4
 
 # define PI 3.1415926535
 

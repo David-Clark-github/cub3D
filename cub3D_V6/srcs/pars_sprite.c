@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 11:02:29 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/10 10:40:04 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/11 16:07:55 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	pars_sp_num(char **map, t_mapou *mapou)
 	}
 }
 
-void		pars_sprite(char **map, t_data *data)
+void		sprite_pos(char **map, t_data *data)
 {
 	int	i;
 	int	y;
@@ -35,9 +35,6 @@ void		pars_sprite(char **map, t_data *data)
 
 	y = -1;
 	i = 0;
-	pars_sp_num(map, &data->map);
-	if (!(data->sp = malloc(sizeof(t_sp) * data->map.sp_num)))
-		ft_error("malloc sprite echoué", 1, data);
 	while (map[++y])
 	{
 		x = -1;
@@ -51,4 +48,14 @@ void		pars_sprite(char **map, t_data *data)
 			}
 		}
 	}
+}
+
+void		pars_sprite(char **map, t_data *data)
+{
+	pars_sp_num(map, &data->map);
+	if (!(data->sp = malloc(sizeof(t_sp) * data->map.sp_num)))
+		ft_error("le malloc sprite a échoué", 1, data);
+	if (!(data->ray.zbuffer = malloc(sizeof(double) * data->win.width)))
+		ft_error("le malloc de zbuffer a échoué", 1, data);
+	sprite_pos(map, data);
 }

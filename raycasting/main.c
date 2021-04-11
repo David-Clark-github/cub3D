@@ -341,7 +341,11 @@ int main(int ac, char **av)
 	ray.sp[0].pos_x = 5.5;
 	ray.sp[0].pos_y = 1.5;
 	ray.sp[1].pos_x = 5.5;
-	ray.sp[1].pos_y = 3.5;
+	ray.sp[1].pos_y = 2.5;
+	ray.sp[2].pos_x = 5.5;
+	ray.sp[2].pos_y = 3.5;
+	ray.sp[3].pos_x = 5.5;
+	ray.sp[3].pos_y = 4.5;
 	ray.drawstart = 0;
 	ray.drawend = 10;
 	ray.pa = 2 * M_PI;

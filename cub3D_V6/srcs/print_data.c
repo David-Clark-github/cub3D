@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:40:38 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/10 16:12:54 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/11 15:45:47 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ void		print_data(t_data *data)
 //	print_floor(&data->floor);
 //	print_ceil(&data->ceil);
 //	print_mapou(&data->map);
-//	print_sp(data);
-	print_ply(&data->ply);
-	print_ray(&data->ray);
+	print_sp(data);
+//	print_ply(&data->ply);
+//	print_ray(&data->ray);
 }

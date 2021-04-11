@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:44:52 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/10 13:57:09 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/11 14:59:21 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	draw_text_line(t_text *text, int x, t_ray *ray, t_data *data)
 	while (++y < ray->drawend)
 	{
 		ray->tex_y = (int)ray->tex_pos;
+		if (ray->tex_y < 0)
+			ray->tex_y = 0;
 		ray->tex_pos += ray->step;
 		my_put_pixel(&data->img, x, y, index_color(ray->tex_x, ray->tex_y, text));
 	}
