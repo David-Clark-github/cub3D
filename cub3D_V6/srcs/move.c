@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 14:25:28 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/12 14:55:37 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/12 16:28:02 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	move(int keycode, void *param)
 	else if (keycode == BACKWARD)
 		backward(&data->ply, &data->map);
 	algo(data);
-	algo_sprite(data, &data->ray, &data->ply);
 	mlx_put_image_to_window(data->win.mlx, data->win.win, data->img.img, 0, 0);
 	return (1);
 }
