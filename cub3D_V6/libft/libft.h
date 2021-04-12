@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/16 18:02:22 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/07 15:46:18 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/12 13:10:58 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int				ft_isdigit(int c);
 int				ft_isalnum(int c);
 int				ft_isascii(int c);
 int				ft_isprint(int c);
+int				ft_isspace(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 

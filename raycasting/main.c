@@ -293,7 +293,7 @@ void	algo(t_ray *ray)
 		ray->sp_screenx = (int)((WIN_W / 2) * (1 + ray->transformx / ray->transformy));
 		// calcul height
 		ray->sp_height = abs((int)(WIN_H / ray->transformy));
-		// calcul lowest and heighest pixel to fill in current stipe
+		// calcul lowest and heighest pixel to fill in current step
 		ray->drawstart_y = -ray->sp_height / 2 + WIN_H / 2;
 		if (ray->drawstart_y < 0)
 			ray->drawstart_y = 0;

@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 15:56:57 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/11 16:52:42 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/12 15:21:40 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static void	sort_sprite(int	*sp_order, double *sp_dist, int sp_num)
 
 	x = 0;
 	y = 1;
-	while (x < data->map.sp_num - 1)
+	while (x < sp_num - 1)
 	{
-		while (y < data->map.sp_num)
+		while (y < sp_num)
 		{
 			if (sp_dist[x] < sp_dist[y])
 			{
@@ -33,7 +33,7 @@ static void	sort_sprite(int	*sp_order, double *sp_dist, int sp_num)
 				sp_dist[y] = tmp_d;
 				sp_order[x] = sp_order[y];
 				sp_order[y] = tmp_o;
-				x = 0
+				x = 0;
 				y = x + 1;
 			}
 			else
@@ -44,7 +44,59 @@ static void	sort_sprite(int	*sp_order, double *sp_dist, int sp_num)
 	}
 }
 
-void	algo_sprite(t_data *data, t_ray *ray, t_ply *ply, t_sp *sp)
+static void	algo_sp1(t_ray *ray, t_ply *ply, t_data *data, int i)
+{
+	ray->sp_x = data->sp[ray->sp_order[i]].posx - data->ply.posx;
+	ray->sp_y = data->sp[ray->sp_order[i]].posy - data->ply.posy;
+	ray->invdet = 1.0 / (ply->planx * ply->diry - ply->dirx * ply->plany);
+	ray->transformx = ray->invdet * (ply->diry * ray->sp_x - ply->dirx * ray->sp_y);
+	ray->transformy = ray->invdet * (-ply->plany * ray->sp_x + ply->planx * ray->sp_y);
+	ray->sp_screenx = (int)((data->win.width / 2) *	(1 + ray->transformx / ray->transformy));
+	ray->sp_height = abs((int)(data->win.height / ray->transformy));
+	ray->drawst_y = -ray->sp_height / 2 + data->win.height / 2;// opti a une division
+	if (ray->drawst_y < 0)
+		ray->drawst_y = 0;
+	ray->drawend_y = ray->sp_height / 2 + data->win.height / 2; //opti a une division
+	if (ray->sp_height >= data->win.height)
+		ray->drawend_y = data->win.height - 1;
+	ray->sp_width = abs((int)(data->win.height / ray->transformy));
+	ray->drawst_x = -ray->sp_width / 2 + ray->sp_screenx;
+	if (ray->drawst_x < 0)
+		ray->drawst_x = 0;
+	ray->drawend_x = ray->sp_width / 2 + ray->sp_screenx;
+	if (ray->drawend_x >= data->win.width)
+		ray->drawend_x = data->win.width - 1;
+}
+
+static void	algo_sp2(t_data *data, t_ray *ray)
+{
+	int	stripe;
+	int	y;
+	int	d;
+	int	color;
+
+	stripe = ray->drawst_x;
+	while (stripe < ray->drawend_x)
+	{
+		ray->tex_x = (int)(256 * (stripe - (-ray->sp_width / 2 + ray->sp_screenx)) * data->text[4].width / ray->sp_width) / 256;
+		if (ray->transformy > 0 && stripe > 0 && stripe < data->win.width && ray->transformy < ray->zbuffer[stripe])
+		{
+			y = ray->drawst_y;
+			while (y < ray->drawend_y)
+			{
+				d = (y) * 256 - data->win.height * 128 + ray->sp_height * 128;
+				ray->tex_y = ((d * data->text[4].height) / ray->sp_height) / 256;
+				color = index_color(ray->tex_x, ray->tex_y, &data->text[4]);
+				if (color != 0)
+					my_put_pixel(&data->img, stripe, y, color); 
+				++y;
+			}
+		}
+		stripe++;
+	}
+}
+
+void	algo_sprite(t_data *data, t_ray *ray, t_ply *ply)
 {
 	int	i;
 
@@ -52,9 +104,15 @@ void	algo_sprite(t_data *data, t_ray *ray, t_ply *ply, t_sp *sp)
 	while (i < data->map.sp_num)
 	{
 		ray->sp_order[i] = i;
-		ray->sp_dist[i] = pow(ply->posx - sp[i]->posx, 2) +\
-		pow(ply->posy - sp[i]->posy, 2);
+		ray->sp_dist[i] = pow(ply->posx - data->sp[i].posx, 2) +\
+		pow(ply->posy - data->sp[i].posy, 2);
 		++i;
 	}
 	sort_sprite(ray->sp_order, ray->sp_dist, data->map.sp_num);
+	i = -1;
+	while (++i < data->map.sp_num)
+	{
+		algo_sp1(ray, ply, data, i);
+		algo_sp2(data, ray);
+	}
 }

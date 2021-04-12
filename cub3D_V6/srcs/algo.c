@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:28:44 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/11 15:55:34 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/12 14:29:48 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,11 @@ static void	init_algo3(t_ray *ray, t_ply *ply, t_data *data)
 			ray->hit = 1;
 	}
 	if (ray->side == 0)
-		ray->perpwd = (ray->mapx - ply->posx + (1 - ray->stepx) / 2) / ray->rdirx;
+		ray->perpwd = (ray->mapx - ply->posx + (1 - ray->stepx) / 2) \
+		/ ray->rdirx;
 	else
-		ray->perpwd = (ray->mapy - ply->posy + (1 - ray->stepy) / 2) / ray->rdiry;
+		ray->perpwd = (ray->mapy - ply->posy + (1 - ray->stepy) / 2) \
+		/ ray->rdiry;
 }
 
 static void	init_algo4(t_data *data, t_win *win, t_ray *ray, t_ply *ply)
@@ -87,10 +89,10 @@ static void	init_algo4(t_data *data, t_win *win, t_ray *ray, t_ply *ply)
 	else
 		ray->wallx = ply->posx + ray->perpwd * ray->rdirx;
 	ray->wallx -= floor(ray->wallx);
-	ray->tex_x = (int)(ray->wallx * 64/*data->text[0].width*/);
+	ray->tex_x = (int)(ray->wallx * 64);
 }
 
-void	algo(t_data *data)
+void		algo(t_data *data)
 {
 	data->ray.x = -1;
 	while (++data->ray.x < data->win.width)
@@ -109,4 +111,5 @@ void	algo(t_data *data)
 			draw_text_line(&data->text[0], data->ray.x, &data->ray, data);
 		data->ray.zbuffer[data->ray.x] = data->ray.perpwd;
 	}
+	algo_sprite(data, &data->ray, &data->ply);
 }

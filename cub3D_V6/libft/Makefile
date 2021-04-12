@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/17 10:38:53 by dclark            #+#    #+#              #
-#    Updated: 2021/04/07 15:47:19 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/12 13:11:16 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCSC	= ft_memset.c \
 		  ft_isalnum.c \
 		  ft_isascii.c \
 		  ft_isprint.c \
+		  ft_isspace.c \
 		  ft_toupper.c \
 		  ft_tolower.c \
 		  ft_strchr.c \

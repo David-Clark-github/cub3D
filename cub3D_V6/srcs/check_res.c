@@ -6,13 +6,13 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 16:38:43 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/06 16:50:45 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/12 13:16:17 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	n_number(char *line)
+static void	n_number(char *line)
 {
 	int	i;
 	int	num;
@@ -36,7 +36,7 @@ void	n_number(char *line)
 		ft_error("Le nombre d'éléments de res est incorrect", 1, 0);
 }
 
-void	min_max(char *line)
+static void	min_max(char *line)
 {
 	int	i;
 
@@ -57,8 +57,23 @@ void	min_max(char *line)
 		ft_error("La hauteur est superieur a un int", 1, 0);
 }
 
+static void	only_digit(char *line)
+{
+	int	i;
+
+	i = 0;
+	if (line[i] == 'R')
+		++i;
+	while (line[i])
+		if (ft_isspace(line[i]) || ft_isdigit(line[i]))
+			i++;
+		else
+			ft_error("Une erreur dans l'élément RES", 1, 0);
+}
+
 void	check_res(char *line)
 {
 	n_number(line);
 	min_max(line);
+	only_digit(line);
 }
