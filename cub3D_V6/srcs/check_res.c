@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 16:38:43 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/12 13:16:17 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/12 15:33:17 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	only_digit(char *line)
 			ft_error("Une erreur dans l'élément RES", 1, 0);
 }
 
-void	check_res(char *line)
+void		check_res(char *line)
 {
 	n_number(line);
 	min_max(line);
