@@ -15,4 +15,9 @@
 void	ft_save(t_data *data)
 {
 	(void)data;
+	int	fd;
+
+	fd = open("save.bmp", O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+	close(fd);
+	ft_error("Image sauvée dans save.bmp", 0, data);	
 }

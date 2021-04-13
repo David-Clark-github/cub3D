@@ -17,6 +17,9 @@
 # include <stdlib.h>
 # include <math.h>
 # include <limits.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 # include "mlx.h"
 # include "libft.h"
 
