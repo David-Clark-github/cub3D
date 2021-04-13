@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 15:00:42 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/08 15:17:21 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/13 13:29:56 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ static void	malloc_map(t_data *data)
 	int	y;
 
 	y = -1;
-	data->map.map = malloc(sizeof(char *) * (data->map.map_h + 1));
-	if (data->map.map == NULL)
+	if(!(data->map.map = malloc(sizeof(char *) * (data->map.map_h + 1))))
 		ft_error("La map n'as pas pu etre cree", 1, data);
 	while (++y < data->map.map_h)
 	{
-		data->map.map[y] = malloc(sizeof(char) * (data->map.map_w + 1));
-		if (data->map.map[y] == NULL)
+		if(!(data->map.map[y] = malloc(sizeof(char) * (data->map.map_w + 1))))
 			ft_error("La map n'as pas pu etre cree", 1, data);
 	}
 }
@@ -49,7 +47,7 @@ static void	create_map(char **map, t_data *data)
 			data->map.map[y][x] = ' ';
 			++x;
 		}
-		data->map.map[y][++x] = '\0';
+		data->map.map[y][x] = '\0';
 	}
 	data->map.map[y] = 0;
 }

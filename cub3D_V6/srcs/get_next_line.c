@@ -6,14 +6,14 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 16:07:43 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/10 10:37:22 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/13 14:46:25 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "include.h"
 
-int	return_zero(char *tmp)
+static int	return_zero(char *tmp)
 {
 	free(tmp);
 	return (0);

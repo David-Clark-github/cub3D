@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 16:07:16 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/09 14:22:08 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/13 15:05:52 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*get_after_eol(char *tmp)
 	i_d = 0;
 	while (tmp[i_t] && tmp[i_t] != '\n')
 		i_t++;
-	if (tmp[i_t + 1] == '\0' || tmp[i_t] == '\0')
+	if (tmp[i_t] == '\0' || tmp[i_t + 1] == '\0')
 	{
 		free(tmp);
 		return (NULL);

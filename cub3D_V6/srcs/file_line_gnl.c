@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 13:20:42 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/07 11:59:22 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/13 15:52:12 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ static int	number_l(char *av)
 	line = NULL;
 	fd = open(av, O_RDONLY);
 	gnl = get_next_line(fd, &line);
+	free(line);
 	while (gnl != 0)
 	{
 		res++;
 		gnl = get_next_line(fd, &line);
+		free(line);
 	}
 	close(fd);
 	return (res);
