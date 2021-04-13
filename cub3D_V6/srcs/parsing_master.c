@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 13:35:44 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/10 14:50:40 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/13 16:20:31 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	parsing_master(t_data *data)
 	pars_floor(data, data->raw_cub[data->id_l.floor]);
 	pars_ceil(data, data->raw_cub[data->id_l.ceil]);
 	pars_ply(data->map.map, data);
-	pars_img(&data->img, &data->win);
+	pars_img(&data->img, &data->win, data);
 }
