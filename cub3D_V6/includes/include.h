@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/12 11:45:24 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/13 11:18:13 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define RT_RIGHT	65363
 # define FORWARD	122
 # define BACKWARD	115
+# define CRABE_L	113
+# define CRABE_R	100
 
 typedef struct	s_id_line {
 	int	res;
@@ -221,5 +223,7 @@ void	rotate_left(t_ply *ply);
 void	rotate_right(t_ply *ply);
 void	forward(t_ply *ply, t_mapou *map);
 void	backward(t_ply *ply, t_mapou *map);
+void	crabe_left(t_ply *ply, char **map);
+void	crabe_right(t_ply *ply, char **map);
 void	algo_sprite(t_data *data, t_ray *ray, t_ply *ply);
 #endif

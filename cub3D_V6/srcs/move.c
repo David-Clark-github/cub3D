@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 14:25:28 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/12 16:28:02 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/13 11:18:02 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int	move(int keycode, void *param)
 		forward(&data->ply, &data->map);
 	else if (keycode == BACKWARD)
 		backward(&data->ply, &data->map);
+	else if (keycode == CRABE_L)
+		crabe_left(&data->ply, data->map.map);
+	else if (keycode == CRABE_R)
+		crabe_right(&data->ply, data->map.map);
 	algo(data);
 	mlx_put_image_to_window(data->win.mlx, data->win.win, data->img.img, 0, 0);
 	return (1);

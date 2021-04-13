@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/12 11:23:36 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/13 11:18:29 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,8 @@ SRCS	=	srcs/print_data.c \
 			srcs/rotate_right.c \
 			srcs/forward.c \
 			srcs/backward.c \
+			srcs/crabe_left.c \
+			srcs/crabe_right.c \
 			srcs/exec.c \
 
 OBJS	=	$(SRCS:.c=.o)
