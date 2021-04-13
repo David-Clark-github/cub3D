@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/13 15:02:39 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/13 16:03:35 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ HEADER	=	includes/
 
 NAME	=	cub3D
 
-CFLAGS	+=	-fsanitize=address -Wall -Wextra -I $(HEADER)
+CFLAGS	+=	-Wall -Wextra -I $(HEADER)
 
 CC		=	gcc
 
