@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/13 16:20:11 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/14 11:07:19 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,7 +165,7 @@ typedef struct	s_data {
 	t_sp	*sp;
 }				t_data;
 
-void	print_data(t_data *data);
+//void	print_data(t_data *data);
 
 void	ft_error(char *message, int error, t_data *data);
 void	ft_save(t_data *data);

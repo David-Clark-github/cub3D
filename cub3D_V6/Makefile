@@ -6,12 +6,11 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/14 10:50:14 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/14 11:07:46 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	srcs/print_data.c \
-			srcs/ft_error.c \
+SRCS	=	srcs/ft_error.c \
 			srcs/ft_empty_data.c \
 			srcs/ft_save.c \
 			srcs/free_win.c \

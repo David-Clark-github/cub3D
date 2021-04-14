@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:28:44 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/12 16:27:33 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/14 11:09:12 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	init_algo3(t_ray *ray, t_ply *ply, t_data *data)
 		/ ray->rdiry;
 }
 
-static void	init_algo4(t_data *data, t_win *win, t_ray *ray, t_ply *ply)
+static void	init_algo4(t_win *win, t_ray *ray, t_ply *ply)
 {
 	ray->lineheight = (int)(win->height / ray->perpwd);
 	ray->drawstart = (-ray->lineheight + win->height) / 2;
@@ -100,7 +100,7 @@ void		algo(t_data *data)
 		init_algo1(&data->ray, data);
 		init_algo2(&data->ray, &data->ply);
 		init_algo3(&data->ray, &data->ply, data);
-		init_algo4(data, &data->win, &data->ray, &data->ply);
+		init_algo4(&data->win, &data->ray, &data->ply);
 		if (data->ray.rdirx > 0 && data->ray.side == 0)
 			draw_text_line(&data->text[2], data->ray.x, &data->ray, data);
 		else if (data->ray.rdirx < 0 && data->ray.side == 0)
