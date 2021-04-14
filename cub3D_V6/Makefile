@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/13 16:03:35 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/14 10:50:14 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,16 @@ all:	libft.a $(NAME)
 libft.a:
 	make -C libft/
 
+clean:
+	make clean -C libft/
+	rm -rf $(OBJS)
+
+fclean:	clean
+	make fclean -C libft/
+	rm -rf cub3D
+
+re:		fclean
+	make $(NAME)
+
 $(NAME): $(SRCS) libft.a
 	$(CC) main.c $(CFLAGS) $(SRCS) libft/libft.a -lm -lmlx -lXext -lX11 -o $(NAME)
-
