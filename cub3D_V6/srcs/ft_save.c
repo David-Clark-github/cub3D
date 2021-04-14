@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:36:36 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/14 15:25:30 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/14 15:48:46 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static void	ft_fill_save(int fd, t_data *data)
 	{
 		x = -1;
 		while (++x < data->win.width)
-			write(fd, &data->img.addr[y * data->img.line_l / 4 + x], 2);
+			write(fd, &data->img.addr[y * data->img.line_l +\
+			(x * data->img.bpp / 8)], 4);
 	}
 }
 
