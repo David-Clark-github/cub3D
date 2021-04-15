@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/15 14:03:32 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/15 16:42:47 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,66 @@ SRCS	=	srcs/ft_error.c \
 			srcs/crabe_left.c \
 			srcs/crabe_right.c \
 			srcs/exec.c \
+
+SRCS_B	=	bonus/ft_error_bonus.c \
+			bonus/ft_empty_data_bonus.c \
+			bonus/ft_save_bonus.c \
+			bonus/free_win_bonus.c \
+			bonus/free_img_bonus.c \
+			bonus/free_map_bonus.c \
+			bonus/free_ray_bonus.c \
+			bonus/free_text_bonus.c \
+			bonus/check_ac_av_bonus.c \
+			bonus/file_line_gnl_bonus.c \
+			bonus/get_next_line_bonus.c \
+			bonus/get_next_line_utils_bonus.c \
+			bonus/id_line_master_bonus.c \
+			bonus/id_res_bonus.c \
+			bonus/id_north_bonus.c \
+			bonus/id_south_bonus.c \
+			bonus/id_east_bonus.c \
+			bonus/id_west_bonus.c \
+			bonus/id_sprite_bonus.c \
+			bonus/id_floor_bonus.c \
+			bonus/id_ceil_bonus.c \
+			bonus/id_map_bonus.c \
+			bonus/init_data_bonus.c \
+			bonus/check_master_bonus.c \
+			bonus/check_res_bonus.c \
+			bonus/check_xpm_bonus.c \
+			bonus/check_floor_ceil_bonus.c \
+			bonus/check_map1_bonus.c \
+			bonus/check_map2_bonus.c \
+			bonus/init_id_l_bonus.c \
+			bonus/init_win_bonus.c \
+			bonus/init_img_bonus.c \
+			bonus/init_ply_bonus.c \
+			bonus/init_ray_bonus.c \
+			bonus/init_text_bonus.c \
+			bonus/init_map_bonus.c \
+			bonus/parsing_master_bonus.c \
+			bonus/pars_res_bonus.c \
+			bonus/pars_xpm_bonus.c \
+			bonus/pars_sprite_bonus.c \
+			bonus/pars_floor_bonus.c \
+			bonus/pars_ceil_bonus.c \
+			bonus/pars_ply_bonus.c \
+			bonus/pars_img_bonus.c \
+			bonus/index_color_bonus.c \
+			bonus/ceil_floor_to_img_bonus.c \
+			bonus/my_put_pixel_bonus.c \
+			bonus/trgb_bonus.c \
+			bonus/draw_text_line_bonus.c \
+			bonus/algo_bonus.c \
+			bonus/algo_sprite_bonus.c \
+			bonus/move_bonus.c \
+			bonus/rotate_left_bonus.c \
+			bonus/rotate_right_bonus.c \
+			bonus/forward_bonus.c \
+			bonus/backward_bonus.c \
+			bonus/crabe_left_bonus.c \
+			bonus/crabe_right_bonus.c \
+			bonus/exec_bonus.c \
 
 HEADER	=	includes/
 
