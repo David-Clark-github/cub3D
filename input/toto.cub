@@ -1,4 +1,4 @@
-R 500 500
+R 5000 5000
 NO ./textures/eagle.xpm
 SO ./textures/greystone.xpm
 WE ./textures/purplestone.xpm
@@ -6,6 +6,17 @@ EA ./textures/red.xpm
 S ./textures/tonneau.xpm
 F 220,100,0
 C 225,30,0
+
+
+
+
+
+
+
+
+
+
+
 
 111111111111111111111111111111111111111111111111111111111111111
 100000000000000000000000000000000000000000000000000000000000001

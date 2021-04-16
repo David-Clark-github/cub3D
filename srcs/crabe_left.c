@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 11:36:13 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/13 11:17:25 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/16 14:47:45 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ void	crabe_left(t_ply *ply, char **map)
 		ply->posx += ply->dirx * ply->mv_spd;
 	if (map[(int)(ply->posy + ply->diry * ply->mv_spd * 2)][(int)(ply->posx)] \
 		== '0')
+		ply->posy += ply->diry * ply->mv_spd;
+	if (map[(int)(ply->posy)][(int)(ply->posx + ply->dirx * ply->mv_spd * 2)] \
+		== '2')
+		ply->posx += ply->dirx * ply->mv_spd;
+	if (map[(int)(ply->posy + ply->diry * ply->mv_spd * 2)][(int)(ply->posx)] \
+		== '2')
 		ply->posy += ply->diry * ply->mv_spd;
 	ply->pa = old_pa;
 	ply->dirx = cosf(ply->pa);
