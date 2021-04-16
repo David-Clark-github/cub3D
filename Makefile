@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/15 16:42:47 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/16 11:57:27 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -134,6 +134,8 @@ HEADER	=	includes/
 
 NAME	=	cub3D
 
+BONUS	=	cub3D_bonus
+
 CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER)
 
 CC		=	gcc
@@ -155,3 +157,6 @@ re:		fclean
 
 $(NAME): $(SRCS) libft.a
 	$(CC) main.c $(CFLAGS) $(SRCS) libft/libft.a -lm -lmlx -lXext -lX11 -o $(NAME)
+
+$(BONUS): $(SRCS_B) libft.a
+	$(CC) main.c $(CFLAGS) $(SRCS_B) libft/libft.a -lm -lmlx -lXext -lX11 -o $(BONUS)
