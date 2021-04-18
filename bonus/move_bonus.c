@@ -6,11 +6,19 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 14:25:28 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/16 15:31:01 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/18 13:20:08 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
+
+static void	move_bonus(int keycode, t_data *data)
+{
+	if (keycode == D_MAP)
+		data->d_map *= -1;
+	if (data->d_map == 1)
+		draw_map_bonus(data->map.map, data);
+}
 
 int	move(int keycode, void *param)
 {
@@ -33,6 +41,7 @@ int	move(int keycode, void *param)
 	else if (keycode == CRABE_R)
 		crabe_right(&data->ply, data->map.map);
 	algo(data);
+	move_bonus(keycode, data);
 	mlx_put_image_to_window(data->win.mlx, data->win.win, data->img.img, 0, 0);
 	return (1);
 }

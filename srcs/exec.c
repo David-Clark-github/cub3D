@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:29:10 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/16 14:53:11 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/18 15:52:48 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ static int	ft_cross(int keycode, void *param)
 
 void		exec(t_data *data)
 {
-	mlx_put_image_to_window(data->win.mlx, data->win.win, data->img.img, 0, 0);
-	mlx_hook(data->win.win, 2, 1L << 0, move, data);
+//	mlx_put_image_to_window(data->win.mlx, data->win.win, data->img.img, 0, 0);
+//	mlx_hook(data->win.win, 2, 1L << 0, move, data); //press
+//	mlx_hook(data->win.win, 3, 1L << 1, move, data); //release
 	mlx_hook(data->win.win, 33, 1L << 17, ft_cross, data);
+	mlx_loop_hook(data->win.mlx, move, data);
 	mlx_loop(data->win.mlx);
 }

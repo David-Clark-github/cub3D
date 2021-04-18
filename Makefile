@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/16 15:27:46 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/18 13:03:08 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,6 +119,7 @@ SRCS_B	=	bonus/ft_error_bonus.c \
 			bonus/my_put_pixel_bonus.c \
 			bonus/trgb_bonus.c \
 			bonus/draw_text_line_bonus.c \
+			bonus/draw_map_bonus.c \
 			bonus/algo_bonus.c \
 			bonus/algo_sprite_bonus.c \
 			bonus/move_bonus.c \
@@ -148,6 +149,7 @@ libft.a:
 clean:
 	make clean -C libft/
 	rm -rf cub3D
+	rm -rf cub3D_bonus
 
 fclean:	clean
 	make fclean -C libft/

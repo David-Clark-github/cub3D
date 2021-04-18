@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/15 11:49:10 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/18 14:19:22 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define BACKWARD	115
 # define CRABE_L	113
 # define CRABE_R	100
+# define D_MAP		109
 
 typedef struct	s_id_line {
 	int			res;
@@ -163,6 +164,7 @@ typedef struct	s_data {
 	t_ray		ray;
 	t_text		text[5];
 	t_sp		*sp;
+	int			d_map;
 }				t_data;
 
 void			ft_error(char *message, int error, t_data *data);
@@ -219,6 +221,7 @@ void			ceil_floor_to_img(t_data *data);
 void			algo(t_data *data);
 void			exec(t_data *data);
 void			draw_text_line(t_text *text, int x, t_ray *ray, t_data *data);
+void			draw_map_bonus(char **map, t_data *data);
 int				move(int keycode, void *param);
 void			rotate_left(t_ply *ply);
 void			rotate_right(t_ply *ply);
