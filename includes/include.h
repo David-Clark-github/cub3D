@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/18 14:19:22 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/19 15:14:52 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,26 @@ typedef struct	s_raycasting {
 	int			drawend_y;
 }				t_ray;
 
+typedef struct	s_floor_ceil {
+	float		raydirx0;
+	float		raydiry0;
+	float		raydirx1;
+	float		raydiry1;
+	int			p;
+	float		posz;
+	float		rowdist;
+	float		floorstepx;
+	float		floorstepy;
+	float		floorx;
+	float		floory;
+	int			cellx;
+	int			celly;
+	int			tx:
+	int			ty;
+	int			y;
+	int			x;
+}				t_f_c;
+
 typedef struct	s_texture {
 	void		*img;
 	char		*addr;
@@ -230,5 +250,6 @@ void			backward(t_ply *ply, t_mapou *map);
 void			crabe_left(t_ply *ply, char **map);
 void			crabe_right(t_ply *ply, char **map);
 void			algo_sprite(t_data *data, t_ray *ray, t_ply *ply);
+void			floor_ceil_texture(t_f_c *f_c, t_data *data);
 
 #endif

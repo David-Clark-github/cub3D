@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 12:24:11 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/19 11:45:11 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/19 14:28:08 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,4 @@ int	main(int ac, char **av)
 		data.win.height, "cub3D");
 		exec(&data);
 	}
-	ft_error("\nfin du programme", 0, &data);
 }
