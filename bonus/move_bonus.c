@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 14:25:28 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/18 13:20:08 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/19 11:59:58 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	move_bonus(int keycode, t_data *data)
 		draw_map_bonus(data->map.map, data);
 }
 
-int	move(int keycode, void *param)
+int			move(int keycode, void *param)
 {
 	t_data *data;
 

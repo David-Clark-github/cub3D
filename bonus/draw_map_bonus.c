@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 12:47:13 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/18 12:59:16 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/19 11:56:08 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	draw_square_bonus(int x, int y, int color, t_data *data)
 	}
 }
 
-void	draw_map_bonus(char **map, t_data *data)
+void		draw_map_bonus(char **map, t_data *data)
 {
 	int	y;
 	int	x;

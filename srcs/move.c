@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 14:25:28 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/18 15:53:23 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/19 11:47:35 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ int	move(int keycode, void *param)
 	t_data *data;
 
 	data = param;
-//	ceil_floor_to_img(data);
-	(void)keycode;
+	ceil_floor_to_img(data);
 	if (keycode == ESC)
 		ft_error("Fin de cub3D", 0, data);
 	else if (keycode == RT_LEFT)

@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:44:52 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/18 11:44:23 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/19 12:00:17 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	color_shadow(int color_init, double perpwd)
 	int	r;
 	int	g;
 	int	b;
-	
+
 	if (perpwd > 4)
 	{
 		r = (color_init >> 16) & (int)(pow(-perpwd, 2));
@@ -31,7 +31,7 @@ static int	color_shadow(int color_init, double perpwd)
 	return (color_init);
 }
 
-void	draw_text_line(t_text *text, int x, t_ray *ray, t_data *data)
+void		draw_text_line(t_text *text, int x, t_ray *ray, t_data *data)
 {
 	int	y;
 	int	new_color;
@@ -46,7 +46,8 @@ void	draw_text_line(t_text *text, int x, t_ray *ray, t_data *data)
 		if (ray->tex_y < 0)
 			ray->tex_y = 0;
 		ray->tex_pos += ray->step;
-		new_color = color_shadow(index_color(ray->tex_x, ray->tex_y, text), data->ray.perpwd);
+		new_color = color_shadow(index_color(ray->tex_x, ray->tex_y, text),\
+		data->ray.perpwd);
 		(void)new_color;
 		my_put_pixel(&data->img, x, y, index_color(ray->tex_x,\
 		ray->tex_y, text));

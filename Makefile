@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/18 13:03:08 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/19 11:46:40 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,11 +148,12 @@ libft.a:
 
 clean:
 	make clean -C libft/
-	rm -rf cub3D
-	rm -rf cub3D_bonus
 
 fclean:	clean
 	make fclean -C libft/
+	rm -f cub3D
+	rm -f save.bmp
+	rm -f cub3D_bonus
 
 re:		fclean
 	make $(NAME)
