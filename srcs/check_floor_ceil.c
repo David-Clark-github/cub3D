@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 10:28:21 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/07 13:32:14 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/19 14:09:28 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ static void	boundaries(char *str)
 	i = 1;
 	while (str[i])
 	{
-		while (str[i] == ' ' || str[i] == '\t' || str[i] == ',')
+		while (ft_isdigit(str[i]) == 0 && str[i] != '-' && str[i])
 			i++;
 		if (ft_atoi(&str[i]) < 0 || ft_atoi(&str[i]) > 255)
 			ft_error("La couleur est hors limite", 1, 0);
-		while (ft_isdigit(str[i]) || str[i] == '-')
+		while ((ft_isdigit(str[i]) || str[i] == '-') && str[i])
 			i++;
 	}
 }

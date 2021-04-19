@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 15:56:57 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/18 15:52:14 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/12 15:48:55 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,17 @@ static void	algo_sp2(t_data *data, t_ray *ray)
 	stripe = ray->drawst_x - 1;
 	while (++stripe < ray->drawend_x)
 	{
-		ray->tex_x = (int)((stripe - (-ray->sp_width / 2 +\
-		ray->sp_screenx)) * data->text[4].width / ray->sp_width);
+		ray->tex_x = (int)(256 * (stripe - (-ray->sp_width / 2 +\
+		ray->sp_screenx)) * data->text[4].width / ray->sp_width) / 256;
 		if (ray->transformy > 0 && stripe > 0 && stripe < data->win.width\
 			&& ray->transformy < ray->zbuffer[stripe])
 		{
 			y = ray->drawst_y - 1;
 			while (++y < ray->drawend_y)
 			{
-				d = (y) - data->win.height / 2 + ray->sp_height / 2;
-				ray->tex_y = ((d * data->text[4].height) / ray->sp_height);
+				d = (y) * 256 - data->win.height * 128 + ray->sp_height * 128;
+				ray->tex_y = ((d * data->text[4].height) / ray->sp_height) /\
+				256;
 				color = index_color(ray->tex_x, ray->tex_y, &data->text[4]);
 				if (color != 0)
 					my_put_pixel(&data->img, stripe, y, color);
