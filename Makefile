@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/20 10:32:10 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/20 14:49:50 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -154,6 +154,7 @@ fclean:	clean
 	make fclean -C libft/
 	rm -f cub3D
 	rm -f save.bmp
+	rm -f save_bonus.bmp
 	rm -f cub3D_bonus
 
 re:		fclean
@@ -163,4 +164,4 @@ $(NAME): $(SRCS) libft.a
 	$(CC) main.c $(CFLAGS) $(SRCS) libft/libft.a -lm -lmlx -lXext -lX11 -o $(NAME)
 
 bonus: $(SRCS_B) libft.a
-	$(CC) main.c $(CFLAGS) $(SRCS_B) libft/libft.a -lm -lmlx -lXext -lX11 -o $(BONUS)
+	$(CC) main_bonus.c $(CFLAGS) $(SRCS_B) libft/libft.a -lm -lmlx -lXext -lX11 -o $(BONUS)

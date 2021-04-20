@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_res.c                                        :+:      :+:    :+:   */
+/*   check_res_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 16:38:43 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/12 15:33:17 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/20 15:07:19 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	min_max(char *line)
 	while (line[i] && !ft_isdigit(line[i]) && line[i] != '-')
 		++i;
 	if (ft_atoi(&line[i]) < 1)
-		ft_error("La largeur de la fenetre est trop petite", 1, 0);
+		ft_error("La largeur de la fenetre est inferieur a 1", 1, 0);
 	if (ft_atoi(&line[i]) > INT_MAX)
 		ft_error("La largeur est superieur a un int", 1, 0);
 	while (ft_isdigit(line[i]) || line[i] == '-')
@@ -52,7 +52,7 @@ static void	min_max(char *line)
 	while (line[i] && !ft_isdigit(line[i]) && line[i] != '-')
 		++i;
 	if (ft_atoi(&line[i]) < 1)
-		ft_error("La hauteur de la fenetre est trop petite", 1, 0);
+		ft_error("La hauteur de la fenetre est inferieur a 1", 1, 0);
 	if (ft_atoi(&line[i]) > INT_MAX)
 		ft_error("La hauteur est superieur a un int", 1, 0);
 }

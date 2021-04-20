@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_save.c                                          :+:      :+:    :+:   */
+/*   ft_save_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:36:36 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/15 13:27:49 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/20 14:47:31 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ void		ft_save(t_data *data)
 {
 	int	fd;
 
-	fd = open("save.bmp", O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+	fd = open("save_bonus.bmp", O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
 	ft_header(fd, data);
 	ft_fill_save(fd, data);
 	close(fd);
-	ft_error("Image sauvée dans save.bmp", 0, data);
+	ft_error("Image sauvée dans save_bonus.bmp", 0, data);
 }
