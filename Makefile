@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/19 11:46:40 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/20 10:32:10 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,6 +130,7 @@ SRCS_B	=	bonus/ft_error_bonus.c \
 			bonus/crabe_left_bonus.c \
 			bonus/crabe_right_bonus.c \
 			bonus/exec_bonus.c \
+			bonus/floor_ceil_texture_bonus.c \
 
 HEADER	=	includes/
 

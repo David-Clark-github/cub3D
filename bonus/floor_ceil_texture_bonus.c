@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 15:10:15 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/19 15:58:00 by dclark           ###   ########.fr       */
+/*   Created: 2021/04/20 13:51:55 by dclark            #+#    #+#             */
+/*   Updated: 2021/04/20 14:08:11 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	floor_ceil_texture(t_f_c *f_c, t_data *data)
 {
+	int	color;
+
 	f_c->y = -1;
 	while (++f_c->y < data->win.height)
 	{
@@ -24,8 +26,8 @@ void	floor_ceil_texture(t_f_c *f_c, t_data *data)
 		f_c->p = f_c->y - data->win.height / 2;
 		f_c->posz = 0.5 * data->win.height;
 		f_c->rowdist = f_c->posz / f_c->p;
-		f_c->floorstepx = f_c->rowdist * (f_c->dirx1 - f_c->dirx0) / data->win.width;
-		f_c->floorstepy = f_c->rowdist * (f_c->diry1 - f_c->diry0) / data->win.width;
+		f_c->floorstepx = f_c->rowdist * (f_c->raydirx1 - f_c->raydirx0) / data->win.width;
+		f_c->floorstepy = f_c->rowdist * (f_c->raydiry1 - f_c->raydiry0) / data->win.width;
 		f_c->floorx = data->ply.posx + f_c->rowdist * f_c->raydirx0;
 		f_c->floory = data->ply.posy + f_c->rowdist * f_c->raydiry0;
 		f_c->x = -1;
@@ -33,10 +35,16 @@ void	floor_ceil_texture(t_f_c *f_c, t_data *data)
 		{
 			f_c->cellx = (int)(f_c->floorx);
 			f_c->celly = (int)(f_c->floory);
-			f_c->tx = (int)(64 * (f_c->floorx - f_c->cellx)) & (data->win.width - 1);
-			f_c->ty = (int)(64 * (f_c->floory - f_c->celly)) & (data->win.height - 1);
+			f_c->tx = (int)(64 * (f_c->floorx - f_c->cellx)) & (64 - 1);
+			f_c->ty = (int)(64 * (f_c->floory - f_c->celly)) & (64 - 1);
 			f_c->floorx += f_c->floorstepx;
-			f_c->floorx += f_c->floorstepx;
+			f_c->floory += f_c->floorstepy;
+			color = index_color(f_c->tx, f_c->ty, &data->text[2]);
+			color = (color >> 1) & 8355711;
+			my_put_pixel(&data->img, f_c->x, f_c->y, color);
+			color = index_color(f_c->tx, f_c->ty, &data->text[1]);
+			color = (color >> 1) & 8355711;
+			my_put_pixel(&data->img, f_c->x, (data->win.height - f_c->y - 1), color);
 		}
 	}
 }

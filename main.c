@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 12:24:11 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/19 14:28:08 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/20 13:42:42 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int ac, char **av)
 	check_master(&data);
 	parsing_master(&data);
 	ceil_floor_to_img(&data);
+//	floor_ceil_texture(&data.f_c, &data);
 	algo(&data);
 	if (ac == 3)
 		ft_save(&data);

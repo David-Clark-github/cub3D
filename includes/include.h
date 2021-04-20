@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/19 15:14:52 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/20 10:31:11 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ typedef struct	s_floor_ceil {
 	float		floory;
 	int			cellx;
 	int			celly;
-	int			tx:
+	int			tx;
 	int			ty;
 	int			y;
 	int			x;
@@ -184,6 +184,7 @@ typedef struct	s_data {
 	t_ray		ray;
 	t_text		text[5];
 	t_sp		*sp;
+	t_f_c		f_c;
 	int			d_map;
 }				t_data;
 
