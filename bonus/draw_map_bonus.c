@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 12:47:13 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/20 15:15:06 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/21 13:09:11 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,9 @@ static void	draw_square_bonus(int x, int y, int color, t_data *data)
 static int	limits(t_data *data)
 {
 	if (data->win.width < 940)
-	{
-		printf("la largeur de la fenêtre est trop petite pour la map\n");
 		return (1);
-	}
 	if (data->win.height < 720)
-	{
-		printf("la hauteur de la fenêtre est trop petite pour la map\n");
 		return (1);
-	}
 	return (0);
 }
 
