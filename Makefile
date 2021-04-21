@@ -146,9 +146,11 @@ all:	libft.a $(NAME)
 
 libft.a:
 	make -C libft/
+	make -C minilibx-linux/
 
 clean:
 	make clean -C libft/
+	make clean -C minilibx-linux/
 
 fclean:	clean
 	make fclean -C libft/
