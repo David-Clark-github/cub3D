@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:29:10 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/21 10:21:36 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/21 15:38:32 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_cross(void *param)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = param;
 	ft_error("Fin de cub3D", 0, data);

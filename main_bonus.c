@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 12:24:11 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/21 13:17:11 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/21 15:49:25 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 	{
 		data.win.win = mlx_new_window(data.win.mlx, data.win.width,
 		data.win.height, "cub3D");
-		printf("m pour afficher la map\nresolution pour la map >= 940_720\n");
+//		printf("m pour afficher la map\nresolution pour la map >= 940_720\n");
 		exec(&data);
 	}
 }

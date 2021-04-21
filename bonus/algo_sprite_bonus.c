@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_sprite.c                                      :+:      :+:    :+:   */
+/*   algo_sprite_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 15:56:57 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/12 15:48:55 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/21 16:16:02 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ static void	algo_sp2(t_data *data, t_ray *ray)
 				d = (y) * 256 - data->win.height * 128 + ray->sp_height * 128;
 				ray->tex_y = ((d * data->text[4].height) / ray->sp_height) /\
 				256;
+				if (ray->tex_y < 0)
+					ray->tex_y = 0;
 				color = index_color(ray->tex_x, ray->tex_y, &data->text[4]);
 				if (color != 0)
 					my_put_pixel(&data->img, stripe, y, color);
