@@ -68,12 +68,22 @@ static void	algo_sp1(t_ray *ray, t_ply *ply, t_data *data, int i)
 		ray->drawend_x = data->win.width - 1;
 }
 
+static void	lol(t_data *data, t_ray *ray, int stripe, int y)
+{
+	int	color;
+
+	if (ray->tex_y < 0)
+		ray->tex_y = 0;
+	color = index_color(ray->tex_x, ray->tex_y, &data->text[4]);
+	if (color != 0)
+		my_put_pixel(&data->img, stripe, y, color);
+}
+
 static void	algo_sp2(t_data *data, t_ray *ray)
 {
 	int	stripe;
 	int	y;
 	int	d;
-	int	color;
 
 	stripe = ray->drawst_x - 1;
 	while (++stripe < ray->drawend_x)
@@ -89,11 +99,7 @@ static void	algo_sp2(t_data *data, t_ray *ray)
 				d = (y) * 256 - data->win.height * 128 + ray->sp_height * 128;
 				ray->tex_y = ((d * data->text[4].height) / ray->sp_height) /\
 				256;
-				if (ray->tex_y < 0)
-					ray->tex_y = 0;
-				color = index_color(ray->tex_x, ray->tex_y, &data->text[4]);
-				if (color != 0)
-					my_put_pixel(&data->img, stripe, y, color);
+				lol(data, ray, stripe, y);
 			}
 		}
 	}
