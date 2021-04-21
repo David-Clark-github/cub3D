@@ -17,8 +17,14 @@ void	pars_xpm(t_data *data, int t, char *line)
 	int	i;
 
 	i = 0;
+	while (ft_isalpha(line[i]) && line[i])
+		++i;
 	while (line[i] != '.')
+	{
+		if (!ft_isspace(line[i]))
+			ft_error("La ligne xpm a un defaut", 1, data);
 		i++;
+	}
 	data->text[t].img = mlx_xpm_file_to_image(data->win.mlx, &line[i],
 	&data->text[t].width, &data->text[t].height);
 	if (data->text[t].img == NULL)

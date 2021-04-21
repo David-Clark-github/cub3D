@@ -16,7 +16,9 @@ void	pars_xpm(t_data *data, int t, char *line)
 {
 	int	i;
 
-	i = 2;
+	i = 0;
+	while (ft_isalpha(line[i]) && line[i])
+		++i;
 	while (line[i] != '.')
 	{
 		if (!ft_isspace(line[i]))
