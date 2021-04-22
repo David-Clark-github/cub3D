@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/10 10:44:52 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/12 15:31:29 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/22 10:19:28 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	draw_text_line(t_text *text, int x, t_ray *ray, t_data *data)
 	ray->tex_pos = (ray->drawstart - data->win.height / 2 +\
 	ray->lineheight / 2) * ray->step;
 	y = ray->drawstart - 1;
-	while (++y < ray->drawend)
+	while (++y <= ray->drawend)
 	{
 		ray->tex_y = (int)ray->tex_pos;
 		if (ray->tex_y < 0)
