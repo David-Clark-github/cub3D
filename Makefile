@@ -6,11 +6,12 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/21 16:06:15 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/26 11:46:01 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	srcs/ft_error.c \
+SRCS	=	main.c \
+			srcs/ft_error.c \
 			srcs/ft_empty_data.c \
 			srcs/ft_save.c \
 			srcs/free_win.c \
@@ -70,7 +71,8 @@ SRCS	=	srcs/ft_error.c \
 			srcs/crabe_right.c \
 			srcs/exec.c \
 
-SRCS_B	=	bonus/ft_error_bonus.c \
+SRCS_B	=	main_bonus.c \
+			bonus/ft_error_bonus.c \
 			bonus/ft_empty_data_bonus.c \
 			bonus/ft_save_bonus.c \
 			bonus/free_win_bonus.c \
@@ -138,19 +140,28 @@ NAME	=	cub3D
 
 BONUS	=	cub3D_bonus
 
+OBJS	= $(SRCS:.c=.o)
+
+OBJS_B	= $(SRCS_B:.c=.o)
+
 CFLAGS	+=	-Wall -Werror -Wextra -I $(HEADER)
 
 CC		=	gcc
 
-all:	libft.a $(NAME)
+all:	$(NAME)
 
-libft.a:
+libft/libft.a:
 	make -C libft/
+	make -C minilibx-linux/
+
+minilibx-linux/libmlx*.a:
 	make -C minilibx-linux/
 
 clean:
 	make clean -C libft/
 	make clean -C minilibx-linux/
+	rm -f $(OBJS)
+	rm -f $(OBJS_B)
 
 fclean:	clean
 	make fclean -C libft/
@@ -162,8 +173,8 @@ fclean:	clean
 re:		fclean
 	make $(NAME)
 
-$(NAME): $(SRCS) libft.a
-	$(CC) main.c $(CFLAGS) $(SRCS) libft/libft.a -lm -lmlx -lXext -lX11 -o $(NAME)
+$(NAME): $(OBJS) libft/libft.a minilibx-linux/libmlx*.a
+	$(CC) $(CFLAGS) $(OBJS) -L libft -lft -lm -L ./minilibx-linux -lmlx -lXext -lX11 -o $(NAME)
 
-bonus: $(SRCS_B) libft.a
-	$(CC) main_bonus.c $(CFLAGS) $(SRCS_B) libft/libft.a -lm -lmlx -lXext -lX11 -o $(BONUS)
+$(BONUS): $(OBJS_B) libft/libft.a minilibx-linux/libmlx*.a
+	$(CC) $(CFLAGS) $(OBJS_B) -L libft -lft -lm -L ./minilibx-linux -lmlx -lXext -lX11 -o $(BONUS)
