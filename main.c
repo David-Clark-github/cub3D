@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 12:24:11 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/21 16:14:25 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/26 16:17:35 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	check_ac_av(ac, av);
 	init_data(&data);
-	data.raw_cub = file_line_gnl(av[1]);
+	data.raw_cub = file_line_gnl(av[1], &data);
 	id_line_master(&data);
 	check_master(&data);
 	parsing_master(&data);

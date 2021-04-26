@@ -6,26 +6,29 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 13:20:42 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/26 14:25:43 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/26 15:59:51 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 #include "get_next_line.h"
 
-static int	number_l(char *av)
+static int	number_l(char *av, t_data *data)
 {
 	int		fd;
 	int		gnl;
 	int		res;
 	char	*line;
 
-	res = 0;
 	line = NULL;
 	fd = open(av, O_RDONLY | O_NOFOLLOW);
 	if (fd == -1)
-		ft_error("erreur sur le fichier", 1, 0);
+		ft_error("erreur sur le fichier", 1, data);
 	gnl = get_next_line(fd, &line);
+	if (gnl != 0)
+		res = 1;
+	else
+		res = 0;
 	free(line);
 	while (gnl != 0)
 	{
@@ -37,14 +40,14 @@ static int	number_l(char *av)
 	return (res);
 }
 
-char		**file_line_gnl(char *av)
+char		**file_line_gnl(char *av, t_data *data)
 {
 	int		fd;
 	int		num_l;
 	int		dst_i;
 	char	**dst;
 
-	num_l = number_l(av);
+	num_l = number_l(av, data);
 	fd = open(av, O_RDONLY);
 	dst_i = 0;
 	dst = malloc(sizeof(char *) * (num_l + 1));

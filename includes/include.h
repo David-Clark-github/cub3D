@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/20 10:31:11 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/26 16:18:03 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,7 +205,7 @@ void			init_ply(t_ply *ply);
 void			init_ray(t_ray *ray);
 void			init_text(t_data *data);
 void			check_ac_av(int ac, char **av);
-char			**file_line_gnl(char *av);
+char			**file_line_gnl(char *av, t_data *data);
 void			id_line_master(t_data *data);
 int				id_res(char **av);
 int				id_north(char **av);
