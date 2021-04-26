@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 13:20:42 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/13 15:52:12 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/26 14:25:43 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ static int	number_l(char *av)
 
 	res = 0;
 	line = NULL;
-	fd = open(av, O_RDONLY);
+	fd = open(av, O_RDONLY | O_NOFOLLOW);
+	if (fd == -1)
+		ft_error("erreur sur le fichier", 1, 0);
 	gnl = get_next_line(fd, &line);
 	free(line);
 	while (gnl != 0)
