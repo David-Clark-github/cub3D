@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:20:19 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/16 10:50:09 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/27 13:58:23 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,18 @@ static void	free_text2(t_data *data)
 			mlx_destroy_image(data->win.mlx, data->text[i].img);
 }
 
-static void	free_raw_cub(char **raw_cub)
+static void	free_raw_cub(char **raw_cub, int nb_l)
 {
 	int	i;
 
-	i = -1;
-	while (raw_cub[++i])
+	i = 0;
+	while (i <= nb_l)
+	{
 		free(raw_cub[i]);
+		i++;
+	}
+	if (ft_strlen(raw_cub[nb_l]) == 0)
+		free(raw_cub[nb_l]);
 	free(raw_cub);
 }
 
@@ -37,7 +42,7 @@ void		ft_empty_data(t_data *data)
 	if (!data)
 		return ;
 	if (data->raw_cub != NULL)
-		free_raw_cub(data->raw_cub);
+		free_raw_cub(data->raw_cub, data->nb_l);
 	free_ray(&data->ray);
 	free_text2(data);
 	free_map(&data->map);
