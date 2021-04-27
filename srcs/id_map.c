@@ -6,13 +6,13 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:35:50 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/07 11:55:07 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/27 15:54:36 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int	id_map(char **cub)
+int	id_map(char **cub, t_data *data)
 {
 	int	i;
 	int	flag;
@@ -29,6 +29,6 @@ int	id_map(char **cub)
 		}
 	}
 	if (flag == 0)
-		ft_error("la map n'existe pas ?! ou a une erreur", 1, 0);
+		ft_error("la map n'existe pas ?! ou a une erreur", 1, data);
 	return (res);
 }

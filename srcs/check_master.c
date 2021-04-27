@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 11:55:18 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/08 13:26:31 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/27 15:46:24 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	check_master(t_data *data)
 {
-	check_res(data->raw_cub[data->id_l.res]);
-	check_xpm(data->raw_cub[data->id_l.north]);
-	check_xpm(data->raw_cub[data->id_l.south]);
-	check_xpm(data->raw_cub[data->id_l.east]);
-	check_xpm(data->raw_cub[data->id_l.west]);
-	check_xpm(data->raw_cub[data->id_l.sprite]);
-	check_floor_ceil(data->raw_cub[data->id_l.floor]);
-	check_floor_ceil(data->raw_cub[data->id_l.ceil]);
+	check_res(data->raw_cub[data->id_l.res], data);
+	check_xpm(data->raw_cub[data->id_l.north], data);
+	check_xpm(data->raw_cub[data->id_l.south], data);
+	check_xpm(data->raw_cub[data->id_l.east], data);
+	check_xpm(data->raw_cub[data->id_l.west], data);
+	check_xpm(data->raw_cub[data->id_l.sprite], data);
+	check_floor_ceil(data->raw_cub[data->id_l.floor], data);
+	check_floor_ceil(data->raw_cub[data->id_l.ceil], data);
 	check_map1(&data->raw_cub[data->id_l.map], data);
 	check_map2(&data->raw_cub[data->id_l.map], data);
 }
