@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 13:20:42 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/26 15:59:51 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/27 12:09:45 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ char		**file_line_gnl(char *av, t_data *data)
 		get_next_line(fd, &dst[dst_i]);
 		dst_i++;
 	}
+	if (ft_strlen(dst[dst_i - 1]) == 0)
+		dst[dst_i - 1] = 0;
 	dst[dst_i] = 0;
 	close(fd);
 	return (dst);
