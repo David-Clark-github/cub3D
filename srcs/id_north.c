@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:35:50 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/07 11:55:42 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/27 14:30:08 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	id_north(char **cub)
 	flag = 0;
 	while (cub[++i])
 	{
-		if (ft_strncmp(cub[i], "NO ", 2) == 0)
+		if (ft_strncmp(cub[i], "NO ", 3) == 0)
 		{
 			res = i;
 			++flag;
