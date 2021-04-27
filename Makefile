@@ -6,7 +6,7 @@
 #    By: dclark <dclark@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/26 12:16:27 by dclark            #+#    #+#              #
-#    Updated: 2021/04/26 16:18:45 by dclark           ###   ########.fr        #
+#    Updated: 2021/04/27 15:06:43 by dclark           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -178,3 +178,5 @@ $(NAME): $(OBJS) libft/libft.a minilibx-linux/libmlx*.a
 
 $(BONUS): $(OBJS_B) libft/libft.a minilibx-linux/libmlx*.a
 	$(CC) $(CFLAGS) $(OBJS_B) -L libft -lft -lm -L ./minilibx-linux -lmlx -lXext -lX11 -o $(BONUS)
+
+.PHONY: all clean fclean re
