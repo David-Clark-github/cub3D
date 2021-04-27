@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 14:26:44 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/21 10:36:17 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/27 11:14:33 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,8 @@ void	pars_xpm(t_data *data, int t, char *line)
 	i = 0;
 	while (ft_isalpha(line[i]) && line[i])
 		++i;
-	while (line[i] != '.')
-	{
-		if (!ft_isspace(line[i]))
-			ft_error("La ligne a un défaut", 1, data);
-		i++;
-	}
+	while (ft_isspace(line[i]))
+		++i;
 	data->text[t].img = mlx_xpm_file_to_image(data->win.mlx, &line[i],
 	&data->text[t].width, &data->text[t].height);
 	if (data->text[t].img == NULL)
