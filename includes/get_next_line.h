@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 16:04:20 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/20 13:03:35 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/28 16:24:38 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 256
+#  define BUFFER_SIZE 1024
 # endif
 
 # include <unistd.h>

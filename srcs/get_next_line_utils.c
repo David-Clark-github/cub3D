@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 16:07:16 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/13 15:05:52 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/28 15:16:47 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		check_eol(char *tmp)
 	int	i;
 
 	i = 0;
-	if (!tmp)
+	if (tmp == NULL)
 		return (0);
 	while (tmp[i])
 	{
@@ -50,6 +50,8 @@ char	*get_line(char *tmp)
 
 	i_n = 0;
 	i_d = 0;
+	if (!tmp)
+		return (NULL);
 	while (tmp[i_n] != '\n' && tmp[i_n])
 		i_n++;
 	if (!(dest = malloc(sizeof(char) * (i_n + 1))))
@@ -71,6 +73,8 @@ char	*get_after_eol(char *tmp)
 
 	i_t = 0;
 	i_d = 0;
+	if (!tmp)
+		return (NULL);
 	while (tmp[i_t] && tmp[i_t] != '\n')
 		i_t++;
 	if (tmp[i_t] == '\0' || tmp[i_t + 1] == '\0')
@@ -98,6 +102,8 @@ char	*ftft_strjoin(char *tmp, int tmp_sz, char *buffer, int bytes_read)
 
 	i_d = 0;
 	i_s = 0;
+	if (tmp == NULL && bytes_read == 0)
+		return (NULL);
 	if (!(dest = malloc(sizeof(char) * (tmp_sz + bytes_read + 1))))
 		return (NULL);
 	while (0 < tmp_sz--)

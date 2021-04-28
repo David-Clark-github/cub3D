@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/07 15:00:42 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/15 13:26:38 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/28 15:40:06 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,19 @@ static void	create_map(char **map, t_data *data)
 static void	voisin(t_data *data, int x, int y)
 {
 	if (x == 0 || x == data->map.map_w - 1)
-		ft_error("map incorrect", 1, data);
+		ft_error("caractere limite largeur", 1, data);
 	if (y == 0 || y == data->map.map_h - 1)
-		ft_error("map incorrect", 1, data);
+		ft_error("caractere limite hauteur", 1, data);
 	if (data->map.map[y][x + 1] == ' ' || data->map.map[y][x - 1] == ' ')
-		ft_error("map incorrect", 1, data);
+		ft_error("caractere a cote d'un espace", 1, data);
 	if (data->map.map[y + 1][x] == ' ' || data->map.map[y - 1][x] == ' ')
-		ft_error("map incorrect", 1, data);
+		ft_error("caractere a cote d'un espace", 1, data);
 	if (data->map.map[y + 1][x - 1] == ' ' || data->map.map[y - 1]
 		[x - 1] == ' ')
-		ft_error("map incorrect", 1, data);
+		ft_error("caractere a cote d'un espace", 1, data);
 	if (data->map.map[y + 1][x + 1] == ' ' || data->map.map[y - 1]
 		[x + 1] == ' ')
-		ft_error("map incorrect", 1, data);
+		ft_error("caractere mal placé", 1, data);
 }
 
 static void	cara_voisin(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/28 12:49:54 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/28 14:27:15 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ typedef struct	s_sprite {
 
 typedef struct	s_data {
 	char		**raw_cub;
+	int			nb_l;
 	t_mapou		map;
 	t_id_l		id_l;
 	t_win		win;
@@ -205,7 +206,7 @@ void			init_ply(t_ply *ply);
 void			init_ray(t_ray *ray);
 void			init_text(t_data *data);
 void			check_ac_av(int ac, char **av);
-char			**file_line_gnl(char *av);
+char			**file_line_gnl(char *av, t_data *data);
 void			id_line_master(t_data *data);
 int				id_res(char **av, t_data *data);
 int				id_north(char **av, t_data *data);
