@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 12:24:11 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/26 14:57:50 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/28 16:27:14 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 	else
 	{
 		data.win.win = mlx_new_window(data.win.mlx, data.win.width,
-		data.win.height, "cub3D");
+		data.win.height, "cub3D_bonus");
 		exec(&data);
 	}
 }

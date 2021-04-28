@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 13:20:42 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/27 13:58:30 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/28 15:50:49 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,20 @@ static int	number_l(char *av, t_data *data)
 	else
 		res = 0;
 	free(line);
+	if (gnl == 0)
+		ft_error("fichier vide", 1, data);
+	res = 1;
 	while (gnl != 0)
 	{
-		res++;
 		gnl = get_next_line(fd, &line);
-		free(line);
+		if (line != NULL)
+			++res;
+		if (line != NULL)
+			free(line);
 	}
-	close(fd);
 	data->nb_l = res;
+	if (close(fd) != 0)
+		ft_error("Le fichier s'est mal fermé :/", 1, data);
 	return (res);
 }
 
@@ -55,9 +61,11 @@ char		**file_line_gnl(char *av, t_data *data)
 	while (num_l--)
 	{
 		get_next_line(fd, &dst[dst_i]);
+		printf("%s\n", dst[dst_i]);
 		dst_i++;
 	}
 	dst[dst_i] = 0;
+	ft_print_split(dst);
 	close(fd);
 	return (dst);
 }

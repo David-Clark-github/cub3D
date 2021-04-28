@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 16:07:43 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/15 13:27:28 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/28 15:17:42 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int			get_next_line(int fd, char **line)
 	if (!(buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	bytes_read = 42;
-	while (bytes_read && check_eol(tmp) != 1)
+	while (bytes_read != 0 && check_eol(tmp) != 1)
 	{
 		if ((bytes_read = read(fd, buffer, BUFFER_SIZE)) == -1)
 		{
