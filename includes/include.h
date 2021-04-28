@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/26 12:16:55 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/20 10:31:11 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/28 12:49:54 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,24 +207,20 @@ void			init_text(t_data *data);
 void			check_ac_av(int ac, char **av);
 char			**file_line_gnl(char *av);
 void			id_line_master(t_data *data);
-int				id_res(char **av);
-int				id_north(char **av);
-int				id_south(char **av);
-int				id_east(char **av);
-int				id_west(char **av);
-int				id_sprite(char **av);
-int				id_floor(char **av);
-int				id_ceil(char **av);
-int				id_map(char **av);
+int				id_res(char **av, t_data *data);
+int				id_north(char **av, t_data *data);
+int				id_south(char **av, t_data *data);
+int				id_east(char **av, t_data *data);
+int				id_west(char **av, t_data *data);
+int				id_sprite(char **av, t_data *data);
+int				id_floor(char **av, t_data *data);
+int				id_ceil(char **av, t_data *data);
+int				id_map(char **av, t_data *data);
 void			check_master(t_data *data);
-void			check_res(char *res);
-void			check_north(char *north);
-void			check_south(char *south);
-void			check_east(char *east);
-void			check_west(char *west);
-void			check_xpm(char *line);
-void			check_sprite(char *sprite);
-void			check_floor_ceil(char *line);
+void			check_res(char *res, t_data *data);
+void			check_xpm(char *line, t_data *data);
+void			check_sprite(char *sprite, t_data *data);
+void			check_floor_ceil(char *line, t_data *data);
 void			check_map1(char **map, t_data *data);
 void			check_map2(char **map, t_data *data);
 void			parsing_master(t_data *data);

@@ -6,13 +6,13 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:35:50 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/07 11:55:42 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/28 12:32:35 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-int	id_north(char **cub)
+int	id_north(char **cub, t_data *data)
 {
 	int	i;
 	int	flag;
@@ -29,8 +29,8 @@ int	id_north(char **cub)
 		}
 	}
 	if (flag > 1)
-		ft_error("Il y plus de 1 elements de north", 1, 0);
+		ft_error("Il y plus de 1 elements de north", 1, data);
 	if (flag == 0)
-		ft_error("L'elements north n'existe pas", 1, 0);
+		ft_error("L'elements north n'existe pas", 1, data);
 	return (res);
 }
