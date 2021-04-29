@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/21 13:20:42 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/28 16:38:00 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/29 15:08:41 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@ static int	number_l(char *av, t_data *data)
 	if (fd == -1)
 		ft_error("erreur sur le fichier", 1, data);
 	gnl = get_next_line(fd, &line);
-	if (gnl != 0)
-		res = 1;
-	else
-		res = 0;
 	free(line);
 	if (gnl == 0)
 		ft_error("fichier vide", 1, data);
@@ -42,8 +38,7 @@ static int	number_l(char *av, t_data *data)
 			free(line);
 	}
 	data->nb_l = res;
-	if (close(fd) != 0)
-		ft_error("Le fichier s'est mal fermé :/", 1, data);
+	close(fd);
 	return (res);
 }
 

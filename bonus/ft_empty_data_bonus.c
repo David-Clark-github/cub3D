@@ -6,7 +6,7 @@
 /*   By: dclark <dclark@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 13:20:19 by dclark            #+#    #+#             */
-/*   Updated: 2021/04/28 14:30:34 by dclark           ###   ########.fr       */
+/*   Updated: 2021/04/29 15:01:35 by dclark           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,6 @@ static void	free_raw_cub(char **raw_cub, int nb_l)
 	i = -1;
 	while (++i < nb_l)
 		free(raw_cub[i]);
-		i++;
-	}
-	if (ft_strlen(raw_cub[nb_l]) == 0)
-		free(raw_cub[nb_l]);
 	free(raw_cub);
 }
 
